@@ -216,7 +216,7 @@ const Hero = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-10">
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-10 justify-center items-center">
               <a
                 href={`https://wa.me/${phone}?text=${encodeURIComponent(
                   message
@@ -224,9 +224,9 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="px-8 py-4 bg-slate-900 text-black rounded-full font-bold text-lg shadow-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group bg-gradient-to-r from-[#E5BD43] to-[#F6E05E] text-[#0A121B] hover:shadow-[0_0_20px_rgba(229,189,67,0.4)] rounded-full font-bold text-sm transition-all duration-300 transform">
+                <button className=" px-8 py-4 bg-slate-900 text-black rounded-full font-bold text-lg justify-center items-centershadow-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group bg-gradient-to-r from-[#E5BD43] to-[#F6E05E] text-[#0A121B] hover:shadow-[0_0_20px_rgba(229,189,67,0.4)] rounded-full font-bold text-sm transition-all duration-300 transform">
                   Book Pickup{" "}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform " />
                 </button>
               </a>
               <button className="px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-full font-bold text-sm hover:border-slate-400 hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-sm">
