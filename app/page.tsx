@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import {
   Sparkles,
   Droplets,
@@ -19,10 +19,9 @@ import {
   Truck,
   Armchair,
   Gem,
-
   Smartphone,
-  Quote
-} from 'lucide-react';
+  Quote,
+} from "lucide-react";
 
 // --- Utility for loading scripts (GSAP) ---
 const useScript = (src: string): void => {
@@ -48,23 +47,28 @@ const Navigation = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
-    { name: 'Gallery', href: '#gallery' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Contact', href: '#contact' },
+    { name: "Services", href: "#services" },
+    { name: "Process", href: "#process" },
+    { name: "Gallery", href: "#gallery" },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 top-0 transition-all duration-300 ${scrolled ? 'bg-white/70 backdrop-blur-xl shadow-sm border-b border-slate-200' : 'bg-transparent'}`}>
+    <nav
+      className={`fixed w-full z-50 top-0 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/70 backdrop-blur-xl shadow-sm border-b border-slate-200"
+          : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer group">
             <div className="relative flex items-center justify-center">
@@ -73,7 +77,7 @@ const Navigation = () => {
                 alt="Pong Logo"
                 className="w-full h-full object-contain"
                 onError={(e) => {
-                  e.target.style.display = 'none';
+                  e.currentTarget.style.display = "none";
                 }}
               />
             </div>
@@ -114,7 +118,11 @@ const Navigation = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:text-[#03AE96] focus:outline-none"
             >
-              {isOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
+              {isOpen ? (
+                <X className="block h-6 w-6" />
+              ) : (
+                <Menu className="block h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -145,13 +153,14 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-white">
       {/* Grid Background */}
-      <div className="absolute inset-0 pointer-events-none"
+      <div
+        className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: `linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)`,
-          backgroundSize: '40px 40px',
-          maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)'
-        }}>
-      </div>
+          backgroundSize: "40px 40px",
+          maskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
+        }}
+      ></div>
 
       {/* Soft Gradient Orbs */}
       <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-teal-100 rounded-full mix-blend-multiply filter blur-[80px] opacity-70 animate-pulse"></div>
@@ -159,42 +168,65 @@ const Hero = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-
           {/* Left Side: Content */}
           <div className="flex flex-col items-start text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 bg-white shadow-sm mb-6">
               <Star className="w-3 h-3 text-[#E5BD43] fill-[#E5BD43]" />
-              <span className="text-slate-600 text-xs font-bold tracking-widest uppercase">Premium Care</span>
+              <span className="text-slate-600 text-xs font-bold tracking-widest uppercase">
+                Premium Care
+              </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-6 leading-[1.1]">
-              Premium Laundry,<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#03AE96] to-[#4EF1BD]">Dry Cleaning</span> &<br />
+              Premium Laundry,
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#03AE96] to-[#4EF1BD]">
+                Dry Cleaning
+              </span>{" "}
+              &<br />
               <span className="relative inline-block">
                 Shoe Spa
-                <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#E5BD43]" viewBox="0 0 100 10" preserveAspectRatio="none">
-                  <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
+                <svg
+                  className="absolute w-full h-3 -bottom-1 left-0 text-[#E5BD43]"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0 5 Q 50 10 100 5"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    fill="none"
+                  />
                 </svg>
               </span>
             </h1>
 
             <h2 className="text-2xl md:text-3xl font-light text-slate-600 mb-2">
-              Delivered in <span className="font-bold text-slate-900 bg-teal-50 px-2 rounded">24 Hours</span>.
+              Delivered in{" "}
+              <span className="font-bold text-slate-900 bg-teal-50 px-2 rounded">
+                24 Hours
+              </span>
+              .
             </h2>
 
             <p className="max-w-xl text-lg text-slate-500 mb-8 leading-relaxed">
-              DryDash brings expert cleaning with fast pickup, eco-friendly care, and doorstep delivery—crafted for busy professionals and modern families.
+              DryDash brings expert cleaning with fast pickup, eco-friendly
+              care, and doorstep delivery—crafted for busy professionals and
+              modern families.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-10">
               <a
-                href={`https://wa.me/${phone}?text=${encodeURIComponent(message)}`}
+                href={`https://wa.me/${phone}?text=${encodeURIComponent(
+                  message
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <button className="px-8 py-4 bg-slate-900 text-black rounded-full font-bold text-lg shadow-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group bg-gradient-to-r from-[#E5BD43] to-[#F6E05E] text-[#0A121B] hover:shadow-[0_0_20px_rgba(229,189,67,0.4)] rounded-full font-bold text-sm transition-all duration-300 transform">
-                  Book Pickup <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  Book Pickup{" "}
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </a>
               <button className="px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-full font-bold text-sm hover:border-slate-400 hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-sm">
@@ -218,7 +250,9 @@ const Hero = () => {
                 <div className="hidden sm:block w-1 h-1 bg-slate-300 rounded-full"></div>
                 <span>25,000+ Items Cleaned</span>
                 <div className="hidden sm:block w-1 h-1 bg-slate-300 rounded-full"></div>
-                <span className="flex items-center gap-1"><Droplets className="w-3 h-3 text-[#03AE96]" /> Eco-Friendly</span>
+                <span className="flex items-center gap-1">
+                  <Droplets className="w-3 h-3 text-[#03AE96]" /> Eco-Friendly
+                </span>
               </div>
             </div>
           </div>
@@ -230,12 +264,16 @@ const Hero = () => {
               <div className="bg-slate-50 rounded-xl h-48 mb-4 relative overflow-hidden flex items-center justify-center border border-slate-100">
                 <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
                 <Sparkles className="w-16 h-16 text-[#03AE96] group-hover:scale-110 transition-transform duration-500 relative z-10" />
-                <div className="absolute bottom-2 right-2 px-2 py-1 bg-white text-slate-800 text-[10px] font-bold rounded border border-slate-200 shadow-sm uppercase tracking-wide">Spa Mode</div>
+                <div className="absolute bottom-2 right-2 px-2 py-1 bg-white text-slate-800 text-[10px] font-bold rounded border border-slate-200 shadow-sm uppercase tracking-wide">
+                  Spa Mode
+                </div>
               </div>
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-slate-900 font-bold">Air Jordan 1</p>
-                  <p className="text-slate-400 text-xs">Deep Clean + De-yellow</p>
+                  <p className="text-slate-400 text-xs">
+                    Deep Clean + De-yellow
+                  </p>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-[#E5BD43]/10 flex items-center justify-center text-[#E5BD43] font-bold">
                   <Check className="w-5 h-5" />
@@ -283,7 +321,7 @@ const Hero = () => {
                     alt="avatar"
                     className="w-full rounded-full h-full object-cover"
                     onError={(e) => {
-                      e.target.style.display = 'none'; // Hides image if it fails to load
+                      e.currentTarget.style.display = "none"; // Hides image if it fails to load
                     }}
                   />
                 </div>
@@ -293,7 +331,7 @@ const Hero = () => {
                     alt="avatar"
                     className="w-full rounded-full h-full object-cover"
                     onError={(e) => {
-                      e.target.style.display = 'none'; // Hides image if it fails to load
+                      e.currentTarget.style.display = "none"; // Hides image if it fails to load
                     }}
                   />
                 </div>
@@ -303,7 +341,7 @@ const Hero = () => {
                     alt="avatar"
                     className="w-full rounded-full h-full object-cover"
                     onError={(e) => {
-                      e.target.style.display = 'none'; // Hides image if it fails to load
+                      e.currentTarget.style.display = "none"; // Hides image if it fails to load
                     }}
                   />
                 </div>
@@ -317,7 +355,9 @@ const Hero = () => {
               </div>
               <div className="pr-2">
                 <p className="text-slate-900 font-bold text-sm">On the way</p>
-                <p className="text-[#03AE96] text-xs font-medium">Arriving in 15 mins</p>
+                <p className="text-[#03AE96] text-xs font-medium">
+                  Arriving in 15 mins
+                </p>
               </div>
             </div>
           </div>
@@ -332,40 +372,52 @@ const WhyDryDash = () => {
     {
       icon: Timer,
       title: "24-Hour Delivery Promise",
-      desc: "Next-day delivery for laundry and dry cleaning."
+      desc: "Next-day delivery for laundry and dry cleaning.",
     },
     {
       icon: Droplets,
       title: "Eco-Friendly Solvents",
-      desc: "No harsh chemicals. No petrol smell. Safe for skin & fabrics."
+      desc: "No harsh chemicals. No petrol smell. Safe for skin & fabrics.",
     },
     {
       icon: Truck,
       title: "Doorstep Convenience",
-      desc: "Pickup and delivery anywhere in your city."
+      desc: "Pickup and delivery anywhere in your city.",
     },
     {
       icon: Shirt,
       title: "Premium Fabric Care",
-      desc: "Delicate, luxury and designer wear handled by specialists."
+      desc: "Delicate, luxury and designer wear handled by specialists.",
     },
   ];
 
   return (
-    <section id='why-us' className="py-24 bg-[#0A121B] relative border-t border-[#ffffff]/5">
+    <section
+      id="why-us"
+      className="py-24 bg-[#0A121B] relative border-t border-[#ffffff]/5"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[#E5BD43] font-bold tracking-widest uppercase text-sm mb-3">The DryDash Standard</h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-white">Why Choose <span className="text-[#4EF1BD]">DryDash?</span></h3>
+          <h2 className="text-[#E5BD43] font-bold tracking-widest uppercase text-sm mb-3">
+            The DryDash Standard
+          </h2>
+          <h3 className="text-3xl md:text-5xl font-bold text-white">
+            Why Choose <span className="text-[#4EF1BD]">DryDash?</span>
+          </h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {reasons.map((item, idx) => (
-            <div key={idx} className="bg-[#0F1923] p-8 rounded-2xl border border-[#ffffff]/5 hover:border-[#03AE96]/50 transition-all hover:-translate-y-2 group">
+            <div
+              key={idx}
+              className="bg-[#0F1923] p-8 rounded-2xl border border-[#ffffff]/5 hover:border-[#03AE96]/50 transition-all hover:-translate-y-2 group"
+            >
               <div className="w-14 h-14 bg-[#044288]/30 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#03AE96] transition-colors duration-300">
                 <item.icon className="w-7 h-7 text-[#4EF1BD] group-hover:text-white" />
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">{item.title}</h4>
+              <h4 className="text-xl font-bold text-white mb-3">
+                {item.title}
+              </h4>
               <p className="text-[#AEAEAF] leading-relaxed text-sm">
                 {item.desc}
               </p>
@@ -386,7 +438,7 @@ const ServicesOverview = () => {
       icon: Shirt,
       color: "text-teal-600",
       bg: "bg-teal-50",
-      border: "hover:border-teal-200"
+      border: "hover:border-teal-200",
     },
     {
       title: "Dry Cleaning",
@@ -395,7 +447,7 @@ const ServicesOverview = () => {
       icon: Wind,
       color: "text-amber-600",
       bg: "bg-amber-50",
-      border: "hover:border-amber-200"
+      border: "hover:border-amber-200",
     },
     {
       title: "Shoe Spa",
@@ -404,7 +456,7 @@ const ServicesOverview = () => {
       icon: Sparkles,
       color: "text-blue-600",
       bg: "bg-blue-50",
-      border: "hover:border-blue-200"
+      border: "hover:border-blue-200",
     },
     {
       title: "Bag & Purse Spa",
@@ -413,7 +465,7 @@ const ServicesOverview = () => {
       icon: ShoppingBag,
       color: "text-rose-600",
       bg: "bg-rose-50",
-      border: "hover:border-rose-200"
+      border: "hover:border-rose-200",
     },
     {
       title: "Home Upholstery",
@@ -422,7 +474,7 @@ const ServicesOverview = () => {
       icon: Armchair,
       color: "text-indigo-600",
       bg: "bg-indigo-50",
-      border: "hover:border-indigo-200"
+      border: "hover:border-indigo-200",
     },
     {
       title: "Special Care",
@@ -431,7 +483,7 @@ const ServicesOverview = () => {
       icon: Gem,
       color: "text-purple-600",
       bg: "bg-purple-50",
-      border: "hover:border-purple-200"
+      border: "hover:border-purple-200",
     },
   ];
 
@@ -442,29 +494,51 @@ const ServicesOverview = () => {
     <section id="services" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[#03AE96] font-bold tracking-widest uppercase text-sm mb-3">Complete Care</h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-slate-900">Our Premium <span className="text-[#38617e]">Services</span></h3>
+          <h2 className="text-[#03AE96] font-bold tracking-widest uppercase text-sm mb-3">
+            Complete Care
+          </h2>
+          <h3 className="text-3xl md:text-5xl font-bold text-slate-900">
+            Our Premium <span className="text-[#38617e]">Services</span>
+          </h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {overviewServices.map((service, idx) => (
-            <div key={idx} className={`group bg-white rounded-2xl p-8 border border-slate-100 shadow-sm ${service.border} hover:shadow-lg transition-all duration-300 relative overflow-hidden`}>
+            <div
+              key={idx}
+              className={`group bg-white rounded-2xl p-8 border border-slate-100 shadow-sm ${service.border} hover:shadow-lg transition-all duration-300 relative overflow-hidden`}
+            >
               {/* Background Decoration */}
-              <div className={`absolute top-0 right-0 w-32 h-32 ${service.bg} rounded-bl-[100px] opacity-50 transition-transform group-hover:scale-110`}></div>
+              <div
+                className={`absolute top-0 right-0 w-32 h-32 ${service.bg} rounded-bl-[100px] opacity-50 transition-transform group-hover:scale-110`}
+              ></div>
 
-              <div className={`w-14 h-14 rounded-xl ${service.bg} flex items-center justify-center mb-6 relative z-10`}>
+              <div
+                className={`w-14 h-14 rounded-xl ${service.bg} flex items-center justify-center mb-6 relative z-10`}
+              >
                 <service.icon className={`w-7 h-7 ${service.color}`} />
               </div>
 
-              <h4 className="text-2xl font-bold text-slate-900 mb-1 relative z-10">{service.title}</h4>
-              <p className={`text-xs font-bold uppercase tracking-wider ${service.color} mb-4 relative z-10 opacity-80`}>
+              <h4 className="text-2xl font-bold text-slate-900 mb-1 relative z-10">
+                {service.title}
+              </h4>
+              <p
+                className={`text-xs font-bold uppercase tracking-wider ${service.color} mb-4 relative z-10 opacity-80`}
+              >
                 {service.subtitle}
               </p>
               <p className="text-slate-500 mb-8 leading-relaxed text-sm min-h-[40px] relative z-10">
                 {service.desc}
               </p>
 
-              <a  href={`https://wa.me/${phone}?text=${encodeURIComponent(message)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-slate-900 font-bold group-hover:gap-3 transition-all relative z-10 text-sm">
+              <a
+                href={`https://wa.me/${phone}?text=${encodeURIComponent(
+                  message
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-slate-900 font-bold group-hover:gap-3 transition-all relative z-10 text-sm"
+              >
                 Book Now <ArrowRight className={`w-4 h-4 ${service.color}`} />
               </a>
             </div>
@@ -482,56 +556,79 @@ const DetailedServices = () => {
       desc: "Perfect for everyday clothes—washed, sanitized, steam ironed, and packed fresh.",
       image: "/image/premium.jpg",
       icon: Shirt,
-      color: "#4EF1BD"
+      color: "#4EF1BD",
     },
     {
       title: "Dry Cleaning",
       desc: "Advanced solvent cleaning that protects fabric texture, color, and shape.",
       image: "image/dry.jpg",
       icon: Wind,
-      color: "#6D96FB"
+      color: "#6D96FB",
     },
     {
       title: "Shoe Spa",
       desc: "From casual sneakers to premium leather—cleaning, deodorizing, polishing, renewing.",
       image: "image/shoe.jpg",
       icon: Sparkles,
-      color: "#03AE96"
+      color: "#03AE96",
     },
     {
       title: "Bag Spa",
       desc: "Deep cleaning for handbags with premium leather treatment and restoration.",
       image: "image/bag.jpg",
       icon: ShoppingBag,
-      color: "#E5BD43"
+      color: "#E5BD43",
     },
   ];
 
   return (
-    <section  className="bg-[#0A121B] relative border-t border-[#ffffff]/5">
+    <section className="bg-[#0A121B] relative border-t border-[#ffffff]/5">
       {details.map((service, index) => (
         <div key={index} className="flex flex-col md:flex-row group">
           {/* Text Section */}
-          <div className={`flex-1 p-12 lg:p-24 flex flex-col justify-center bg-[#0A121B] border-b md:border-b-0 border-[#ffffff]/5 ${index % 2 === 0 ? 'order-1 md:order-1' : 'order-1 md:order-2 bg-[#0F1923]'}`}>
+          <div
+            className={`flex-1 p-12 lg:p-24 flex flex-col justify-center bg-[#0A121B] border-b md:border-b-0 border-[#ffffff]/5 ${
+              index % 2 === 0
+                ? "order-1 md:order-1"
+                : "order-1 md:order-2 bg-[#0F1923]"
+            }`}
+          >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-[#ffffff]/5 flex items-center justify-center border border-[#ffffff]/10" style={{ borderColor: `${service.color}40` }}>
-                <service.icon className="w-6 h-6" style={{ color: service.color }} />
+              <div
+                className="w-12 h-12 rounded-xl bg-[#ffffff]/5 flex items-center justify-center border border-[#ffffff]/10"
+                style={{ borderColor: `${service.color}40` }}
+              >
+                <service.icon
+                  className="w-6 h-6"
+                  style={{ color: service.color }}
+                />
               </div>
-              <span className="text-5xl font-bold text-[#ffffff]/10 font-mono absolute pointer-events-none -ml-4 -mt-12 select-none">0{index + 1}</span>
+              <span className="text-5xl font-bold text-[#ffffff]/10 font-mono absolute pointer-events-none -ml-4 -mt-12 select-none">
+                0{index + 1}
+              </span>
             </div>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">{service.title}</h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              {service.title}
+            </h3>
             <p className="text-[#AEAEAF] text-lg leading-relaxed mb-8 max-w-md">
               {service.desc}
             </p>
             <div>
-              <button className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:gap-4 transition-all" style={{ color: service.color }}>
+              <button
+                className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:gap-4 transition-all"
+                style={{ color: service.color }}
+              >
                 Learn More <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
 
           {/* Image Section */}
-          <div className={`flex-1 relative overflow-hidden h-[400px] md:h-auto ${index % 2 === 0 ? 'order-2 md:order-2' : 'order-2 md:order-1'}`}>
+          <div
+            className={`flex-1 relative overflow-hidden h-[400px] md:h-auto ${
+              index % 2 === 0 ? "order-2 md:order-2" : "order-2 md:order-1"
+            }`}
+          >
             <div className="absolute inset-0 bg-[#0A121B]/20 group-hover:bg-transparent transition-colors z-10"></div>
             <img
               src={service.image}
@@ -551,7 +648,9 @@ const Process = () => {
   const containerRef = useRef(null);
 
   useScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js");
-  useScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js");
+  useScript(
+    "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+  );
 
   // Initialize GSAP animations
   useEffect(() => {
@@ -571,14 +670,14 @@ const Process = () => {
             opacity: 0,
             duration: 1,
             stagger: 0.2,
-            ease: "power3.out"
+            ease: "power3.out",
           });
 
           gsap.to(".process-line-fill", {
             backgroundPosition: "200% 0",
             duration: 3,
             repeat: -1,
-            ease: "linear"
+            ease: "linear",
           });
         }, containerRef);
 
@@ -601,53 +700,69 @@ const Process = () => {
       num: "01",
       title: "Schedule Pickup",
       desc: "Book via WhatsApp, call, or website.",
-      icon: Smartphone
+      icon: Smartphone,
     },
     {
       num: "02",
       title: "We Collect",
       desc: "Doorstep pickup at your preferred time.",
-      icon: Truck
+      icon: Truck,
     },
     {
       num: "03",
       title: "Expert Cleaning",
       desc: "Fabric-safe processes, eco cleaning & strict quality checks.",
-      icon: Sparkles
+      icon: Sparkles,
     },
     {
       num: "04",
       title: "24h Delivery",
       desc: "Fresh, clean, and neatly packed in 24 hours.",
-      icon: Timer
+      icon: Timer,
     },
   ];
 
   return (
-    <section id="process" className="py-24 bg-white relative overflow-hidden" ref={containerRef}>
+    <section
+      id="process"
+      className="py-24 bg-white relative overflow-hidden"
+      ref={containerRef}
+    >
       {/* Grid Background */}
-      <div className="absolute inset-0 pointer-events-none opacity-50"
+      <div
+        className="absolute inset-0 pointer-events-none opacity-50"
         style={{
           backgroundImage: `linear-gradient(to right, #f1f5f9 1px, transparent 1px), linear-gradient(to bottom, #f1f5f9 1px, transparent 1px)`,
-          backgroundSize: '40px 40px'
-        }}>
-      </div>
+          backgroundSize: "40px 40px",
+        }}
+      ></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-[#03AE96] font-bold tracking-widest uppercase text-sm mb-3">How DryDash Works</h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-slate-900">A Seamless Process <span className="text-slate-400">Designed for You</span></h3>
+          <h2 className="text-[#03AE96] font-bold tracking-widest uppercase text-sm mb-3">
+            How DryDash Works
+          </h2>
+          <h3 className="text-3xl md:text-5xl font-bold text-slate-900">
+            A Seamless Process{" "}
+            <span className="text-slate-400">Designed for You</span>
+          </h3>
         </div>
 
         <div className="relative">
           {/* Animated Connecting Line (Desktop) */}
           <div className="hidden md:block absolute top-12 left-0 w-full h-1 bg-slate-100 z-0 rounded-full overflow-hidden">
-            <div className="process-line-fill w-full h-full bg-gradient-to-r from-transparent via-[#03AE96] to-transparent opacity-30" style={{ backgroundSize: '50% 100%' }}></div>
+            <div
+              className="process-line-fill w-full h-full bg-gradient-to-r from-transparent via-[#03AE96] to-transparent opacity-30"
+              style={{ backgroundSize: "50% 100%" }}
+            ></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
             {steps.map((step, idx) => (
-              <div key={idx} className="process-step flex flex-col items-center text-center group relative">
+              <div
+                key={idx}
+                className="process-step flex flex-col items-center text-center group relative"
+              >
                 <div className="w-24 h-24 bg-white rounded-full border-4 border-white shadow-xl shadow-slate-200/50 flex items-center justify-center mb-6 relative z-10 transition-transform duration-300 transform group-hover:scale-110">
                   <div className="w-20 h-20 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:border-[#03AE96] group-hover:bg-[#03AE96]/5 transition-colors">
                     <step.icon className="w-8 h-8 text-slate-400 group-hover:text-[#03AE96] transition-colors" />
@@ -657,7 +772,9 @@ const Process = () => {
                   </div>
                 </div>
 
-                <h4 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#03AE96] transition-colors">{step.title}</h4>
+                <h4 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#03AE96] transition-colors">
+                  {step.title}
+                </h4>
                 <p className="text-slate-500 text-sm leading-relaxed max-w-[200px]">
                   {step.desc}
                 </p>
@@ -694,16 +811,20 @@ const Gallery = () => {
     <section id="gallery" className="py-24 bg-[#0A121B]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-[#4EF1BD] font-bold tracking-widest uppercase text-sm mb-3">Real Results</h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-white">Before & After</h3>
+          <h2 className="text-[#4EF1BD] font-bold tracking-widest uppercase text-sm mb-3">
+            Real Results
+          </h2>
+          <h3 className="text-3xl md:text-5xl font-bold text-white">
+            Before & After
+          </h3>
         </div>
 
         <div
           className="relative w-full max-w-4xl mx-auto aspect-[16/9] rounded-2xl overflow-hidden border border-[#ffffff]/10 shadow-2xl cursor-col-resize select-none"
           ref={containerRef}
-          onMouseDown={() => isDragging.current = true}
-          onMouseUp={() => isDragging.current = false}
-          onMouseLeave={() => isDragging.current = false}
+          onMouseDown={() => (isDragging.current = true)}
+          onMouseUp={() => (isDragging.current = false)}
+          onMouseLeave={() => (isDragging.current = false)}
           onMouseMove={(e) => isDragging.current && handleMove(e)}
           onTouchMove={handleMove}
         >
@@ -714,7 +835,9 @@ const Gallery = () => {
               alt="After"
               className="w-full h-full object-cover"
             />
-            <div className="absolute top-4 right-4 bg-[#03AE96] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">AFTER</div>
+            <div className="absolute top-4 right-4 bg-[#03AE96] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+              AFTER
+            </div>
           </div>
 
           {/* Before Image (Foreground Clipped) */}
@@ -727,7 +850,9 @@ const Gallery = () => {
               alt="Before"
               className="w-full h-full object-cover grayscale brightness-75 contrast-125"
             />
-            <div className="absolute top-4 left-4 bg-[#6A6F76] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">BEFORE</div>
+            <div className="absolute top-4 left-4 bg-[#6A6F76] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+              BEFORE
+            </div>
           </div>
 
           {/* Slider Handle */}
@@ -758,33 +883,43 @@ const Testimonials = () => {
       text: "DryDash returned my sneakers looking completely new. Worth every rupee.",
       author: "Rahul S.",
       role: "Sneakerhead",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop"
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop",
     },
     {
       text: "The pickup and delivery were right on time. My silk sarees came back perfect.",
       author: "Priya M.",
       role: "Homemaker",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop"
+      image:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop",
     },
     {
       text: "Excellent service for my business suits. Very professional handling.",
       author: "Aditya K.",
       role: "Corporate Executive",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop"
-    }
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop",
+    },
   ];
 
   return (
     <section id="testimonials" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[#03AE96] font-bold tracking-widest uppercase text-sm mb-3">Happy Customers</h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-slate-900">What They <span className="text-slate-400">Say</span></h3>
+          <h2 className="text-[#03AE96] font-bold tracking-widest uppercase text-sm mb-3">
+            Happy Customers
+          </h2>
+          <h3 className="text-3xl md:text-5xl font-bold text-slate-900">
+            What They <span className="text-slate-400">Say</span>
+          </h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map((review, idx) => (
-            <div key={idx} className="bg-slate-50 p-8 rounded-2xl relative group hover:bg-white hover:shadow-xl hover:shadow-slate-200 transition-all duration-300 border border-transparent hover:border-slate-100">
+            <div
+              key={idx}
+              className="bg-slate-50 p-8 rounded-2xl relative group hover:bg-white hover:shadow-xl hover:shadow-slate-200 transition-all duration-300 border border-transparent hover:border-slate-100"
+            >
               <Quote className="absolute top-6 right-6 w-8 h-8 text-slate-200 group-hover:text-[#03AE96]/20 transition-colors" />
               <div className="flex items-center gap-4 mb-6">
                 <img
@@ -794,7 +929,9 @@ const Testimonials = () => {
                 />
                 <div>
                   <p className="font-bold text-slate-900">{review.author}</p>
-                  <p className="text-xs text-slate-500 uppercase tracking-wide">{review.role}</p>
+                  <p className="text-xs text-slate-500 uppercase tracking-wide">
+                    {review.role}
+                  </p>
                 </div>
               </div>
               <p className="text-slate-600 leading-relaxed italic">
@@ -810,7 +947,10 @@ const Testimonials = () => {
 
 const CTA = () => {
   return (
-    <section id="contact" className="py-24 bg-[#0A121B] relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-24 bg-[#0A121B] relative overflow-hidden"
+    >
       <div className="absolute inset-0 bg-gradient-to-r from-[#03AE96]/20 to-[#044288]/20"></div>
 
       {/* Abstract Shapes */}
@@ -820,11 +960,15 @@ const CTA = () => {
       <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
         <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-6 leading-tight">
           Ready for a Fresh, <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4EF1BD] to-[#03AE96]">Hassle-Free Cleaning</span> Experience?
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4EF1BD] to-[#03AE96]">
+            Hassle-Free Cleaning
+          </span>{" "}
+          Experience?
         </h2>
 
         <p className="text-xl text-[#AEAEAF] mb-10 max-w-2xl mx-auto">
-          Your clothes, shoes, and home deserve premium care. Experience the DryDash difference today.
+          Your clothes, shoes, and home deserve premium care. Experience the
+          DryDash difference today.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -837,9 +981,6 @@ const CTA = () => {
               Book My Pickup <ArrowRight className="w-5 h-5" />
             </button>
           </a>
-          {/* <button className="w-full sm:w-auto px-8 py-4 bg-[#0A121B]/50 backdrop-blur-md border border-[#ffffff]/20 text-white rounded-full font-bold text-lg hover:bg-[#ffffff]/10 transition-colors">
-            Talk to Support
-          </button> */}
         </div>
       </div>
     </section>
@@ -859,17 +1000,22 @@ const Footer = () => {
                   alt="Pong Logo"
                   className="w-full h-full object-contain"
                   onError={(e) => {
-                    e.target.style.display = 'none'; // Hides image if it fails to load
+                    e.target.style.display = "none"; // Hides image if it fails to load
                   }}
                 />
               </div>
             </div>
             <p className="text-[#AEAEAF] max-w-sm mb-6">
-              The premium destination for sneaker care, restoration, and dry cleaning. We bring life back to your favorite pairs.
+              The premium destination for sneaker care, restoration, and dry
+              cleaning. We bring life back to your favorite pairs.
             </p>
             <div className="flex gap-4">
               {[Instagram, Twitter, Facebook].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-[#ffffff]/5 flex items-center justify-center text-white hover:bg-[#03AE96] hover:text-[#0A121B] transition-colors">
+                <a
+                  key={i}
+                  href="#"
+                  className="w-10 h-10 rounded-full bg-[#ffffff]/5 flex items-center justify-center text-white hover:bg-[#03AE96] hover:text-[#0A121B] transition-colors"
+                >
                   <Icon className="w-5 h-5" />
                 </a>
               ))}
@@ -915,7 +1061,6 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-
           </div>
 
           <div>
@@ -939,7 +1084,9 @@ const NewButton = ({
   phone = "1234567890", // replace with your number (country code required)
   message = "Hello! I would like to know more.",
 }) => {
-  const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(
+    message
+  )}`;
 
   return (
     <a
@@ -954,10 +1101,7 @@ const NewButton = ({
 
       {/* Button */}
       <div className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg hover:shadow-[0_0_20px_rgba(37,211,102,0.6)] transition-all duration-300 hover:-translate-y-1">
-        <svg
-          className="w-7 h-7 fill-current"
-          viewBox="0 0 24 24"
-        >
+        <svg className="w-7 h-7 fill-current" viewBox="0 0 24 24">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.304-5.298c0-5.45 4.432-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.895 9.884Z" />
         </svg>
       </div>
@@ -965,11 +1109,12 @@ const NewButton = ({
   );
 };
 
-
 export default function Home() {
   // Load GSAP from CDN for the "creative animation" requirement
-  useScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js');
-  useScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js');
+  useScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js");
+  useScript(
+    "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+  );
 
   return (
     <div className="font-sans antialiased bg-[#0A121B] min-h-screen text-[#F0F6FC] selection:bg-[#03AE96] selection:text-[#0A121B]">
