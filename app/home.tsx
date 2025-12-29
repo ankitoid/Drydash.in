@@ -670,7 +670,7 @@ const Process = () => {
 
 const Gallery = () => {
   const [sliderPosition, setSliderPosition] = useState(50);
-  const containerRef = useRef(null);
+   const containerRef = useRef<HTMLDivElement | null>(null);
   const isDragging = useRef(false);
 
   const handleMove = (
@@ -682,12 +682,13 @@ const Gallery = () => {
     const { left, width } = container.getBoundingClientRect();
 
     const clientX =
-      "touches" in event ? event.touches[0].clientX : event.clientX;
+      "touches" in event
+        ? event.touches[0].clientX
+        : event.clientX;
 
     const position = ((clientX - left) / width) * 100;
     setSliderPosition(Math.min(100, Math.max(0, position)));
   };
-
   return (
     <section id="gallery" className="py-24 bg-[#0A121B]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -700,16 +701,17 @@ const Gallery = () => {
           </h3>
         </div>
 
-        <div
-          ref={containerRef}
-          onMouseDown={() => (isDragging.current = true)}
-          onMouseUp={() => (isDragging.current = false)}
-          onMouseLeave={() => (isDragging.current = false)}
-          onMouseMove={(e) => isDragging.current && handleMove(e)}
-          onTouchStart={() => (isDragging.current = true)}
-          onTouchEnd={() => (isDragging.current = false)}
-          onTouchMove={handleMove}
-        >
+            <div
+      ref={containerRef}
+      onMouseDown={() => (isDragging.current = true)}
+      onMouseUp={() => (isDragging.current = false)}
+      onMouseLeave={() => (isDragging.current = false)}
+      onMouseMove={(e) => isDragging.current && handleMove(e)}
+      onTouchStart={() => (isDragging.current = true)}
+      onTouchEnd={() => (isDragging.current = false)}
+      onTouchMove={handleMove}
+      className="relative w-full max-w-4xl mx-auto aspect-[16/9]"
+    >
           {/* After Image (Background) */}
           <div className="absolute inset-0 bg-gray-800">
             <img
