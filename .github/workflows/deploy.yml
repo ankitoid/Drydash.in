@@ -27,8 +27,8 @@ jobs:
       - name: Install Dependencies
         run: npm i
  
-      - name: Build Vite App
+      - name: Build Next.js App
         run: npm run build
- 
+
       - name: Deploy to S3
-        run: aws s3 sync dist/ s3://drydash.in --delete
+        run: aws s3 sync out/ s3://drydash.in --delete
