@@ -670,33 +670,14 @@ const DetailedServices = () => {
 
 const Process = () => {
   const steps = [
-    {
-      num: "01",
-      title: "Schedule Pickup",
-      desc: "Book via WhatsApp, call, or website.",
-      icon: Smartphone
-    },
-    {
-      num: "02",
-      title: "We Collect",
-      desc: "Doorstep pickup at your preferred time.",
-      icon: Truck
-    },
-    {
-      num: "03",
-      title: "Expert Cleaning",
-      desc: "Fabric-safe processes, eco cleaning & strict quality checks.",
-      icon: Sparkles
-    },
-    {
-      num: "04",
-      title: "24h Delivery",
-      desc: "Fresh, clean, and neatly packed in 24 hours.",
-      icon: Timer
-    },
+    { num: "01", title: "Schedule Pickup", desc: "Book via WhatsApp, call, or website.", icon: Smartphone },
+    { num: "02", title: "We Collect",      desc: "Doorstep pickup at your preferred time.", icon: Truck },
+    { num: "03", title: "Expert Cleaning",  desc: "Fabric-safe processes, eco cleaning & strict quality checks.", icon: Sparkles },
+    { num: "04", title: "24h Delivery",     desc: "Fresh, clean, and neatly packed in 24 hours.", icon: Timer },
   ];
 
-  const stepRefs = useRef<Array<HTMLDivElement | null>>([]);
+  // typed as an array of nullable div refs
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
   const iconTweensRef = useRef<any[]>([]);
   const entranceTweenRef = useRef<any>(null);
 
@@ -714,7 +695,6 @@ const Process = () => {
       const els = stepRefs.current.filter(Boolean) as HTMLElement[];
       if (!els.length) return;
 
-      // staggered entrance
       entranceTweenRef.current = gsap.from(els, {
         autoAlpha: 0,
         y: 20,
@@ -723,7 +703,6 @@ const Process = () => {
         ease: 'power3.out'
       });
 
-      // micro-motion for icons + hover pause
       els.forEach((el, i) => {
         const svg = el.querySelector('svg');
         if (svg) {
@@ -783,12 +762,16 @@ const Process = () => {
         </div>
 
         <div className="relative">
-          {/* Connecting Line (Desktop) */}
           <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-[#03AE96]/20 via-[#E5BD43]/20 to-[#03AE96]/20 z-0"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
             {steps.map((step, idx) => (
-              <div key={idx} ref={(el) => (stepRefs.current[idx] = el)} className="flex flex-col items-center text-center group">
+              // <-- FIXED: callback body returns void (no value)
+              <div
+                key={idx}
+                ref={(el) => { stepRefs.current[idx] = el; }}
+                className="flex flex-col items-center text-center group"
+              >
                 <div className="w-24 h-24 bg-[#0A121B] rounded-full border-4 border-[#0F1923] flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 transition-transform duration-300">
                   <div className="w-20 h-20 rounded-full bg-[#03AE96]/10 flex items-center justify-center border border-[#03AE96]/30 group-hover:border-[#E5BD43] group-hover:bg-[#E5BD43]/10 transition-colors">
                     <step.icon className="w-8 h-8 text-[#4EF1BD] group-hover:text-[#E5BD43] transition-colors" />
@@ -810,6 +793,7 @@ const Process = () => {
     </section>
   );
 };
+
 
 const Gallery = () => {
   const [sliderPosition, setSliderPosition] = useState(50);
