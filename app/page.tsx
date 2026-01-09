@@ -1,12 +1,18 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Sparkles,
   Droplets,
   Wind,
   Timer,
+  ShieldCheck,
+  MapPin,
+  Bell,
   Star,
+  Apple,
+  Play,
+  ChevronRight,
   Menu,
   X,
   Instagram,
@@ -14,26 +20,29 @@ import {
   Twitter,
   Check,
   ArrowRight,
+  RefreshCcw,
+  Zap,
   Shirt,
   ShoppingBag,
   Truck,
   Armchair,
   Gem,
+  Sofa,
   Smartphone,
-  Quote,
-} from "lucide-react";
+  Calendar,
+  Quote
+} from 'lucide-react';
 
 // --- Utility for loading scripts (GSAP) ---
-const useScript = (src: string): void => {
+const useScript = (src: string) => {
   useEffect(() => {
-    const script = document.createElement("script");
+    const script = document.createElement('script');
     script.src = src;
     script.async = true;
     document.body.appendChild(script);
-
     return () => {
       document.body.removeChild(script);
-    };
+    }
   }, [src]);
 };
 
@@ -41,88 +50,52 @@ const useScript = (src: string): void => {
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const navRef = useRef(null);
 
   const navItems = [
-    { name: "Services", href: "#services" },
-    { name: "Process", href: "#process" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Contact", href: "#contact" },
+    { name: 'Services', href: '#services' },
+    { name: 'Process', href: '#process' },
+    { name: 'Gallery', href: '#gallery' },
+    { name: 'Testimonials', href: '#testimonials' }, // Updated link
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <nav
-      className={`fixed w-full z-50 top-0 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/70 backdrop-blur-xl shadow-sm border-b border-slate-200"
-          : "bg-transparent"
-      }`}
-    >
+    <nav ref={navRef} className="fixed w-full z-50 top-0 transition-all duration-300 bg-[#0A121B]/90 backdrop-blur-xl border-b border-[#03AE96]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
+
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer group">
-            <div className="relative flex items-center justify-center">
-              <img
-                src="/drydash.png"
-                alt="Pong Logo"
-                className="w-full h-full object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
-              />
-            </div>
+          <div className=" flex items-center gap-2 cursor-pointer group">
+            <img src="/image/logo.png" alt="DryDash" className="w-[50%] h-[50%] rounded-xl object-cover" />
           </div>
 
-          {/* Desktop Nav */}
+          {/* Desktop Nav - 5 Elements */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="relative px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors group"
+                  className="text-sm font-medium text-[#F0F6FC] hover:text-[#4EF1BD] transition-colors"
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-[#03AE96] transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                 </a>
               ))}
-            </div>
-          </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <button className="bg-slate-900 text-white hover:bg-[#03AE96] hover:shadow-lg hover:shadow-[#03AE96]/20 px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 transform hover:-translate-y-0.5">
-              <a
-                href="https://wa.me/919717953316?text=Hi%2C%20I%20want%20to%20place%20an%20order."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <button className="bg-gradient-to-r from-[#E5BD43] to-[#F6E05E] text-[#0A121B] hover:shadow-[0_0_20px_rgba(229,189,67,0.4)] px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 transform hover:-translate-y-0.5">
                 Book Pickup
-              </a>
-            </button>
+              </button>
+            </div>
           </div>
 
           {/* Mobile menu button */}
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:text-[#03AE96] focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-[#4EF1BD] hover:text-white focus:outline-none"
             >
-              {isOpen ? (
-                <X className="block h-6 w-6" />
-              ) : (
-                <Menu className="block h-6 w-6" />
-              )}
+              {isOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
             </button>
           </div>
         </div>
@@ -130,13 +103,13 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-b border-slate-200 absolute w-full shadow-xl">
+        <div className="md:hidden bg-[#0A121B] border-b border-[#03AE96]/20 absolute w-full">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-[#03AE96] hover:bg-slate-50"
+                className="block px-3 py-2 rounded-md text-base font-medium text-[#F0F6FC] hover:text-[#4EF1BD] hover:bg-[#03AE96]/10"
               >
                 {item.name}
               </a>
@@ -147,96 +120,323 @@ const Navigation = () => {
     </nav>
   );
 };
+
 const Hero = () => {
-  const message = "Hi, I want to place an order.";
-  const phone = "919717953316";
+  const shoeRef = useRef<HTMLDivElement | null>(null);
+  const shoeInnerRef = useRef<HTMLDivElement | null>(null);
+  const laundryRef = useRef<HTMLDivElement | null>(null);
+  const bagRef = useRef<HTMLDivElement | null>(null);
+  const badgeRef = useRef<HTMLDivElement | null>(null);
+  const avatarsWrapperRef = useRef<HTMLDivElement | null>(null);
+  const wrapperTweenRef = useRef<any>(null);
+  const avatarsTweenRef = useRef<any>(null);
+  const tweensRef = useRef<any[]>([]);
+  const rotatingRef = useRef<HTMLSpanElement | null>(null);
+  const cities = ['Noida', 'Delhi', 'Ghaziabad', 'Gurgaon'];
+  const hoursRef = useRef<HTMLSpanElement | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const init = () => {
+      const gsap = (window as any).gsap;
+      if (!mounted) return;
+      if (!gsap) {
+        // retry until GSAP loads (Home loads the script)
+        setTimeout(init, 120);
+        return;
+      }
+
+      const elements = [
+        // stronger quick vertical shake for the shoe card
+        { el: shoeRef.current, opts: { y: -16, rotation: -6, duration: 1.1 } },
+        // faster, noticeable bob for laundry
+        { el: laundryRef.current, opts: { y: -12, rotation: 5, duration: 1.2 } },
+        { el: bagRef.current, opts: { y: -10, rotation: 2, duration: 2.2 } },
+        { el: badgeRef.current, opts: { y: -14, rotation: 0, duration: 2.8 } },
+      ].filter((x) => x.el) as any[];
+
+      elements.forEach((item, idx) => {
+        const el = item.el as HTMLElement;
+        const opts = item.opts;
+
+        const tween = gsap.to(el, {
+          y: opts.y,
+          rotation: opts.rotation,
+          duration: opts.duration,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: idx * 0.12,
+        });
+
+        tweensRef.current.push(tween);
+
+        // hover/touch interactions
+        const enter = () => {
+          tween.pause();
+          gsap.to(el, { scale: 1.04, rotation: 0, y: 0, duration: 0.28, ease: 'power2.out' });
+        };
+        const leave = () => {
+          gsap.to(el, { scale: 1, duration: 0.28, ease: 'power2.out' });
+          tween.resume();
+        };
+
+        el.addEventListener('mouseenter', enter);
+        el.addEventListener('mouseleave', leave);
+        el.addEventListener('touchstart', enter);
+        el.addEventListener('touchend', leave);
+
+        // store cleanup per element
+        (el as any)._gsapCleanup = () => {
+          el.removeEventListener('mouseenter', enter);
+          el.removeEventListener('mouseleave', leave);
+          el.removeEventListener('touchstart', enter);
+          el.removeEventListener('touchend', leave);
+        };
+      });
+
+      // subtle movement for avatar images inside the bag card
+      const bagEl = bagRef.current;
+      if (bagEl) {
+        const avatars = bagEl.querySelectorAll('img');
+        if (avatars?.length) {
+          avatarsTweenRef.current = gsap.to(avatars, {
+            x: (i: number) => (i % 2 === 0 ? -4 : 4),
+            y: (i: number) => (i % 2 === 0 ? -6 : 6),
+            rotation: () => (Math.random() - 0.5) * 6,
+            duration: 1.6,
+            repeat: -1,
+            yoyo: true,
+            stagger: 0.12,
+            ease: 'sine.inOut'
+          });
+        }
+
+        // bob the whole avatar row up and down slightly
+        const avatarsWrapper = avatarsWrapperRef.current;
+        if (avatarsWrapper) {
+          wrapperTweenRef.current = gsap.to(avatarsWrapper, {
+            y: -6,
+            duration: 1.8,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+            delay: 0.05
+          });
+        }
+
+        // pause avatar tweens when bag card is hovered (additional safety)
+        const pauseAvatars = () => {
+          (avatarsTweenRef.current as any)?.pause?.();
+          (wrapperTweenRef.current as any)?.pause?.();
+        };
+        const resumeAvatars = () => {
+          (avatarsTweenRef.current as any)?.resume?.();
+          (wrapperTweenRef.current as any)?.resume?.();
+        };
+
+        bagEl.addEventListener('mouseenter', pauseAvatars);
+        bagEl.addEventListener('mouseleave', resumeAvatars);
+        bagEl.addEventListener('touchstart', pauseAvatars);
+        bagEl.addEventListener('touchend', resumeAvatars);
+
+        const prevBagCleanup = (bagEl as any)._gsapCleanup;
+        (bagEl as any)._gsapCleanup = () => {
+          prevBagCleanup && prevBagCleanup();
+          bagEl.removeEventListener('mouseenter', pauseAvatars);
+          bagEl.removeEventListener('mouseleave', resumeAvatars);
+          bagEl.removeEventListener('touchstart', pauseAvatars);
+          bagEl.removeEventListener('touchend', resumeAvatars);
+        };
+      }
+
+      // subtle up/down bob for inner shoe area
+      const shoeInnerEl = shoeInnerRef.current;
+      if (shoeInnerEl) {
+        const innerTween = gsap.to(shoeInnerEl, {
+          y: -8,
+          duration: 1.6,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: 0.1
+        });
+        tweensRef.current.push(innerTween);
+
+        // pause inner on shoe hover (shoeRef already has its own handlers)
+        const enterInner = () => innerTween.pause();
+        const leaveInner = () => innerTween.resume();
+        const shoeEl = shoeRef.current;
+        if (shoeEl) {
+          shoeEl.addEventListener('mouseenter', enterInner);
+          shoeEl.addEventListener('mouseleave', leaveInner);
+          shoeEl.addEventListener('touchstart', enterInner);
+          shoeEl.addEventListener('touchend', leaveInner);
+
+          const prev = (shoeEl as any)._gsapCleanup;
+          (shoeEl as any)._gsapCleanup = () => {
+            prev && prev();
+            shoeEl.removeEventListener('mouseenter', enterInner);
+            shoeEl.removeEventListener('mouseleave', leaveInner);
+            shoeEl.removeEventListener('touchstart', enterInner);
+            shoeEl.removeEventListener('touchend', leaveInner);
+          };
+        }
+      }
+    };
+
+    init();
+
+    return () => {
+      mounted = false;
+      const bagEl = bagRef.current as any;
+      if (bagEl && bagEl._gsapCleanup) bagEl._gsapCleanup();
+      try {
+        // kill any tweens we stored
+        tweensRef.current.forEach((t) => t?.kill?.());
+        wrapperTweenRef.current?.kill?.();
+        (avatarsTweenRef.current as any)?.kill?.();
+      } catch (e) { }
+    };
+  }, []);
+
+  // typewriter for "24 Hours"
+  useEffect(() => {
+    let mounted = true;
+    let timeoutId: number | null = null;
+    const el = hoursRef.current;
+    if (!el) return;
+
+    const text = '24 Hours';
+
+    const start = () => {
+      let i = 0;
+      const step = () => {
+        if (!mounted) return;
+        el.textContent = text.slice(0, i);
+        i++;
+        if (i <= text.length) {
+          timeoutId = window.setTimeout(step, 80);
+        } else {
+          // pause then restart
+          timeoutId = window.setTimeout(() => {
+            i = 0;
+            step();
+          }, 1400);
+        }
+      };
+      step();
+    };
+
+    start();
+
+    return () => {
+      mounted = false;
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, []);
+
+  // rotating services text (under the heading)
+  useEffect(() => {
+    let mounted = true;
+    let intervalId: number | null = null;
+
+    const start = () => {
+      const gsap = (window as any).gsap;
+      if (!mounted) return;
+      if (!gsap) {
+        setTimeout(start, 120);
+        return;
+      }
+
+      const el = rotatingRef.current;
+      if (!el) return;
+
+      let idx = 0;
+      // ensure initial content
+      el.textContent = cities[idx];
+
+      const swap = () => {
+        gsap.to(el, {
+          autoAlpha: 0,
+          y: -8,
+          duration: 0.35,
+          ease: 'power2.in',
+          onComplete: () => {
+            idx = (idx + 1) % cities.length;
+            el.textContent = cities[idx];
+            gsap.to(el, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power2.out' });
+          }
+        });
+      };
+
+      intervalId = window.setInterval(swap, 2200);
+    };
+
+    start();
+
+    return () => {
+      mounted = false;
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, []);
   return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-white">
-      {/* Grid Background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
+    <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-[#0A121B]">
+      {/* Dynamic Background Texture */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none"
         style={{
-          backgroundImage: `linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)`,
-          backgroundSize: "40px 40px",
-          maskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
-        }}
-      ></div>
+          backgroundImage: `radial-gradient(#4EF1BD 1px, transparent 1px), radial-gradient(#03AE96 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
+          backgroundPosition: '0 0, 20px 20px'
+        }}>
+      </div>
 
-      {/* Soft Gradient Orbs */}
-      <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-teal-100 rounded-full mix-blend-multiply filter blur-[80px] opacity-70 animate-pulse"></div>
-      <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-yellow-100 rounded-full mix-blend-multiply filter blur-[80px] opacity-70 animate-pulse delay-700"></div>
+      {/* Ambient Glows */}
+      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-[#044288] rounded-full mix-blend-screen filter blur-[150px] opacity-30 animate-pulse"></div>
+      <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-[#03AE96] rounded-full mix-blend-screen filter blur-[150px] opacity-20 animate-pulse delay-700"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+      <div className="max-w-7xl 2x:max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
           {/* Left Side: Content */}
           <div className="flex flex-col items-start text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 bg-white shadow-sm mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#E5BD43]/40 bg-[#E5BD43]/10 mb-6 backdrop-blur-md">
               <Star className="w-3 h-3 text-[#E5BD43] fill-[#E5BD43]" />
-              <span className="text-slate-600 text-xs font-bold tracking-widest uppercase">
-                Premium Care
-              </span>
+              <span className="text-[#E5BD43] text-xs font-bold tracking-widest uppercase">Premium Care</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-6 leading-[1.1]">
-              Premium Laundry,
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#03AE96] to-[#4EF1BD]">
-                Dry Cleaning
-              </span>{" "}
-              &<br />
+            <h1 className="text-3xl md:text-5xl lg:text-5xl font-extrabold text-white tracking-tight mb-6 leading-[1.1]">
+              Premium Laundry & Dry Cleaning Services in<br />
               <span className="relative inline-block">
-                Shoe Spa
-                <svg
-                  className="absolute w-full h-3 -bottom-1 left-0 text-[#E5BD43]"
-                  viewBox="0 0 100 10"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0 5 Q 50 10 100 5"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    fill="none"
-                  />
+                <span ref={rotatingRef} className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#4EF1BD] to-[#03AE96] font-extrabold" />
+                <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#E5BD43]" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
                 </svg>
               </span>
             </h1>
 
-            <h2 className="text-2xl md:text-3xl font-light text-slate-600 mb-2">
-              Delivered in{" "}
-              <span className="font-bold text-slate-900 bg-teal-50 px-2 rounded">
-                24 Hours
-              </span>
-              .
+            <h2 className="text-xl md:text-2xl font-light text-white mb-2">
+              Delivered in <span ref={hoursRef} className="font-bold text-[#4EF1BD]"></span><span className="ml-1 inline-block w-[2px] h-5 bg-[#4EF1BD] animate-pulse" />.
             </h2>
 
-            <p className="max-w-xl text-lg text-slate-500 mb-8 leading-relaxed">
-              DryDash brings expert cleaning with fast pickup, eco-friendly
-              care, and doorstep delivery—crafted for busy professionals and
-              modern families.
+            <p className="max-w-xl text-md text-[#AEAEAF] mb-8 leading-relaxed">
+              DryDash brings expert cleaning with fast pickup, eco-friendly care, and doorstep delivery—crafted for busy professionals and modern families.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-10 justify-center items-center">
-              <a
-                href={`https://wa.me/${phone}?text=${encodeURIComponent(
-                  message
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className=" px-8 py-4 bg-slate-900 text-black rounded-full font-bold text-lg justify-center items-centershadow-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group bg-gradient-to-r from-[#E5BD43] to-[#F6E05E] text-[#0A121B] hover:shadow-[0_0_20px_rgba(229,189,67,0.4)] rounded-full font-bold text-sm transition-all duration-300 transform">
-                  Book Pickup{" "}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform " />
-                </button>
-              </a>
-              <button className="px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-full font-bold text-sm hover:border-slate-400 hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-sm">
+            <div className="flex flex-col sm:flex-row gap-4 w-[100%] sm:w-auto mb-10">
+              <button className="py-2 md:px-8 md:py-2 bg-[#E5BD43] text-[#0A121B] rounded-full font-bold text-lg shadow-[0_0_20px_rgba(229,189,67,0.3)] hover:shadow-[0_0_30px_rgba(229,189,67,0.5)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group">
+                Book Pickup <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button className="py-2 md:px-8 md:py-2 bg-transparent border border-[#6A6F76] text-[#F0F6FC] rounded-full font-bold text-lg hover:border-[#F0F6FC] hover:bg-[#F0F6FC]/5 transition-all flex items-center justify-center gap-2">
                 View Pricing
               </button>
             </div>
 
             {/* Trust Indicators */}
-            <div className="w-full pt-6 border-t border-slate-100">
-              <div className="flex flex-wrap items-center gap-y-4 gap-x-6 text-sm text-slate-500 font-medium">
+            <div className="w-full pt-6 border-t border-[#ffffff]/10">
+              <div className="flex flex-wrap items-center gap-y-4 gap-x-6 text-sm text-[#AEAEAF] font-medium">
                 <div className="flex items-center gap-2">
                   <div className="flex text-[#E5BD43]">
                     <Star className="w-4 h-4 fill-current" />
@@ -245,14 +445,14 @@ const Hero = () => {
                     <Star className="w-4 h-4 fill-current" />
                     <Star className="w-4 h-4 fill-current" />
                   </div>
-                  <span className="text-slate-700">4.9/5 Rated</span>
+                  <span className="text-white">4.9/5 Rated</span>
                 </div>
-                <div className="hidden sm:block w-1 h-1 bg-slate-300 rounded-full"></div>
+                <div className="hidden sm:block w-1 h-1 bg-[#6A6F76] rounded-full"></div>
                 <span>25,000+ Items Cleaned</span>
-                <div className="hidden sm:block w-1 h-1 bg-slate-300 rounded-full"></div>
-                <span className="flex items-center gap-1">
-                  <Droplets className="w-3 h-3 text-[#03AE96]" /> Eco-Friendly
-                </span>
+                <div className="hidden sm:block w-1 h-1 bg-[#6A6F76] rounded-full"></div>
+                <span className="flex items-center gap-1"><Droplets className="w-3 h-3 text-[#4EF1BD]" /> Eco-Friendly</span>
+                <div className="hidden sm:block w-1 h-1 bg-[#6A6F76] rounded-full"></div>
+                <span>Trained Experts</span>
               </div>
             </div>
           </div>
@@ -260,104 +460,77 @@ const Hero = () => {
           {/* Right Side: Creative Composition */}
           <div className="relative h-[500px] w-full hidden lg:block perspective-1000">
             {/* Main Card: Shoe */}
-            <div className="absolute top-10 right-10 w-72 p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] z-20 transform rotate-[-5deg] hover:rotate-0 transition-transform duration-500 hover:z-30 group">
-              <div className="bg-slate-50 rounded-xl h-48 mb-4 relative overflow-hidden flex items-center justify-center border border-slate-100">
-                <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
-                <Sparkles className="w-16 h-16 text-[#03AE96] group-hover:scale-110 transition-transform duration-500 relative z-10" />
-                <div className="absolute bottom-2 right-2 px-2 py-1 bg-white text-slate-800 text-[10px] font-bold rounded border border-slate-200 shadow-sm uppercase tracking-wide">
-                  Spa Mode
-                </div>
+            <div ref={shoeRef} className="absolute top-10 right-10 w-72 p-4 bg-[#0F1923] border border-[#03AE96]/30 rounded-2xl shadow-2xl z-20 transform rotate-[-5deg] hover:rotate-0 transition-transform duration-500 hover:z-30 group">
+              <div ref={shoeInnerRef} className="bg-[#0A121B] rounded-xl h-48 mb-4 relative overflow-hidden flex items-center justify-center border border-white/5">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#03AE96]/20 to-transparent"></div>
+                <Sparkles className="w-16 h-16 text-[#4EF1BD] group-hover:scale-110 transition-transform duration-500" />
+                <div className="absolute bottom-2 right-2 px-2 py-1 bg-[#4EF1BD] text-[#0A121B] text-xs font-bold rounded">SPA MODE</div>
               </div>
               <div className="flex justify-between items-center">
                 <div>
-                  <p className="text-slate-900 font-bold">Air Jordan 1</p>
-                  <p className="text-slate-400 text-xs">
-                    Deep Clean + De-yellow
-                  </p>
+                  <p className="text-white font-bold">Air Jordan 1</p>
+                  <p className="text-[#AEAEAF] text-xs">Deep Clean + De-yellow</p>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-[#E5BD43]/10 flex items-center justify-center text-[#E5BD43] font-bold">
+                <div className="w-8 h-8 rounded-full bg-[#E5BD43] flex items-center justify-center text-[#0A121B] font-bold">
                   <Check className="w-5 h-5" />
                 </div>
               </div>
             </div>
 
             {/* Secondary Card: Laundry */}
-            <div className="absolute top-40 left-10 w-64 p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] z-10 transform rotate-[3deg] hover:rotate-0 transition-transform duration-500 hover:z-30">
+            <div ref={laundryRef} className="absolute top-40 left-10 w-64 p-4 bg-[#0F1923] border border-[#6D96FB]/30 rounded-2xl shadow-2xl z-10 transform rotate-[3deg] hover:rotate-0 transition-transform duration-500 hover:z-30">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
+                <div className="w-10 h-10 rounded-full bg-[#6D96FB]/20 flex items-center justify-center text-[#6D96FB]">
                   <Shirt className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-slate-900 font-bold">Premium Laundry</p>
-                  <p className="text-slate-400 text-xs">Delicates & Silks</p>
+                  <p className="text-white font-bold">Premium Laundry</p>
+                  <p className="text-[#AEAEAF] text-xs">Delicates & Silks</p>
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full w-[80%] bg-blue-500 rounded-full"></div>
+                <div className="h-2 w-full bg-[#ffffff]/10 rounded-full overflow-hidden">
+                  <div className="h-full w-[80%] bg-[#6D96FB]"></div>
                 </div>
-                <div className="flex justify-between text-xs text-slate-500">
+                <div className="flex justify-between text-xs text-[#AEAEAF]">
                   <span>Washing</span>
-                  <span className="font-medium text-slate-900">80%</span>
+                  <span>80%</span>
                 </div>
               </div>
             </div>
 
             {/* Tertiary Card: Bag Spa */}
-            <div className="absolute bottom-10 right-20 w-64 p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] z-20 transform rotate-[6deg] hover:rotate-0 transition-transform duration-500 hover:z-30">
+            <div ref={bagRef} className="absolute bottom-10 right-20 w-64 p-4 bg-[#0F1923] border border-[#E5BD43]/30 rounded-2xl shadow-2xl z-20 transform rotate-[6deg] hover:rotate-0 transition-transform duration-500 hover:z-30">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-600">
+                <div className="w-10 h-10 rounded-full bg-[#E5BD43]/20 flex items-center justify-center text-[#E5BD43]">
                   <ShoppingBag className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-slate-900 font-bold">Luxury Bag Spa</p>
-                  <p className="text-slate-400 text-xs">Leather Restoration</p>
+                  <p className="text-white font-bold">Luxury Bag Spa</p>
+                  <p className="text-[#AEAEAF] text-xs">Leather Restoration</p>
                 </div>
               </div>
               <div className="flex -space-x-2 overflow-hidden py-2">
-                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-slate-300">
-                  <img
-                    src="/avatar2.avif"
-                    alt="avatar"
-                    className="w-full rounded-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none"; // Hides image if it fails to load
-                    }}
-                  />
+                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-[#0F1923] bg-gray-600">
+                  <img className='rounded-full' src="/image/john.jpg" />
                 </div>
-                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-slate-400">
-                  <img
-                    src="/avatar2.jpg"
-                    alt="avatar"
-                    className="w-full rounded-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none"; // Hides image if it fails to load
-                    }}
-                  />
+                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-[#0F1923] bg-gray-500">
+                  <img className='rounded-full' src="/image/smith.jpg" />
                 </div>
-                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-slate-200 flex items-center justify-center text-[10px] text-slate-600 font-bold border border-slate-100">
-                  <img
-                    src="/avatar.jpg"
-                    alt="avatar"
-                    className="w-full rounded-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none"; // Hides image if it fails to load
-                    }}
-                  />
+                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-[#0F1923] bg-gray-400 flex items-center justify-center text-[10px] text-[#0A121B] font-bold">
+                  <img className='rounded-full' src="/image/alex.jpg" />
                 </div>
               </div>
             </div>
 
             {/* Floating Badge: Delivery */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md border border-slate-200 p-4 rounded-full shadow-[0_10px_40px_-10px_rgba(3,174,150,0.3)] z-30 animate-bounce-slow flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#03AE96] rounded-full flex items-center justify-center text-white shadow-lg shadow-[#03AE96]/30">
+            <div ref={badgeRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0A121B]/80 backdrop-blur-md border border-[#4EF1BD] p-4 rounded-full shadow-[0_0_30px_rgba(78,241,189,0.2)] z-30 animate-bounce-slow flex items-center gap-3">
+              <div className="w-10 h-10 bg-[#4EF1BD] rounded-full flex items-center justify-center text-[#0A121B]">
                 <Truck className="w-5 h-5" />
               </div>
               <div className="pr-2">
-                <p className="text-slate-900 font-bold text-sm">On the way</p>
-                <p className="text-[#03AE96] text-xs font-medium">
-                  Arriving in 15 mins
-                </p>
+                <p className="text-[#F0F6FC] font-bold text-sm">On the way</p>
+                <p className="text-[#4EF1BD] text-xs">Arriving in 15 mins</p>
               </div>
             </div>
           </div>
@@ -372,175 +545,43 @@ const WhyDryDash = () => {
     {
       icon: Timer,
       title: "24-Hour Delivery Promise",
-      desc: "Next-day delivery for laundry and dry cleaning.",
+      desc: "Next-day delivery for laundry and dry cleaning."
     },
     {
       icon: Droplets,
       title: "Eco-Friendly Solvents",
-      desc: "No harsh chemicals. No petrol smell. Safe for skin & fabrics.",
+      desc: "No harsh chemicals. No petrol smell. Safe for skin & fabrics."
     },
     {
       icon: Truck,
       title: "Doorstep Convenience",
-      desc: "Pickup and delivery anywhere in your city.",
+      desc: "Pickup and delivery anywhere in your city."
     },
     {
       icon: Shirt,
       title: "Premium Fabric Care",
-      desc: "Delicate, luxury and designer wear handled by specialists.",
+      desc: "Delicate, luxury and designer wear handled by specialists."
     },
   ];
 
   return (
-    <section
-      id="why-us"
-      className="py-24 bg-[#0A121B] relative border-t border-[#ffffff]/5"
-    >
+    <section className="py-24 relative bg-gradient-to-b from-[#0B3729] to-[#06221a] overflow-hidden border-t border-[#ffffff]/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[#E5BD43] font-bold tracking-widest uppercase text-sm mb-3">
-            The DryDash Standard
-          </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-white">
-            Why Choose <span className="text-[#4EF1BD]">DryDash?</span>
-          </h3>
+          <h2 className="text-[#E5BD43] font-bold tracking-widest uppercase text-sm mb-3">The DryDash Standard</h2>
+          <h3 className="text-3xl md:text-5xl font-bold text-white">Why Choose <span className="text-[#4EF1BD]">DryDash?</span></h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {reasons.map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-[#0F1923] p-8 rounded-2xl border border-[#ffffff]/5 hover:border-[#03AE96]/50 transition-all hover:-translate-y-2 group"
-            >
+            <div key={idx} className="bg-[#0F1923] p-8 rounded-2xl border border-[#ffffff]/5 hover:border-[#03AE96]/50 transition-all hover:-translate-y-2 group">
               <div className="w-14 h-14 bg-[#044288]/30 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#03AE96] transition-colors duration-300">
                 <item.icon className="w-7 h-7 text-[#4EF1BD] group-hover:text-white" />
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">
-                {item.title}
-              </h4>
+              <h4 className="text-xl font-bold text-white mb-3">{item.title}</h4>
               <p className="text-[#AEAEAF] leading-relaxed text-sm">
                 {item.desc}
               </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const ServicesOverview = () => {
-  const overviewServices = [
-    {
-      title: "Laundry",
-      subtitle: "Wash & Fold / Wash & Iron",
-      desc: "Daily wear made fresh, sanitized, and neatly packed.",
-      icon: Shirt,
-      color: "text-teal-600",
-      bg: "bg-teal-50",
-      border: "hover:border-teal-200",
-    },
-    {
-      title: "Dry Cleaning",
-      subtitle: "Suits, Sarees, Gowns",
-      desc: "Fabric-safe cleaning for suits, sarees, gowns & luxury items.",
-      icon: Wind,
-      color: "text-amber-600",
-      bg: "bg-amber-50",
-      border: "hover:border-amber-200",
-    },
-    {
-      title: "Shoe Spa",
-      subtitle: "Cleaning & Restoration",
-      desc: "Deep cleaning, whitening, deodorizing & color restoration.",
-      icon: Sparkles,
-      color: "text-blue-600",
-      bg: "bg-blue-50",
-      border: "hover:border-blue-200",
-    },
-    {
-      title: "Bag & Purse Spa",
-      subtitle: "Leather Care",
-      desc: "Professional cleaning for leather bags, clutches & designer items.",
-      icon: ShoppingBag,
-      color: "text-rose-600",
-      bg: "bg-rose-50",
-      border: "hover:border-rose-200",
-    },
-    {
-      title: "Home Upholstery",
-      subtitle: "Sofas & Carpets",
-      desc: "Sofa, carpet, curtains & mattress—spotless and germ-free.",
-      icon: Armchair,
-      color: "text-indigo-600",
-      bg: "bg-indigo-50",
-      border: "hover:border-indigo-200",
-    },
-    {
-      title: "Special Care",
-      subtitle: "Wedding & Couture",
-      desc: "Wedding outfits, woolen coats, expensive fabrics—handled with extra care.",
-      icon: Gem,
-      color: "text-purple-600",
-      bg: "bg-purple-50",
-      border: "hover:border-purple-200",
-    },
-  ];
-
-  const message = "Hi, I want to place an order.";
-  const phone = "919717953316";
-
-  return (
-    <section id="services" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-[#03AE96] font-bold tracking-widest uppercase text-sm mb-3">
-            Complete Care
-          </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-slate-900">
-            Our Premium <span className="text-[#38617e]">Services</span>
-          </h3>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {overviewServices.map((service, idx) => (
-            <div
-              key={idx}
-              className={`group bg-white rounded-2xl p-8 border border-slate-100 shadow-sm ${service.border} hover:shadow-lg transition-all duration-300 relative overflow-hidden`}
-            >
-              {/* Background Decoration */}
-              <div
-                className={`absolute top-0 right-0 w-32 h-32 ${service.bg} rounded-bl-[100px] opacity-50 transition-transform group-hover:scale-110`}
-              ></div>
-
-              <div
-                className={`w-14 h-14 rounded-xl ${service.bg} flex items-center justify-center mb-6 relative z-10`}
-              >
-                <service.icon className={`w-7 h-7 ${service.color}`} />
-              </div>
-
-              <h4 className="text-2xl font-bold text-slate-900 mb-1 relative z-10">
-                {service.title}
-              </h4>
-              <p
-                className={`text-xs font-bold uppercase tracking-wider ${service.color} mb-4 relative z-10 opacity-80`}
-              >
-                {service.subtitle}
-              </p>
-              <p className="text-slate-500 mb-8 leading-relaxed text-sm min-h-[40px] relative z-10">
-                {service.desc}
-              </p>
-
-              <a
-                href={`https://wa.me/${phone}?text=${encodeURIComponent(
-                  message
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-slate-900 font-bold group-hover:gap-3 transition-all relative z-10 text-sm"
-              >
-                Book Now <ArrowRight className={`w-4 h-4 ${service.color}`} />
-              </a>
             </div>
           ))}
         </div>
@@ -556,79 +597,62 @@ const DetailedServices = () => {
       desc: "Perfect for everyday clothes—washed, sanitized, steam ironed, and packed fresh.",
       image: "/image/premium.jpg",
       icon: Shirt,
-      color: "#4EF1BD",
+      color: "#4EF1BD"
     },
     {
       title: "Dry Cleaning",
       desc: "Advanced solvent cleaning that protects fabric texture, color, and shape.",
       image: "image/dry.jpg",
       icon: Wind,
-      color: "#6D96FB",
+      color: "#6D96FB"
     },
     {
       title: "Shoe Spa",
       desc: "From casual sneakers to premium leather—cleaning, deodorizing, polishing, renewing.",
       image: "image/shoe.jpg",
       icon: Sparkles,
-      color: "#03AE96",
+      color: "#03AE96"
     },
     {
       title: "Bag Spa",
       desc: "Deep cleaning for handbags with premium leather treatment and restoration.",
       image: "image/bag.jpg",
       icon: ShoppingBag,
-      color: "#E5BD43",
+      color: "#E5BD43"
     },
   ];
 
   return (
-    <section className="bg-[#0A121B] relative border-t border-[#ffffff]/5">
+    <section className="py-24 bg-[#0A121B] relative border-t border-[#ffffff]/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-[#4EF1BD] font-bold tracking-widest uppercase text-sm mb-3">Complete Care</h2>
+          <h3 className="text-3xl md:text-5xl font-bold text-white">Our Premium <span className="text-[#E5BD43]">Services</span></h3>
+        </div>
+      </div>
       {details.map((service, index) => (
         <div key={index} className="flex flex-col md:flex-row group">
           {/* Text Section */}
-          <div
-            className={`flex-1 p-12 lg:p-24 flex flex-col justify-center bg-[#0A121B] border-b md:border-b-0 border-[#ffffff]/5 ${
-              index % 2 === 0
-                ? "order-1 md:order-1"
-                : "order-1 md:order-2 bg-[#0F1923]"
-            }`}
-          >
+          <div className={`flex-1 p-12 lg:p-24 flex flex-col justify-center bg-[#0A121B] border-b md:border-b-0 border-[#ffffff]/5 ${index % 2 === 0 ? 'order-1 md:order-1' : 'order-1 md:order-2 bg-[#0F1923]'}`}>
             <div className="flex items-center gap-3 mb-6">
-              <div
-                className="w-12 h-12 rounded-xl bg-[#ffffff]/5 flex items-center justify-center border border-[#ffffff]/10"
-                style={{ borderColor: `${service.color}40` }}
-              >
-                <service.icon
-                  className="w-6 h-6"
-                  style={{ color: service.color }}
-                />
+              <div className="w-12 h-12 rounded-xl bg-[#ffffff]/5 flex items-center justify-center border border-[#ffffff]/10" style={{ borderColor: `${service.color}40` }}>
+                <service.icon className="w-6 h-6" style={{ color: service.color }} />
               </div>
-              <span className="text-5xl font-bold text-[#ffffff]/10 font-mono absolute pointer-events-none -ml-4 -mt-12 select-none">
-                0{index + 1}
-              </span>
+              {/* <span className="text-5xl font-bold text-[#ffffff]/10 font-mono absolute pointer-events-none -ml-4 -mt-12 select-none">0{index + 1}</span> */}
             </div>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {service.title}
-            </h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">{service.title}</h3>
             <p className="text-[#AEAEAF] text-lg leading-relaxed mb-8 max-w-md">
               {service.desc}
             </p>
             <div>
-              <button
-                className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:gap-4 transition-all"
-                style={{ color: service.color }}
-              >
-                Learn More <ArrowRight className="w-4 h-4" />
+              <button className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:gap-4 transition-all" style={{ color: service.color }}>
+                Book Pickup <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
 
           {/* Image Section */}
-          <div
-            className={`flex-1 relative overflow-hidden h-[400px] md:h-auto ${
-              index % 2 === 0 ? "order-2 md:order-2" : "order-2 md:order-1"
-            }`}
-          >
+          <div className={`flex-1 relative overflow-hidden h-[400px] md:h-auto ${index % 2 === 0 ? 'order-2 md:order-2' : 'order-2 md:order-1'}`}>
             <div className="absolute inset-0 bg-[#0A121B]/20 group-hover:bg-transparent transition-colors z-10"></div>
             <img
               src={service.image}
@@ -645,146 +669,139 @@ const DetailedServices = () => {
 };
 
 const Process = () => {
-  const containerRef = useRef(null);
-
-  useScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js");
-  useScript(
-    "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
-  );
-
-  // Initialize GSAP animations
-  useEffect(() => {
-    const initGsap = () => {
-      if (window.gsap && window.ScrollTrigger) {
-        const gsap = window.gsap;
-        const ScrollTrigger = window.ScrollTrigger;
-        gsap.registerPlugin(ScrollTrigger);
-
-        const ctx = gsap.context(() => {
-          gsap.from(".process-step", {
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 70%",
-            },
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power3.out",
-          });
-
-          gsap.to(".process-line-fill", {
-            backgroundPosition: "200% 0",
-            duration: 3,
-            repeat: -1,
-            ease: "linear",
-          });
-        }, containerRef);
-
-        return () => ctx.revert();
-      }
-    };
-
-    const timer = setInterval(() => {
-      if (window.gsap) {
-        clearInterval(timer);
-        initGsap();
-      }
-    }, 100);
-
-    return () => clearInterval(timer);
-  }, []);
-
   const steps = [
     {
       num: "01",
       title: "Schedule Pickup",
       desc: "Book via WhatsApp, call, or website.",
-      icon: Smartphone,
+      icon: Smartphone
     },
     {
       num: "02",
       title: "We Collect",
       desc: "Doorstep pickup at your preferred time.",
-      icon: Truck,
+      icon: Truck
     },
     {
       num: "03",
       title: "Expert Cleaning",
       desc: "Fabric-safe processes, eco cleaning & strict quality checks.",
-      icon: Sparkles,
+      icon: Sparkles
     },
     {
       num: "04",
       title: "24h Delivery",
       desc: "Fresh, clean, and neatly packed in 24 hours.",
-      icon: Timer,
+      icon: Timer
     },
   ];
 
-  return (
-    <section
-      id="process"
-      className="py-24 bg-white relative overflow-hidden"
-      ref={containerRef}
-    >
-      {/* Grid Background */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-50"
-        style={{
-          backgroundImage: `linear-gradient(to right, #f1f5f9 1px, transparent 1px), linear-gradient(to bottom, #f1f5f9 1px, transparent 1px)`,
-          backgroundSize: "40px 40px",
-        }}
-      ></div>
+  const stepRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const iconTweensRef = useRef<any[]>([]);
+  const entranceTweenRef = useRef<any>(null);
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  useEffect(() => {
+    let mounted = true;
+
+    const start = () => {
+      const gsap = (window as any).gsap;
+      if (!mounted) return;
+      if (!gsap) {
+        setTimeout(start, 120);
+        return;
+      }
+
+      const els = stepRefs.current.filter(Boolean) as HTMLElement[];
+      if (!els.length) return;
+
+      // staggered entrance
+      entranceTweenRef.current = gsap.from(els, {
+        autoAlpha: 0,
+        y: 20,
+        stagger: 0.14,
+        duration: 0.8,
+        ease: 'power3.out'
+      });
+
+      // micro-motion for icons + hover pause
+      els.forEach((el, i) => {
+        const svg = el.querySelector('svg');
+        if (svg) {
+          const t = gsap.to(svg, {
+            y: -6,
+            rotation: (i % 2 === 0 ? 4 : -4),
+            duration: 1.6,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+            delay: i * 0.08
+          });
+          iconTweensRef.current.push(t);
+        }
+
+        const enter = () => {
+          iconTweensRef.current.forEach((T) => T?.pause?.());
+          gsap.to(el, { scale: 1.03, duration: 0.24, ease: 'power2.out' });
+        };
+        const leave = () => {
+          iconTweensRef.current.forEach((T) => T?.resume?.());
+          gsap.to(el, { scale: 1, duration: 0.24, ease: 'power2.out' });
+        };
+
+        el.addEventListener('mouseenter', enter);
+        el.addEventListener('mouseleave', leave);
+        el.addEventListener('touchstart', enter);
+        el.addEventListener('touchend', leave);
+
+        (el as any)._gsapCleanup = () => {
+          el.removeEventListener('mouseenter', enter);
+          el.removeEventListener('mouseleave', leave);
+          el.removeEventListener('touchstart', enter);
+          el.removeEventListener('touchend', leave);
+        };
+      });
+    };
+
+    start();
+
+    return () => {
+      mounted = false;
+      stepRefs.current.forEach((el: any) => el && el._gsapCleanup && el._gsapCleanup());
+      try {
+        entranceTweenRef.current?.kill?.();
+        iconTweensRef.current.forEach((t) => t?.kill?.());
+      } catch (e) { }
+    };
+  }, []);
+
+  return (
+    <section id="process" className="py-24 relative bg-gradient-to-b from-[#0B3729] to-[#06221a] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[#03AE96] font-bold tracking-widest uppercase text-sm mb-3">
-            How DryDash Works
-          </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-slate-900">
-            A Seamless Process{" "}
-            <span className="text-slate-400">Designed for You</span>
-          </h3>
+          <h2 className="text-[#4EF1BD] font-bold tracking-widest uppercase text-sm mb-3">How DryDash Works</h2>
+          <h3 className="text-3xl md:text-5xl font-bold text-white">A Seamless Process <span className="text-[#E5BD43]">Designed for You</span></h3>
         </div>
 
         <div className="relative">
-          {/* Animated Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute top-12 left-0 w-full h-1 bg-slate-100 z-0 rounded-full overflow-hidden">
-            <div
-              className="process-line-fill w-full h-full bg-gradient-to-r from-transparent via-[#03AE96] to-transparent opacity-30"
-              style={{ backgroundSize: "50% 100%" }}
-            ></div>
-          </div>
+          {/* Connecting Line (Desktop) */}
+          <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-[#03AE96]/20 via-[#E5BD43]/20 to-[#03AE96]/20 z-0"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
             {steps.map((step, idx) => (
-              <div
-                key={idx}
-                className="process-step flex flex-col items-center text-center group relative"
-              >
-                <div className="w-24 h-24 bg-white rounded-full border-4 border-white shadow-xl shadow-slate-200/50 flex items-center justify-center mb-6 relative z-10 transition-transform duration-300 transform group-hover:scale-110">
-                  <div className="w-20 h-20 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:border-[#03AE96] group-hover:bg-[#03AE96]/5 transition-colors">
-                    <step.icon className="w-8 h-8 text-slate-400 group-hover:text-[#03AE96] transition-colors" />
+              <div key={idx} ref={(el) => (stepRefs.current[idx] = el)} className="flex flex-col items-center text-center group">
+                <div className="w-24 h-24 bg-[#0A121B] rounded-full border-4 border-[#0F1923] flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-20 h-20 rounded-full bg-[#03AE96]/10 flex items-center justify-center border border-[#03AE96]/30 group-hover:border-[#E5BD43] group-hover:bg-[#E5BD43]/10 transition-colors">
+                    <step.icon className="w-8 h-8 text-[#4EF1BD] group-hover:text-[#E5BD43] transition-colors" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#03AE96] rounded-full flex items-center justify-center text-white text-xs font-bold border-2 border-white shadow-md">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#044288] rounded-full flex items-center justify-center text-white text-xs font-bold border-2 border-[#0F1923]">
                     {step.num}
                   </div>
                 </div>
 
-                <h4 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#03AE96] transition-colors">
-                  {step.title}
-                </h4>
-                <p className="text-slate-500 text-sm leading-relaxed max-w-[200px]">
+                <h4 className="text-xl font-bold text-white mb-3 group-hover:text-[#4EF1BD] transition-colors">{step.title}</h4>
+                <p className="text-[#AEAEAF] text-sm leading-relaxed max-w-[200px]">
                   {step.desc}
                 </p>
-
-                {/* Animated Arrow */}
-                {idx < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-12 -right-4 w-8 h-8 z-20 text-slate-300 process-arrow opacity-50">
-                    <ArrowRight className="w-full h-full" />
-                  </div>
-                )}
               </div>
             ))}
           </div>
@@ -796,44 +813,40 @@ const Process = () => {
 
 const Gallery = () => {
   const [sliderPosition, setSliderPosition] = useState(50);
-const containerRef = useRef<HTMLDivElement | null>(null);
-  const isDragging = useRef(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const isDragging = useRef<boolean>(false);
 
-const handleMove = (
-  event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
-): void => {
-  if (!containerRef.current) return;
 
-  const { left, width } = containerRef.current.getBoundingClientRect();
+  const handleMove = (event: React.MouseEvent | React.TouchEvent) => {
+    const el = containerRef.current;
+    if (!el) return;
 
-  const clientX =
-    "touches" in event
-      ? event.touches[0].clientX
-      : event.clientX;
+    const { left, width } = el.getBoundingClientRect();
 
-  const position = ((clientX - left) / width) * 100;
-  setSliderPosition(Math.min(100, Math.max(0, position)));
-};
+    const clientX =
+      "touches" in event
+        ? event.touches[0]?.clientX ?? 0
+        : event.clientX;
+
+    const position = ((clientX - left) / width) * 100;
+    setSliderPosition(Math.min(100, Math.max(0, position)));
+  };
 
 
   return (
     <section id="gallery" className="py-24 bg-[#0A121B]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-[#4EF1BD] font-bold tracking-widest uppercase text-sm mb-3">
-            Real Results
-          </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-white">
-            Before & After
-          </h3>
+          <h2 className="text-[#4EF1BD] font-bold tracking-widest uppercase text-sm mb-3">Real Results</h2>
+          <h3 className="text-3xl md:text-5xl font-bold text-white">Before & After</h3>
         </div>
 
         <div
           className="relative w-full max-w-4xl mx-auto aspect-[16/9] rounded-2xl overflow-hidden border border-[#ffffff]/10 shadow-2xl cursor-col-resize select-none"
           ref={containerRef}
-          onMouseDown={() => (isDragging.current = true)}
-          onMouseUp={() => (isDragging.current = false)}
-          onMouseLeave={() => (isDragging.current = false)}
+          onMouseDown={() => isDragging.current = true}
+          onMouseUp={() => isDragging.current = false}
+          onMouseLeave={() => isDragging.current = false}
           onMouseMove={(e) => isDragging.current && handleMove(e)}
           onTouchMove={handleMove}
         >
@@ -844,9 +857,7 @@ const handleMove = (
               alt="After"
               className="w-full h-full object-cover"
             />
-            <div className="absolute top-4 right-4 bg-[#03AE96] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-              AFTER
-            </div>
+            <div className="absolute top-4 right-4 bg-[#03AE96] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">AFTER</div>
           </div>
 
           {/* Before Image (Foreground Clipped) */}
@@ -859,9 +870,7 @@ const handleMove = (
               alt="Before"
               className="w-full h-full object-cover grayscale brightness-75 contrast-125"
             />
-            <div className="absolute top-4 left-4 bg-[#6A6F76] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-              BEFORE
-            </div>
+            <div className="absolute top-4 left-4 bg-[#6A6F76] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">BEFORE</div>
           </div>
 
           {/* Slider Handle */}
@@ -892,60 +901,67 @@ const Testimonials = () => {
       text: "DryDash returned my sneakers looking completely new. Worth every rupee.",
       author: "Rahul S.",
       role: "Sneakerhead",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop"
     },
     {
-      text: "The pickup and delivery were right on time. My silk sarees came back perfect.",
+      text: "My saree dry clean was flawless. No color fade, no chemical smell.",
       author: "Priya M.",
-      role: "Homemaker",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop",
+      role: "Fashion Designer",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop"
     },
     {
-      text: "Excellent service for my business suits. Very professional handling.",
-      author: "Aditya K.",
-      role: "Corporate Executive",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop",
-    },
+      text: "Fast, reliable and high-quality service. Highly recommended.",
+      author: "Vikram K.",
+      role: "Business Owner",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop"
+    }
   ];
 
   return (
-    <section id="testimonials" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="testimonials" className="py-24 relative bg-gradient-to-b from-[#0B3729] to-[#06221a] overflow-hidden border-t border-[#ffffff]/5">
+      {/* Decorative Elements */}
+      <div className="absolute left-10 top-20 w-32 h-32 bg-[#E5BD43]/5 rounded-full filter blur-[50px]"></div>
+      <div className="absolute right-10 bottom-20 w-32 h-32 bg-[#4EF1BD]/5 rounded-full filter blur-[50px]"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-[#03AE96] font-bold tracking-widest uppercase text-sm mb-3">
-            Happy Customers
-          </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-slate-900">
-            What They <span className="text-slate-400">Say</span>
-          </h3>
+          <h2 className="text-[#E5BD43] font-bold tracking-widest uppercase text-sm mb-3">Happy Customers</h2>
+          <h3 className="text-3xl md:text-5xl font-bold text-white">Trusted by the <span className="text-[#4EF1BD]">Best</span></h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map((review, idx) => (
-            <div
-              key={idx}
-              className="bg-slate-50 p-8 rounded-2xl relative group hover:bg-white hover:shadow-xl hover:shadow-slate-200 transition-all duration-300 border border-transparent hover:border-slate-100"
-            >
-              <Quote className="absolute top-6 right-6 w-8 h-8 text-slate-200 group-hover:text-[#03AE96]/20 transition-colors" />
-              <div className="flex items-center gap-4 mb-6">
-                <img
-                  src={review.image}
-                  alt={review.author}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm"
-                />
-                <div>
-                  <p className="font-bold text-slate-900">{review.author}</p>
-                  <p className="text-xs text-slate-500 uppercase tracking-wide">
-                    {review.role}
-                  </p>
-                </div>
+            <div key={idx} className="bg-[#0F1923] p-8 rounded-2xl border border-[#ffffff]/5 relative group hover:-translate-y-2 transition-transform duration-300">
+              {/* Quote Icon */}
+              <div className="absolute top-6 right-8 text-[#ffffff]/10 group-hover:text-[#4EF1BD]/20 transition-colors">
+                <Quote className="w-10 h-10" />
               </div>
-              <p className="text-slate-600 leading-relaxed italic">
+
+              {/* Stars */}
+              <div className="flex gap-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-[#E5BD43] text-[#E5BD43]" />
+                ))}
+              </div>
+
+              {/* Text */}
+              <p className="text-[#F0F6FC] text-lg leading-relaxed mb-8 relative z-10">
                 "{review.text}"
               </p>
+
+              {/* Author */}
+              <div className="flex items-center gap-4 border-t border-[#ffffff]/10 pt-6">
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#03AE96]/30 group-hover:border-[#4EF1BD] transition-colors">
+                  <img src={review.image} alt={review.author} className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold">{review.author}</h4>
+                  <p className="text-[#AEAEAF] text-xs uppercase tracking-wide">{review.role}</p>
+                </div>
+              </div>
+
+              {/* Bottom Gradient Border Effect */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#03AE96] via-[#4EF1BD] to-[#03AE96] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-2xl"></div>
             </div>
           ))}
         </div>
@@ -954,12 +970,288 @@ const Testimonials = () => {
   );
 };
 
+const FranchisePartner = () => {
+  const [form, setForm] = useState({ name: '', city: '', investment: '', email: '', phone: '' });
+
+  return (
+    <section id="franchise" className="py-20 bg-[#071018] border-t border-[#ffffff]/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+          {/* Left: Pitch / Benefits */}
+          <div className="text-left">
+            <h2 className="text-4xl font-extrabold text-white mb-4">Start Your <span className="text-[#4EF1BD]">DRYDASH</span> Franchise</h2>
+            <p className="text-[#AEAEAF] mb-8 max-w-xl">Join the future of laundry — proven operations, cutting-edge technology, and a market ready for disruption. Get full training, marketing support, and ongoing operational help.</p>
+
+
+            <div className="mt-8 mb-8">
+              <div className="bg-[#0F1923] border border-[#ffffff]/5 p-6 rounded-2xl">
+                <h4 className="text-white font-semibold mb-3 flex items-center gap-3">
+                  <Gem className="w-5 h-5 text-[#4EF1BD]" />
+                  What You Get
+                </h4>
+                <ul className="space-y-2 text-[#AEAEAF] text-sm list-disc list-inside">
+                  <li>Turn-key plant setup assistance</li>
+                  <li>Complete technology stack access</li>
+                  <li>Ongoing operational training</li>
+                  <li>Marketing & branding support</li>
+                  <li>Dedicated franchise success manager</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-[#044288] flex items-center justify-center text-[#4EF1BD]">
+                  <Gem className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold">18-24 mo Avg ROI</h4>
+                  <p className="text-[#AEAEAF] text-sm">Fast ramp-up with our business playbook.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-[#044288] flex items-center justify-center text-[#4EF1BD]">
+                  <Zap className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold">Full Training & Support</h4>
+                  <p className="text-[#AEAEAF] text-sm">Operational, technical and marketing assistance.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-[#044288] flex items-center justify-center text-[#4EF1BD]">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold">Included Tech Platform</h4>
+                  <p className="text-[#AEAEAF] text-sm">Centralized ops dashboard and customer management.</p>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          {/* Right: Form */}
+          <div className="bg-[#0F1923] p-8 rounded-2xl shadow-2xl border border-[#ffffff]/5">
+            <h3 className="text-white font-bold text-xl mb-4">Express Your Interest</h3>
+            <p className="text-sm text-[#AEAEAF] mb-6">Fill out the form below to get started. We'll respond within 24 hours.</p>
+
+            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <div>
+                <label className="text-xs text-[#AEAEAF]">Your Name</label>
+                <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="John Doe" className="w-full mt-2 p-3 rounded-lg bg-[#071018] border border-[#ffffff]/10 text-white" />
+              </div>
+
+              <div>
+                <label className="text-xs text-[#AEAEAF]">City / Region</label>
+                <input value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} placeholder="New York, NY" className="w-full mt-2 p-3 rounded-lg bg-[#071018] border border-[#ffffff]/10 text-white" />
+              </div>
+
+              <div>
+                <label className="text-xs text-[#AEAEAF]">Investment Range</label>
+                <select value={form.investment} onChange={(e) => setForm({ ...form, investment: e.target.value })} className="w-full mt-2 p-3 rounded-lg bg-[#071018] border border-[#ffffff]/10 text-white">
+                  <option value="">Select range</option>
+                  <option>₹10L - ₹25L</option>
+                  <option>₹25L - ₹50L</option>
+                  <option>₹50L+</option>
+                </select>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs text-[#AEAEAF]">Email Address</label>
+                  <input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@example.com" className="w-full mt-2 p-3 rounded-lg bg-[#071018] border border-[#ffffff]/10 text-white" />
+                </div>
+                <div>
+                  <label className="text-xs text-[#AEAEAF]">Phone Number</label>
+                  <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="(555) 123-4567" className="w-full mt-2 p-3 rounded-lg bg-[#071018] border border-[#ffffff]/10 text-white" />
+                </div>
+              </div>
+
+              <button className="w-full py-3 bg-gradient-to-r from-[#4EF1BD] to-[#03AE96] text-[#0A121B] font-bold rounded-lg shadow-lg">Start Your DRYDASH Franchise</button>
+
+              <p className="text-xs text-[#6A6F76] mt-2">We’ll respond within 24 hours. Your information is secure.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const DownloadApp = () => {
+  const phoneARef = useRef<HTMLImageElement | null>(null);
+  const phoneBRef = useRef<HTMLImageElement | null>(null);
+  const featuresRef = useRef<HTMLSpanElement | null>(null);
+  const drRef = useRef<HTMLSpanElement | null>(null);
+  const features = ['Schedule', 'Track', 'Pay', '24/7 Support'];
+
+  useEffect(() => {
+    let mounted = true;
+    const start = () => {
+      const gsap = (window as any).gsap;
+      if (!mounted) return;
+      if (!gsap) {
+        setTimeout(start, 120);
+        return;
+      }
+
+      // phone entrance
+      if (phoneARef.current && phoneBRef.current) {
+        gsap.fromTo(phoneARef.current, { x: 40, y: -10, autoAlpha: 0, rotation: 6 }, { x: 0, y: 0, autoAlpha: 1, rotation: 6, duration: 0.8, ease: 'power3.out' });
+        gsap.fromTo(phoneBRef.current, { x: -40, y: 10, autoAlpha: 0, rotation: -6 }, { x: 0, y: 0, autoAlpha: 1, rotation: -6, duration: 0.9, ease: 'power3.out' });
+
+        // subtle floating
+        gsap.to(phoneARef.current, { y: -8, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 0.4 });
+        gsap.to(phoneBRef.current, { y: -6, duration: 2.2, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 0.6 });
+      }
+
+      // running feature text (fade/slide)
+      const el = featuresRef.current;
+      if (el) {
+        let idx = 0;
+        el.textContent = features[idx];
+        const swap = () => {
+          gsap.to(el, { autoAlpha: 0, y: -8, duration: 0.28, ease: 'power2.in', onComplete: () => {
+            idx = (idx + 1) % features.length;
+            el.textContent = features[idx];
+            gsap.to(el, { autoAlpha: 1, y: 0, duration: 0.36, ease: 'power2.out' });
+          }});
+        };
+        const iv = window.setInterval(swap, 1800);
+        (el as any)._gsapCleanup = () => clearInterval(iv);
+      }
+    };
+    start();
+    return () => {
+      let el = featuresRef.current as any;
+      if (el && el._gsapCleanup) el._gsapCleanup();
+      mounted = false;
+    };
+  }, []);
+
+  // typewriter for 'DRYDASH' in the heading
+  useEffect(() => {
+    let mounted = true;
+    let timeoutId: number | null = null;
+    const el = drRef.current;
+    if (!el) return;
+
+    const text = 'DRYDASH';
+
+    const start = () => {
+      let i = 0;
+      const step = () => {
+        if (!mounted) return;
+        el.textContent = text.slice(0, i);
+        i++;
+        if (i <= text.length) {
+          timeoutId = window.setTimeout(step, 90);
+        } else {
+          timeoutId = window.setTimeout(() => {
+            i = 0;
+            step();
+          }, 1200);
+        }
+      };
+      step();
+    };
+
+    start();
+
+    return () => {
+      mounted = false;
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, []);
+
+  return (
+    <section className="py-20 relative bg-gradient-to-b from-[#0B3729] to-[#06221a] overflow-hidden">
+      {/* Corner gradients */}
+      <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-gradient-to-br from-[#4EF1BD]/40 to-[#03AE96]/10 filter blur-3xl opacity-80 pointer-events-none"></div>
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-gradient-to-tr from-[#03AE96]/30 to-[#4EF1BD]/5 filter blur-3xl opacity-70 pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 className="text-4xl font-extrabold text-white mb-4">
+              Download the <span ref={drRef} className="text-transparent bg-clip-text bg-gradient-to-r from-[#4EF1BD] to-[#03AE96] font-extrabold"></span> App
+            </h2>
+            <p className="text-[#D1EDE0] max-w-xl mb-3">Everything you need to manage your laundry in one app. Schedule, track, and pay—all from your phone.</p>
+            <div className="mb-6">
+              <span className="text-sm text-[#4EF1BD] font-semibold mr-3">Features:</span>
+              <span ref={featuresRef} className="inline-block text-white/90 font-medium"></span>
+            </div>
+
+            <div className="space-y-4 mb-6">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-[#044288]/30 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-[#4EF1BD]" />
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold">Real-Time Tracking</h4>
+                  <p className="text-[#AEAEAF] text-sm">Know exactly where your clothes are at every moment.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-[#044288]/30 flex items-center justify-center">
+                  <Bell className="w-5 h-5 text-[#4EF1BD]" />
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold">Smart Notifications</h4>
+                  <p className="text-[#AEAEAF] text-sm">Get updates at pickup, processing, and delivery.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-[#044288]/30 flex items-center justify-center">
+                  <RefreshCcw className="w-5 h-5 text-[#4EF1BD]" />
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold">Easy Payments</h4>
+                  <p className="text-[#AEAEAF] text-sm">Multiple payment options with secure checkout.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <a className="inline-flex items-center gap-3 bg-[#050505] text-white rounded-full px-4 py-2 shadow-lg hover:scale-105 transition-transform" href="#" aria-label="Download on the App Store">
+                <Apple className="w-6 h-6 opacity-90" />
+                <div className="flex flex-col leading-tight">
+                  <span className="text-[10px] text-white/60">Download on the</span>
+                  <span className="font-semibold">App Store</span>
+                </div>
+              </a>
+
+              <a className="inline-flex items-center gap-3 bg-[#050505] text-white rounded-full px-4 py-2 shadow-lg hover:scale-105 transition-transform" href="#" aria-label="Get it on Google Play">
+                <Play className="w-6 h-6 opacity-90" />
+                <div className="flex flex-col leading-tight">
+                  <span className="text-[10px] text-white/60">Get it on</span>
+                  <span className="font-semibold">Google Play</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div className="flex justify-center lg:justify-end">
+              <div className="relative w-[260px] h-[520px]">
+              <img ref={phoneARef} src="/image/2_mockup.png" alt="app phone" className="absolute right-0 top-0 w-56 shadow-2xl transform rotate-6" />
+              <img ref={phoneBRef} src="/image/main.png" alt="app phone 2" className="absolute left-0 bottom-0 w-60 shadow-2xl transform -rotate-6" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const CTA = () => {
   return (
-    <section
-      id="contact"
-      className="py-24 bg-[#0A121B] relative overflow-hidden"
-    >
+    <section className="py-24 bg-[#0A121B] relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-[#03AE96]/20 to-[#044288]/20"></div>
 
       {/* Abstract Shapes */}
@@ -967,29 +1259,22 @@ const CTA = () => {
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#4EF1BD]/10 rounded-full filter blur-[80px] translate-x-1/2 translate-y-1/2"></div>
 
       <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
-        <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
           Ready for a Fresh, <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4EF1BD] to-[#03AE96]">
-            Hassle-Free Cleaning
-          </span>{" "}
-          Experience?
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4EF1BD] to-[#03AE96]">Hassle-Free Cleaning</span> Experience?
         </h2>
 
         <p className="text-xl text-[#AEAEAF] mb-10 max-w-2xl mx-auto">
-          Your clothes, shoes, and home deserve premium care. Experience the
-          DryDash difference today.
+          Your clothes, shoes, and home deserve premium care. Experience the DryDash difference today.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href="https://wa.me/919717953316?text=Hi%2C%20I%20want%20to%20place%20an%20order."
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button className="w-full sm:w-auto px-8 py-4 bg-[#E5BD43] text-[#0A121B] rounded-full font-bold text-lg hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(229,189,67,0.3)] flex items-center justify-center gap-2">
-              Book My Pickup <ArrowRight className="w-5 h-5" />
-            </button>
-          </a>
+          <button className="w-full sm:w-auto px-8 py-2 bg-[#E5BD43] text-[#0A121B] rounded-full font-bold text-lg hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(229,189,67,0.3)] flex items-center justify-center gap-2">
+            Book My Pickup <ArrowRight className="w-5 h-5" />
+          </button>
+          <button className="w-full sm:w-auto px-8 py-2 bg-[#0A121B]/50 backdrop-blur-md border border-[#ffffff]/20 text-white rounded-full font-bold text-lg hover:bg-[#ffffff]/10 transition-colors">
+            Talk to Support
+          </button>
         </div>
       </div>
     </section>
@@ -1003,28 +1288,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="rounded-lg flex items-left justify-center">
-                <img
-                  src="/drydash_white.png"
-                  alt="Pong Logo"
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none"; // Hides image if it fails to load
-                  }}
-                />
-              </div>
+              <img src="/image/light.png" alt="DRYDASH logo" className="w-[30%] h-[30%] object-cover rounded-lg" />
             </div>
             <p className="text-[#AEAEAF] max-w-sm mb-6">
-              The premium destination for sneaker care, restoration, and dry
-              cleaning. We bring life back to your favorite pairs.
+              The premium destination for sneaker care, restoration, and dry cleaning. We bring life back to your favorite pairs.
             </p>
             <div className="flex gap-4">
               {[Instagram, Twitter, Facebook].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-[#ffffff]/5 flex items-center justify-center text-white hover:bg-[#03AE96] hover:text-[#0A121B] transition-colors"
-                >
+                <a key={i} href="#" className="w-10 h-10 rounded-full bg-[#ffffff]/5 flex items-center justify-center text-white hover:bg-[#03AE96] hover:text-[#0A121B] transition-colors">
                   <Icon className="w-5 h-5" />
                 </a>
               ))}
@@ -1034,41 +1305,9 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-bold mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="#services"
-                  className="text-[#AEAEAF] hover:text-[#4EF1BD] transition-colors"
-                >
-                  Services
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#why-us"
-                  className="text-[#AEAEAF] hover:text-[#4EF1BD] transition-colors"
-                >
-                  Why Us
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#process"
-                  className="text-[#AEAEAF] hover:text-[#4EF1BD] transition-colors"
-                >
-                  Process
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#contact"
-                  className="text-[#AEAEAF] hover:text-[#4EF1BD] transition-colors"
-                >
-                  Contact Us
-                </a>
-              </li>
+              {['Services', 'About Us', 'Pricing', 'Contact'].map((l) => (
+                <li key={l}><a href="#" className="text-[#AEAEAF] hover:text-[#4EF1BD] transition-colors">{l}</a></li>
+              ))}
             </ul>
           </div>
 
@@ -1082,65 +1321,31 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-[#ffffff]/5 pt-8 text-center text-[#6A6F76] text-sm">
-          © 2025 Guild Solution Pvt Ltd. All rights reserved.
+          © 2024 DryDash Inc. All rights reserved.
         </div>
       </div>
     </footer>
   );
 };
 
-const NewButton = ({
-  phone = "1234567890", // replace with your number (country code required)
-  message = "Hello! I would like to know more.",
-}) => {
-  const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(
-    message
-  )}`;
-
-  return (
-    <a
-      href={whatsappLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Chat on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 group"
-    >
-      {/* Ping effect */}
-      <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-20 animate-ping"></span>
-
-      {/* Button */}
-      <div className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg hover:shadow-[0_0_20px_rgba(37,211,102,0.6)] transition-all duration-300 hover:-translate-y-1">
-        <svg className="w-7 h-7 fill-current" viewBox="0 0 24 24">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.304-5.298c0-5.45 4.432-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.895 9.884Z" />
-        </svg>
-      </div>
-    </a>
-  );
-};
-
 export default function Home() {
   // Load GSAP from CDN for the "creative animation" requirement
-  useScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js");
-  useScript(
-    "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
-  );
+  useScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js');
+  useScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js');
 
   return (
     <div className="font-sans antialiased bg-[#0A121B] min-h-screen text-[#F0F6FC] selection:bg-[#03AE96] selection:text-[#0A121B]">
       <Navigation />
       <Hero />
       <WhyDryDash />
-      <ServicesOverview />
       <DetailedServices />
       <Process />
       <Gallery />
       <Testimonials />
+      <FranchisePartner />
+      <DownloadApp />
       <CTA />
       <Footer />
-      <NewButton
-        phone="919717953316"
-        message="Hi, I want to place an order. Please share price list and pick-up availability."
-      />
     </div>
   );
 }
