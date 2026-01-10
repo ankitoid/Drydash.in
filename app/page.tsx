@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import {
   Sparkles,
   Droplets,
@@ -29,7 +30,7 @@ import {
   Gem,
   Sofa,
   Smartphone,
-  Calendar,
+  Calendar,Headset,
   Quote
 } from 'lucide-react';
 
@@ -56,7 +57,8 @@ const Navigation = () => {
     { name: 'Services', href: '#services' },
     { name: 'Process', href: '#process' },
     { name: 'Gallery', href: '#gallery' },
-    { name: 'Testimonials', href: '#testimonials' }, // Updated link
+    { name: 'Testimonials', href: '#testimonials' },
+    { name: 'Franchise', href: '#franchise' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -83,13 +85,18 @@ const Navigation = () => {
                 </a>
               ))}
 
-              <button className="bg-gradient-to-r from-[#E5BD43] to-[#F6E05E] text-[#0A121B] hover:shadow-[0_0_20px_rgba(229,189,67,0.4)] px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 transform hover:-translate-y-0.5">
+              <Link
+                href="https://wa.me/918287636979?text=Hi!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center bg-gradient-to-r from-[#E5BD43] to-[#F6E05E] text-[#0A121B] hover:shadow-[0_0_20px_rgba(229,189,67,0.4)] px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 transform hover:-translate-y-0.5"
+              >
                 Book Pickup
-              </button>
+              </Link>
             </div>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button (links to WhatsApp) */}
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -426,12 +433,23 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 w-[100%] sm:w-auto mb-10">
-              <button className="py-2 md:px-8 md:py-2 bg-[#E5BD43] text-[#0A121B] rounded-full font-bold text-lg shadow-[0_0_20px_rgba(229,189,67,0.3)] hover:shadow-[0_0_30px_rgba(229,189,67,0.5)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group">
+              <Link
+                href="https://wa.me/918287636979?text=Hi!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center bg-gradient-to-r from-[#E5BD43] to-[#F6E05E] text-[#0A121B] hover:shadow-[0_0_20px_rgba(229,189,67,0.4)] px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 transform hover:-translate-y-0.5"
+              >
                 Book Pickup <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="py-2 md:px-8 md:py-2 bg-transparent border border-[#6A6F76] text-[#F0F6FC] rounded-full font-bold text-lg hover:border-[#F0F6FC] hover:bg-[#F0F6FC]/5 transition-all flex items-center justify-center gap-2">
-                View Pricing
-              </button>
+              </Link>
+              <Link
+                href="https://wa.me/918287636979?text=Hi!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="py-2 md:px-8 md:py-2 bg-transparent border border-[#6A6F76] text-[#F0F6FC] rounded-full font-bold text-lg hover:border-[#F0F6FC] hover:bg-[#F0F6FC]/5 transition-all flex items-center text-sm justify-center gap-2"
+              >
+                Order Now
+              </Link>
+
             </div>
 
             {/* Trust Indicators */}
@@ -623,7 +641,7 @@ const DetailedServices = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#0A121B] relative border-t border-[#ffffff]/5">
+    <section id="services" className="py-24 bg-[#0A121B] relative border-t border-[#ffffff]/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-[#4EF1BD] font-bold tracking-widest uppercase text-sm mb-3">Complete Care</h2>
@@ -645,9 +663,9 @@ const DetailedServices = () => {
               {service.desc}
             </p>
             <div>
-              <button className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:gap-4 transition-all" style={{ color: service.color }}>
+              <Link href="https://wa.me/918287636979?text=Hi!" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:gap-4 transition-all" style={{ color: service.color }}>
                 Book Pickup <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -671,9 +689,9 @@ const DetailedServices = () => {
 const Process = () => {
   const steps = [
     { num: "01", title: "Schedule Pickup", desc: "Book via WhatsApp, call, or website.", icon: Smartphone },
-    { num: "02", title: "We Collect",      desc: "Doorstep pickup at your preferred time.", icon: Truck },
-    { num: "03", title: "Expert Cleaning",  desc: "Fabric-safe processes, eco cleaning & strict quality checks.", icon: Sparkles },
-    { num: "04", title: "24h Delivery",     desc: "Fresh, clean, and neatly packed in 24 hours.", icon: Timer },
+    { num: "02", title: "We Collect", desc: "Doorstep pickup at your preferred time.", icon: Truck },
+    { num: "03", title: "Expert Cleaning", desc: "Fabric-safe processes, eco cleaning & strict quality checks.", icon: Sparkles },
+    { num: "04", title: "24h Delivery", desc: "Fresh, clean, and neatly packed in 24 hours.", icon: Timer },
   ];
 
   // typed as an array of nullable div refs
@@ -1099,11 +1117,13 @@ const DownloadApp = () => {
         let idx = 0;
         el.textContent = features[idx];
         const swap = () => {
-          gsap.to(el, { autoAlpha: 0, y: -8, duration: 0.28, ease: 'power2.in', onComplete: () => {
-            idx = (idx + 1) % features.length;
-            el.textContent = features[idx];
-            gsap.to(el, { autoAlpha: 1, y: 0, duration: 0.36, ease: 'power2.out' });
-          }});
+          gsap.to(el, {
+            autoAlpha: 0, y: -8, duration: 0.28, ease: 'power2.in', onComplete: () => {
+              idx = (idx + 1) % features.length;
+              el.textContent = features[idx];
+              gsap.to(el, { autoAlpha: 1, y: 0, duration: 0.36, ease: 'power2.out' });
+            }
+          });
         };
         const iv = window.setInterval(swap, 1800);
         (el as any)._gsapCleanup = () => clearInterval(iv);
@@ -1204,7 +1224,7 @@ const DownloadApp = () => {
 
             <div className="flex items-center gap-4">
               <a className="inline-flex items-center gap-3 bg-[#050505] text-white rounded-full px-4 py-2 shadow-lg hover:scale-105 transition-transform" href="#" aria-label="Download on the App Store">
-                <Apple className="w-6 h-6 opacity-90" />
+                <img src="/apple-48.ico" alt="App Store" className="w-6 h-6 opacity-90" />
                 <div className="flex flex-col leading-tight">
                   <span className="text-[10px] text-white/60">Download on the</span>
                   <span className="font-semibold">App Store</span>
@@ -1212,7 +1232,7 @@ const DownloadApp = () => {
               </a>
 
               <a className="inline-flex items-center gap-3 bg-[#050505] text-white rounded-full px-4 py-2 shadow-lg hover:scale-105 transition-transform" href="#" aria-label="Get it on Google Play">
-                <Play className="w-6 h-6 opacity-90" />
+                <img src="/android.png" alt="App Store" className="w-6 h-6 opacity-90" />
                 <div className="flex flex-col leading-tight">
                   <span className="text-[10px] text-white/60">Get it on</span>
                   <span className="font-semibold">Google Play</span>
@@ -1222,7 +1242,7 @@ const DownloadApp = () => {
           </div>
 
           <div className="flex justify-center lg:justify-end">
-              <div className="relative w-[260px] h-[520px]">
+            <div className="relative w-[260px] h-[520px]">
               <img ref={phoneARef} src="/image/2_mockup.png" alt="app phone" className="absolute right-0 top-0 w-56 shadow-2xl transform rotate-6" />
               <img ref={phoneBRef} src="/image/main.png" alt="app phone 2" className="absolute left-0 bottom-0 w-60 shadow-2xl transform -rotate-6" />
             </div>
@@ -1253,12 +1273,22 @@ const CTA = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="w-full sm:w-auto px-8 py-2 bg-[#E5BD43] text-[#0A121B] rounded-full font-bold text-lg hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(229,189,67,0.3)] flex items-center justify-center gap-2">
-            Book My Pickup <ArrowRight className="w-5 h-5" />
-          </button>
-          <button className="w-full sm:w-auto px-8 py-2 bg-[#0A121B]/50 backdrop-blur-md border border-[#ffffff]/20 text-white rounded-full font-bold text-lg hover:bg-[#ffffff]/10 transition-colors">
+          <Link
+            href="https://wa.me/918287636979?text=Hi!"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center bg-gradient-to-r from-[#E5BD43] to-[#F6E05E] text-[#0A121B] hover:shadow-[0_0_20px_rgba(229,189,67,0.4)] px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 transform hover:-translate-y-0.5"
+          >
+            Book Pickup <ArrowRight className="w-5 h-5" />
+          </Link>
+          <Link
+            href="tel:+918287636979"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto px-8 py-2 bg-[#0A121B]/50 backdrop-blur-md border border-[#ffffff]/20 text-white rounded-full font-bold text-lg hover:bg-[#ffffff]/10 transition-colors text-sm"
+          >
             Talk to Support
-          </button>
+          </Link>
         </div>
       </div>
     </section>
@@ -1268,7 +1298,7 @@ const CTA = () => {
 const Footer = () => {
   return (
     <footer className="bg-[#05090e] pt-16 pb-8 border-t border-[#ffffff]/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="contact" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
@@ -1289,8 +1319,13 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-bold mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {['Services', 'About Us', 'Pricing', 'Contact'].map((l) => (
-                <li key={l}><a href="#" className="text-[#AEAEAF] hover:text-[#4EF1BD] transition-colors">{l}</a></li>
+              {[
+                { label: 'Services', href: '#services' },
+                { label: 'Franchise', href: '#franchise' },
+                { label: 'Gallery', href: '#gallery' },
+                { label: 'Contact', href: '#contact' },
+              ].map((item) => (
+                <li key={item.label}><a href={item.href} className="text-[#AEAEAF] hover:text-[#4EF1BD] transition-colors">{item.label}</a></li>
               ))}
             </ul>
           </div>
@@ -1299,7 +1334,7 @@ const Footer = () => {
             <h4 className="text-white font-bold mb-6">Contact</h4>
             <ul className="space-y-3 text-[#AEAEAF]">
               <li>support@drydash.in</li>
-              <li>+91-9717953316</li>
+              <li>+91-8287636979</li>
               <li>HA-85 Sector 144 Noida</li>
             </ul>
           </div>
@@ -1310,6 +1345,44 @@ const Footer = () => {
       </div>
     </footer>
   );
+};
+
+const FloatingCallButton = () => {
+  return (
+    <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-50 flex flex-col items-end gap-3">
+      {/* Talk Now group */}
+      <div className="flex items-center gap-3">
+        <span className="inline-block mr-1 rounded-md bg-[#0A121B] text-white text-xs font-medium py-1 px-2 shadow-lg">Talk Now</span>
+        <a
+          href="tel:+919717953316"
+          aria-label="Call DryDash"
+          className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-[#4EF1BD] to-[#03AE96] text-[#0A121B] shadow-lg hover:scale-105 transition-transform focus:outline-none focus:ring-4 focus:ring-[#4EF1BD]/30"
+        >
+          <Headset className="w-6 h-6" />
+        </a>
+      </div>
+
+      {/* Typed WhatsApp image component (defined below) */}
+      {/* WhatsApp group */}
+      <div className="flex items-center gap-3">
+        <span className="inline-block mr-1 rounded-md bg-[#0A121B] text-white text-xs font-medium py-1 px-2 shadow-lg">WhatsApp</span>
+        <a
+          href="https://wa.me/918287636979?text=Hi!"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+          className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:scale-105 transition-transform"
+        >
+          <WhatsAppImage className="w-6 h-6" alt="WhatsApp" />
+        </a>
+      </div>
+    </div>
+  );
+};
+
+// Typed small component for the WhatsApp image
+const WhatsAppImage: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = ({ className, alt = 'WhatsApp', src = '/whatsapp.ico', ...props }) => {
+  return <img src={src} alt={alt} className={className} {...props} />;
 };
 
 export default function Home() {
@@ -1330,6 +1403,7 @@ export default function Home() {
       <DownloadApp />
       <CTA />
       <Footer />
+      <FloatingCallButton />
     </div>
   );
 }
