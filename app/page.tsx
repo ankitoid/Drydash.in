@@ -1381,7 +1381,7 @@ const FloatingCallButton = () => {
 };
 
 // Typed small component for the WhatsApp image
-const WhatsAppImage: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = ({ className, alt = 'WhatsApp', src = '/whatsapp.ico', ...props }) => {
+const WhatsAppImage: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = ({ className, alt = 'WhatsApp', src = '/whatsapp.svg', ...props }) => {
   return <img src={src} alt={alt} className={className} {...props} />;
 };
 
