@@ -414,7 +414,7 @@ const Hero = () => {
             </div>
 
             <h1 className="text-3xl md:text-5xl lg:text-5xl font-extrabold text-white tracking-tight mb-6 leading-[1.1]">
-              Premium Laundry & Dry Cleaning Services in<br />
+              Premium Shoe Cleaning <br/> & Dry Washing in<br />
               <span className="relative inline-block">
                 <span ref={rotatingRef} className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#4EF1BD] to-[#03AE96] font-extrabold" />
                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#E5BD43]" viewBox="0 0 100 10" preserveAspectRatio="none">
