@@ -56,7 +56,6 @@ const Navigation = () => {
   const navItems = [
     { name: 'Services', href: '#services' },
     { name: 'Process', href: '#process' },
-    { name: 'Gallery', href: '#gallery' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'Franchise', href: '#franchise' },
     { name: 'Contact', href: '#contact' },
@@ -140,7 +139,7 @@ const Hero = () => {
   const tweensRef = useRef<any[]>([]);
   const rotatingRef = useRef<HTMLSpanElement | null>(null);
   const cities = ['Noida', 'Delhi', 'Ghaziabad', 'Gurgaon'];
-  const hoursRef = useRef<HTMLSpanElement | null>(null);
+  
 
   useEffect(() => {
     let mounted = true;
@@ -308,88 +307,58 @@ const Hero = () => {
     };
   }, []);
 
-  // typewriter for "24 Hours"
+  // (Removed typewriter animation; hours shown statically)
+
+  // rotating services text (under the heading) -> typewriter-style
   useEffect(() => {
     let mounted = true;
     let timeoutId: number | null = null;
-    const el = hoursRef.current;
+    const el = rotatingRef.current;
     if (!el) return;
 
-    const text = '24 Hours';
+    const texts = cities;
+    let listIdx = 0;
+    let charIdx = 0;
+    let deleting = false;
 
-    const start = () => {
-      let i = 0;
-      const step = () => {
-        if (!mounted) return;
-        el.textContent = text.slice(0, i);
-        i++;
-        if (i <= text.length) {
-          timeoutId = window.setTimeout(step, 80);
+    const step = () => {
+      if (!mounted) return;
+      const current = texts[listIdx];
+
+      if (!deleting) {
+        charIdx = Math.min(current.length, charIdx + 1);
+        el.textContent = current.slice(0, charIdx);
+
+        if (charIdx === current.length) {
+          timeoutId = window.setTimeout(() => { deleting = true; step(); }, 1200);
         } else {
-          // pause then restart
-          timeoutId = window.setTimeout(() => {
-            i = 0;
-            step();
-          }, 1400);
+          timeoutId = window.setTimeout(step, 90);
         }
-      };
-      step();
+      } else {
+        charIdx = Math.max(0, charIdx - 1);
+        el.textContent = current.slice(0, charIdx);
+
+        if (charIdx === 0) {
+          deleting = false;
+          listIdx = (listIdx + 1) % texts.length;
+          timeoutId = window.setTimeout(step, 300);
+        } else {
+          timeoutId = window.setTimeout(step, 40);
+        }
+      }
     };
 
-    start();
+    // start typing
+    el.textContent = '';
+    timeoutId = window.setTimeout(step, 300);
 
     return () => {
       mounted = false;
       if (timeoutId) clearTimeout(timeoutId);
     };
   }, []);
-
-  // rotating services text (under the heading)
-  useEffect(() => {
-    let mounted = true;
-    let intervalId: number | null = null;
-
-    const start = () => {
-      const gsap = (window as any).gsap;
-      if (!mounted) return;
-      if (!gsap) {
-        setTimeout(start, 120);
-        return;
-      }
-
-      const el = rotatingRef.current;
-      if (!el) return;
-
-      let idx = 0;
-      // ensure initial content
-      el.textContent = cities[idx];
-
-      const swap = () => {
-        gsap.to(el, {
-          autoAlpha: 0,
-          y: -8,
-          duration: 0.35,
-          ease: 'power2.in',
-          onComplete: () => {
-            idx = (idx + 1) % cities.length;
-            el.textContent = cities[idx];
-            gsap.to(el, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power2.out' });
-          }
-        });
-      };
-
-      intervalId = window.setInterval(swap, 2200);
-    };
-
-    start();
-
-    return () => {
-      mounted = false;
-      if (intervalId) clearInterval(intervalId);
-    };
-  }, []);
   return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-[#0A121B]">
+    <section className="relative flex items-center sm:pt-28 sm:pb-20 pt-24 pb-12 overflow-hidden bg-[#0A121B]">
       {/* Dynamic Background Texture */}
       <div className="absolute inset-0 opacity-20 pointer-events-none"
         style={{
@@ -408,15 +377,15 @@ const Hero = () => {
 
           {/* Left Side: Content */}
           <div className="flex flex-col items-start text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#E5BD43]/40 bg-[#E5BD43]/10 mb-6 backdrop-blur-md">
+            {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#E5BD43]/40 bg-[#E5BD43]/10 mb-6 backdrop-blur-md">
               <Star className="w-3 h-3 text-[#E5BD43] fill-[#E5BD43]" />
               <span className="text-[#E5BD43] text-xs font-bold tracking-widest uppercase">Premium Care</span>
-            </div>
+            </div> */}
 
-            <h1 className="text-3xl md:text-5xl lg:text-5xl font-extrabold text-white tracking-tight mb-6 leading-[1.1]">
-              Premium Shoe Cleaning <br/> & Dry Washing in<br />
+            <h1 className="text-3xl md:text-6xl lg:text-6xl font-extrabold text-white tracking-tight mb-6 leading-[1.5]">
+              Shoe Spa <br/> & Dry Cleaning in<br />
               <span className="relative inline-block">
-                <span ref={rotatingRef} className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#4EF1BD] to-[#03AE96] font-extrabold" />
+                <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#4EF1BD] to-[#03AE96] font-extrabold">24 Hours</span>
                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#E5BD43]" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
                 </svg>
@@ -424,15 +393,15 @@ const Hero = () => {
             </h1>
 
             <h2 className="text-xl md:text-2xl font-light text-white mb-2">
-              Delivered in <span ref={hoursRef} className="font-bold text-[#4EF1BD]"></span><span className="ml-1 inline-block w-[2px] h-5 bg-[#4EF1BD] animate-pulse" />.
+              Delivered in <span ref={rotatingRef} className="font-bold text-[#4EF1BD]"></span><span className="ml-1 inline-block w-[2px] h-5 bg-[#4EF1BD] animate-pulse" />.
             </h2>
 
-            <p className="max-w-xl text-md text-[#AEAEAF] mb-8 leading-relaxed">
+            {/* <p className="max-w-xl text-md text-[#AEAEAF] mb-8 leading-relaxed">
               DryDash brings expert cleaning with fast pickup, eco-friendly care, and doorstep delivery—crafted for busy professionals and modern families.
-            </p>
+            </p> */}
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 w-[100%] sm:w-auto mb-10">
+            {/* <div className="flex flex-col sm:flex-row gap-4 w-[100%] sm:w-auto mb-10">
               <Link
                 href="https://wa.me/918287636979?text=Hi!"
                 target="_blank"
@@ -450,44 +419,25 @@ const Hero = () => {
                 Order Now
               </Link>
 
-            </div>
+            </div> */}
 
-            {/* Trust Indicators */}
-            <div className="w-full pt-6 border-t border-[#ffffff]/10">
-              <div className="flex flex-wrap items-center gap-y-4 gap-x-6 text-sm text-[#AEAEAF] font-medium">
-                <div className="flex items-center gap-2">
-                  <div className="flex text-[#E5BD43]">
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                  </div>
-                  <span className="text-white">4.9/5 Rated</span>
-                </div>
-                <div className="hidden sm:block w-1 h-1 bg-[#6A6F76] rounded-full"></div>
-                <span>25,000+ Items Cleaned</span>
-                <div className="hidden sm:block w-1 h-1 bg-[#6A6F76] rounded-full"></div>
-                <span className="flex items-center gap-1"><Droplets className="w-3 h-3 text-[#4EF1BD]" /> Eco-Friendly</span>
-                <div className="hidden sm:block w-1 h-1 bg-[#6A6F76] rounded-full"></div>
-                <span>Trained Experts</span>
-              </div>
-            </div>
           </div>
 
           {/* Right Side: Creative Composition */}
-          <div className="relative h-[500px] w-full hidden lg:block perspective-1000">
+          <div className="hidden lg:block relative w-full lg:h-[500px] perspective-1000">
             {/* Main Card: Shoe */}
-            <div ref={shoeRef} className="absolute top-10 right-10 w-72 p-4 bg-[#0F1923] border border-[#03AE96]/30 rounded-2xl shadow-2xl z-20 transform rotate-[-5deg] hover:rotate-0 transition-transform duration-500 hover:z-30 group">
+            <div ref={shoeRef} className="relative lg:absolute lg:top-10 lg:right-10 w-full lg:w-60 p-4 bg-[#0F1923] border border-[#03AE96]/30 rounded-2xl shadow-2xl z-20 lg:transform lg:rotate-[-5deg] lg:hover:rotate-0 transition-transform duration-500 hover:z-30 group">
               <div ref={shoeInnerRef} className="bg-[#0A121B] rounded-xl h-48 mb-4 relative overflow-hidden flex items-center justify-center border border-white/5">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#03AE96]/20 to-transparent"></div>
-                <Sparkles className="w-16 h-16 text-[#4EF1BD] group-hover:scale-110 transition-transform duration-500" />
-                <div className="absolute bottom-2 right-2 px-2 py-1 bg-[#4EF1BD] text-[#0A121B] text-xs font-bold rounded">SPA MODE</div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <img src="/qr-code.png" alt="QR code" className="w-36 h-36 md:w-44 md:h-44 object-contain rounded-sm" />
+                </div>
+                {/* <Sparkles className="w-16 h-16 text-[#4EF1BD] group-hover:scale-110 transition-transform duration-500" /> */}
+                {/* <div className="absolute bottom-2 right-2 px-2 py-1 bg-[#4EF1BD] text-[#0A121B] text-xs font-bold rounded">SPA MODE</div> */}
               </div>
               <div className="flex justify-between items-center">
                 <div>
-                  <p className="text-white font-bold">Air Jordan 1</p>
-                  <p className="text-[#AEAEAF] text-xs">Deep Clean + De-yellow</p>
+                  <p className="text-white font-bold">Download App</p>
+                  {/* <p className="text-[#AEAEAF] text-xs">Deep Clean + De-yellow</p> */}
                 </div>
                 <div className="w-8 h-8 rounded-full bg-[#E5BD43] flex items-center justify-center text-[#0A121B] font-bold">
                   <Check className="w-5 h-5" />
@@ -495,54 +445,8 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Secondary Card: Laundry */}
-            <div ref={laundryRef} className="absolute top-40 left-10 w-64 p-4 bg-[#0F1923] border border-[#6D96FB]/30 rounded-2xl shadow-2xl z-10 transform rotate-[3deg] hover:rotate-0 transition-transform duration-500 hover:z-30">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-[#6D96FB]/20 flex items-center justify-center text-[#6D96FB]">
-                  <Shirt className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-white font-bold">Premium Laundry</p>
-                  <p className="text-[#AEAEAF] text-xs">Delicates & Silks</p>
-                </div>
-              </div>
-              <div className="space-y-2">
-                <div className="h-2 w-full bg-[#ffffff]/10 rounded-full overflow-hidden">
-                  <div className="h-full w-[80%] bg-[#6D96FB]"></div>
-                </div>
-                <div className="flex justify-between text-xs text-[#AEAEAF]">
-                  <span>Washing</span>
-                  <span>80%</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Tertiary Card: Bag Spa */}
-            <div ref={bagRef} className="absolute bottom-10 right-20 w-64 p-4 bg-[#0F1923] border border-[#E5BD43]/30 rounded-2xl shadow-2xl z-20 transform rotate-[6deg] hover:rotate-0 transition-transform duration-500 hover:z-30">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full bg-[#E5BD43]/20 flex items-center justify-center text-[#E5BD43]">
-                  <ShoppingBag className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-white font-bold">Luxury Bag Spa</p>
-                  <p className="text-[#AEAEAF] text-xs">Leather Restoration</p>
-                </div>
-              </div>
-              <div className="flex -space-x-2 overflow-hidden py-2">
-                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-[#0F1923] bg-gray-600">
-                  <img className='rounded-full' src="/image/john.jpg" />
-                </div>
-                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-[#0F1923] bg-gray-500">
-                  <img className='rounded-full' src="/image/smith.jpg" />
-                </div>
-                <div className="inline-block h-8 w-8 rounded-full ring-2 ring-[#0F1923] bg-gray-400 flex items-center justify-center text-[10px] text-[#0A121B] font-bold">
-                  <img className='rounded-full' src="/image/alex.jpg" />
-                </div>
-              </div>
-            </div>
-
             {/* Floating Badge: Delivery */}
-            <div ref={badgeRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0A121B]/80 backdrop-blur-md border border-[#4EF1BD] p-4 rounded-full shadow-[0_0_30px_rgba(78,241,189,0.2)] z-30 animate-bounce-slow flex items-center gap-3">
+            <div ref={badgeRef} className="hidden lg:flex absolute top-2/3 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0A121B]/80 backdrop-blur-md border border-[#4EF1BD] p-4 rounded-full shadow-[0_0_30px_rgba(78,241,189,0.2)] z-30 animate-bounce-slow items-center gap-3">
               <div className="w-10 h-10 bg-[#4EF1BD] rounded-full flex items-center justify-center text-[#0A121B]">
                 <Truck className="w-5 h-5" />
               </div>
