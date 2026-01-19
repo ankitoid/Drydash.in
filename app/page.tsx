@@ -26,9 +26,7 @@ import {
   Shirt,
   ShoppingBag,
   Truck,
-  Armchair,
   Gem,
-  Sofa,
   Smartphone,
   Calendar,Headset,
   Quote
