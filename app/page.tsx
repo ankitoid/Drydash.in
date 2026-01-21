@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Sparkles,
   Droplets,
@@ -28,7 +29,7 @@ import {
   Truck,
   Gem,
   Smartphone,
-  Calendar,Headset,
+  Calendar, Headset,
   Quote
 } from 'lucide-react';
 
@@ -66,7 +67,7 @@ const Navigation = () => {
 
           {/* Logo */}
           <div className=" flex items-center gap-2 cursor-pointer group">
-            <img src="/image/logo.png" alt="DryDash" className="w-[50%] h-[50%] rounded-xl object-cover" />
+            <img src="/drydash_lo.png" alt="DryDash" className="w-[70%] h-[100%] rounded-xl object-cover" />
           </div>
 
           {/* Desktop Nav - 5 Elements */}
@@ -137,7 +138,7 @@ const Hero = () => {
   const tweensRef = useRef<any[]>([]);
   const rotatingRef = useRef<HTMLSpanElement | null>(null);
   const cities = ['Noida', 'Delhi', 'Ghaziabad', 'Gurugram'];
-  
+
 
   useEffect(() => {
     let mounted = true;
@@ -325,7 +326,7 @@ const Hero = () => {
 
       if (!deleting) {
         charIdx = Math.min(current.length, charIdx + 1);
-        el.textContent = current.slice(0, charIdx) + '.';
+        el.textContent = current.slice(0, charIdx);
 
         if (charIdx === current.length) {
           timeoutId = window.setTimeout(() => { deleting = true; step(); }, 1200);
@@ -334,7 +335,7 @@ const Hero = () => {
         }
       } else {
         charIdx = Math.max(0, charIdx - 1);
-        el.textContent = current.slice(0, charIdx) + '.';
+        el.textContent = current.slice(0, charIdx);
 
         if (charIdx === 0) {
           deleting = false;
@@ -347,7 +348,7 @@ const Hero = () => {
     };
 
     // start typing
-    el.textContent = '.';
+    el.textContent = '';
     timeoutId = window.setTimeout(step, 300);
 
     return () => {
@@ -381,7 +382,7 @@ const Hero = () => {
             </div> */}
 
             <h1 className="text-3xl md:text-6xl lg:text-6xl font-extrabold text-white tracking-tight mb-6 leading-[1.5]">
-              Shoe Spa <br/> & Dry Cleaning in<br />
+              Shoe Spa <br /> & Dry Cleaning in<br />
               <span className="relative inline-block">
                 <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#4EF1BD] to-[#03AE96] font-extrabold">24 Hours</span>
                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#E5BD43]" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -391,7 +392,7 @@ const Hero = () => {
             </h1>
 
             <h2 className="text-xl md:text-2xl font-light text-white mb-2">
-              Delivered in <span ref={rotatingRef} className="font-bold text-[#4EF1BD]">.</span><span className="ml-1 inline-block w-[2px] h-5 bg-[#4EF1BD] animate-pulse" />
+              Delivered in <span ref={rotatingRef} className="font-bold text-[#4EF1BD]"></span>
             </h2>
 
             {/* <p className="max-w-xl text-md text-[#AEAEAF] mb-8 leading-relaxed">
@@ -457,6 +458,9 @@ const Hero = () => {
 };
 
 const WhyDryDash = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
   const reasons = [
     {
       icon: Timer,
@@ -480,22 +484,74 @@ const WhyDryDash = () => {
     },
   ];
 
+  useEffect(() => {
+    let mounted = true;
+    const init = () => {
+      const gsap = (window as any).gsap;
+      const ScrollTrigger = (window as any).ScrollTrigger;
+
+      if (!mounted) return;
+      if (!gsap || !ScrollTrigger) {
+        setTimeout(init, 100);
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Animate cards staggering in
+      if (containerRef.current) {
+        gsap.fromTo(cardsRef.current.filter(Boolean),
+          { y: 50, autoAlpha: 0 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'back.out(1.2)',
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: 'top 80%',
+            }
+          }
+        );
+      }
+    };
+    init();
+    return () => { mounted = false; };
+  }, []);
+
   return (
-    <section className="py-24 relative bg-gradient-to-b from-[#0B3729] to-[#06221a] overflow-hidden border-t border-[#ffffff]/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-[#E5BD43] font-bold tracking-widest uppercase text-sm mb-3">The DryDash Standard</h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-white">Why Choose <span className="text-[#4EF1BD]">DryDash?</span></h3>
+    <section className="py-24 relative bg-[#0A121B] overflow-hidden border-t border-[#ffffff]/5">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0B3729]/20 to-[#06221a]/20 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#03AE96]/10 rounded-full filter blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#E5BD43]/5 rounded-full filter blur-[100px] pointer-events-none translate-y-1/2 -translate-x-1/2"></div>
+
+      <div ref={containerRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20 relative">
+          <div className="inline-block relative">
+            <h2 className="text-[#E5BD43] font-bold tracking-[0.2em] uppercase text-sm mb-3 relative z-10">The DryDash Standard</h2>
+            <div className="absolute -bottom-2 left-0 w-full h-1 bg-[#E5BD43]/20 blur-sm"></div>
+          </div>
+          <h3 className="text-4xl md:text-5xl font-extrabold text-white mt-2">Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4EF1BD] to-[#03AE96] relative">DryDash?</span></h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {reasons.map((item, idx) => (
-            <div key={idx} className="bg-[#0F1923] p-8 rounded-2xl border border-[#ffffff]/5 hover:border-[#03AE96]/50 transition-all hover:-translate-y-2 group">
-              <div className="w-14 h-14 bg-[#044288]/30 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#03AE96] transition-colors duration-300">
-                <item.icon className="w-7 h-7 text-[#4EF1BD] group-hover:text-white" />
+            <div
+              key={idx}
+              ref={el => { if (el) cardsRef.current[idx] = el; }}
+              className="bg-[#0F1923]/80 backdrop-blur-sm p-8 rounded-3xl border border-[#ffffff]/5 hover:border-[#03AE96]/40 transition-all duration-300 group relative overflow-hidden hover:shadow-[0_10px_40px_-10px_rgba(3,174,150,0.15)] hover:-translate-y-2"
+            >
+              {/* Gradient hover overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#03AE96]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+              <div className="w-16 h-16 bg-[#044288]/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#03AE96] transition-all duration-300 group-hover:scale-110 shadow-inner ring-1 ring-[#ffffff]/5 group-hover:ring-[#03AE96]/50">
+                <item.icon className="w-8 h-8 text-[#4EF1BD] group-hover:text-white transition-colors duration-300" />
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">{item.title}</h4>
-              <p className="text-[#AEAEAF] leading-relaxed text-sm">
+
+              <h4 className="text-xl font-bold text-white mb-3 relative z-10">{item.title}</h4>
+              <p className="text-[#AEAEAF] leading-relaxed text-sm relative z-10 group-hover:text-[#D1EDE0] transition-colors">
                 {item.desc}
               </p>
             </div>
@@ -508,20 +564,6 @@ const WhyDryDash = () => {
 
 const DetailedServices = () => {
   const details = [
-    {
-      title: "Premium Laundry",
-      desc: "Perfect for everyday clothes—washed, sanitized, steam ironed, and packed fresh.",
-      image: "/image/premium.jpg",
-      icon: Shirt,
-      color: "#4EF1BD"
-    },
-    {
-      title: "Dry Cleaning",
-      desc: "Advanced solvent cleaning that protects fabric texture, color, and shape.",
-      image: "image/dry.jpg",
-      icon: Wind,
-      color: "#6D96FB"
-    },
     {
       title: "Shoe Spa",
       desc: "From casual sneakers to premium leather—cleaning, deodorizing, polishing, renewing.",
@@ -1153,29 +1195,40 @@ const DownloadApp = () => {
 
 const CTA = () => {
   return (
-    <section className="py-24 bg-[#0A121B] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-[#03AE96]/20 to-[#044288]/20"></div>
+    <section className="py-20 md:py-40 bg-[#0A121B] relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/image/cta_bg.png"
+          alt="Dry cleaning background"
+          fill
+          className="object-cover opacity-75"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
+
+      <div className="absolute inset-0 bg-gradient-to-r from-[#03AE96]/20 to-[#044288]/20 z-0"></div>
 
       {/* Abstract Shapes */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-[#E5BD43]/10 rounded-full filter blur-[80px] -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#4EF1BD]/10 rounded-full filter blur-[80px] translate-x-1/2 translate-y-1/2"></div>
+      <div className="absolute top-0 left-0 w-64 h-64 bg-[#E5BD43]/10 rounded-full filter blur-[80px] -translate-x-1/2 -translate-y-1/2 z-0"></div>
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#4EF1BD]/10 rounded-full filter blur-[80px] translate-x-1/2 translate-y-1/2 z-0"></div>
 
       <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
-        <h2 className="text-4xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
           Ready for a Fresh, <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4EF1BD] to-[#03AE96]">Hassle-Free Cleaning</span> Experience?
         </h2>
 
-        <p className="text-xl text-[#AEAEAF] mb-10 max-w-2xl mx-auto">
+        <p className="text-md text-[#fff] mb-12 max-w-2xl mx-auto">
           Your clothes, shoes, and home deserve premium care. Experience the DryDash difference today.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex gap-4 justify-center items-center">
           <Link
             href="https://wa.me/918287636979?text=Hi!"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-gradient-to-r from-[#E5BD43] to-[#F6E05E] text-[#0A121B] hover:shadow-[0_0_20px_rgba(229,189,67,0.4)] px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 transform hover:-translate-y-0.5"
+            className="inline-flex lg:w-auto items-center justify-center bg-gradient-to-r from-[#E5BD43] to-[#F6E05E] text-[#0A121B] hover:shadow-[0_0_20px_rgba(229,189,67,0.4)] px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 transform hover:-translate-y-0.5"
           >
             Book Pickup <ArrowRight className="w-5 h-5" />
           </Link>
@@ -1183,7 +1236,7 @@ const CTA = () => {
             href="tel:+918287636979"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-8 py-2 bg-[#0A121B]/50 backdrop-blur-md border border-[#ffffff]/20 text-white rounded-full font-bold text-lg hover:bg-[#ffffff]/10 transition-colors text-sm"
+            className="lg:w-auto sm:w-auto px-8 py-2 bg-[#0A121B]/50 backdrop-blur-md border border-[#ffffff]/20 text-white rounded-full font-bold text-lg hover:bg-[#ffffff]/10 transition-colors text-sm"
           >
             Talk to Support
           </Link>
@@ -1200,7 +1253,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <img src="/image/light.png" alt="DRYDASH logo" className="w-[30%] h-[30%] object-cover rounded-lg" />
+              <img src="/drydash_lo.png" alt="DRYDASH logo" className="w-[50%] h-[50%] object-cover rounded-lg" />
             </div>
             <p className="text-[#AEAEAF] max-w-sm mb-6">
               The premium destination for sneaker care, restoration, and dry cleaning. We bring life back to your favorite pairs.
@@ -1233,7 +1286,7 @@ const Footer = () => {
             <ul className="space-y-3 text-[#AEAEAF]">
               <li>support@drydash.in</li>
               <li>+91-8287636979</li>
-              <li>HA-85 Sector 144 Noida</li>
+              {/* <li>HA-85 Sector 144 Noida</li> */}
             </ul>
           </div>
         </div>
@@ -1270,7 +1323,7 @@ const FloatingCallButton = () => {
           rel="noopener noreferrer"
           aria-label="Chat on WhatsApp"
           className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-[#4EF1BD] to-[#03AE96] text-[#0A121B] shadow-lg hover:scale-105 transition-transform focus:outline-none focus:ring-4 focus:ring-[#4EF1BD]/30"
-          // className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:scale-105 transition-transform"
+        // className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:scale-105 transition-transform"
         >
           <WhatsAppImage className="w-6 h-6" alt="WhatsApp" />
         </a>
@@ -1293,14 +1346,14 @@ export default function Home() {
     <div className="font-sans antialiased bg-[#0A121B] min-h-screen text-[#F0F6FC] selection:bg-[#03AE96] selection:text-[#0A121B]">
       <Navigation />
       <Hero />
-      <WhyDryDash />
+      <CTA />
+      <DownloadApp />
       <DetailedServices />
-      <Process />
-      <Gallery />
+      <WhyDryDash />
+      {/* <Process /> */}
+      {/* <Gallery /> */}
       <Testimonials />
       <FranchisePartner />
-      <DownloadApp />
-      <CTA />
       <Footer />
       <FloatingCallButton />
     </div>

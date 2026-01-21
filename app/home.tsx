@@ -723,7 +723,7 @@ const handleMove = (event: React.MouseEvent | React.TouchEvent) => {
 
   const CTA = () => {
     return (
-      <section className="py-24 bg-[#0A121B] relative overflow-hidden">
+      <section className="py-40 bg-[#0A121B] relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#03AE96]/20 to-[#044288]/20"></div>
         
         {/* Abstract Shapes */}
