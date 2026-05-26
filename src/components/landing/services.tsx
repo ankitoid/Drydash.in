@@ -267,7 +267,7 @@ const Services = () => {
                             },
                         }}
                     >
-                        <div className="flex gap-5 overflow-x-auto pb-4 snap-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                        <div className="flex justify-start md:justify-center gap-5 overflow-x-auto pb-4 snap-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                             {servicesList.map((svc, idx) => (
                                 <ServiceCard key={idx} svc={svc} />
                             ))}

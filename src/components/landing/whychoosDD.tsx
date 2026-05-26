@@ -1,168 +1,140 @@
-'use client'
+'use client';
 import React from 'react';
 import Container from '@/components/common/container';
-import { Clock, Leaf, Truck, TShirt, CheckCircle } from 'phosphor-react';
+import Image from 'next/image';
+import { Clock, Leaf, Truck, TShirt } from 'phosphor-react';
 import { InView } from '@/components/ui/in-view';
 import { motion } from 'motion/react';
 
 const features = [
     {
-        icon: <Clock size={54} weight="regular" />,
+        icon: <Clock size={36} weight="regular" />,
         title: "24-Hour Delivery",
         description: "Next-day delivery for laundry and dry cleaning.",
-        number: "01."
+        number: "01.",
+        image: "/Assests/Images/bento_express_delivery.jpg",
+        className: "lg:col-span-8 md:col-span-6 col-span-12 h-[380px] md:h-[420px]"
     },
     {
-        icon: <Leaf size={54} weight="regular" />,
+        icon: <Leaf size={36} weight="regular" />,
         title: "Eco-Friendly Solvents",
         description: "No harsh chemicals. No petrol smell. Safe for skin & fabrics.",
-        number: "02."
+        number: "02.",
+        image: "/Assests/Images/bento_eco_friendly.png",
+        className: "lg:col-span-4 md:col-span-6 col-span-12 h-[380px] md:h-[420px]"
     },
     {
-        icon: <Truck size={54} weight="regular" />,
+        icon: <Truck size={36} weight="regular" />,
         title: "Doorstep Convenience",
         description: "Pickup and delivery anywhere in your city.",
-        number: "03."
+        number: "03.",
+        image: "/Assests/Images/bento_doorstep_service.jpg",
+        className: "lg:col-span-4 md:col-span-6 col-span-12 h-[380px] md:h-[420px]"
     },
     {
-        icon: <TShirt size={54} weight="regular" />,
+        icon: <TShirt size={36} weight="regular" />,
         title: "Premium Fabric Care",
         description: "Delicate, luxury and designer wear handled by specialists.",
-        number: "04."
+        number: "04.",
+        image: "/Assests/Images/bento_fabric_care.png",
+        className: "lg:col-span-8 md:col-span-6 col-span-12 h-[380px] md:h-[420px]"
     }
 ];
 
 const WhychoosDD = () => {
     return (
-        <>
-            {/* ── MOBILE VIEW ── */}
-            <section className="md:hidden block bg-black w-full px-6 pt-12 pb-16">
+        <section className="bg-black relative w-full pt-24 pb-24 px-6 overflow-hidden">
+            {/* Elegant dark green ambient light blobs */}
+            <div className="absolute top-[-50px] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#458F83]/5 blur-[120px] rounded-full pointer-events-none"></div>
+            <div className="absolute bottom-10 right-[10%] w-[600px] h-[400px] bg-[#143224]/20 blur-[130px] rounded-full pointer-events-none"></div>
+
+            <Container>
+                {/* Header */}
                 <InView
-                    viewOptions={{ once: true, margin: '0px 0px -60px 0px' }}
+                    viewOptions={{ once: true, margin: '0px 0px -100px 0px' }}
                     variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeIn' } }
+                        hidden: { opacity: 0, y: 30 },
+                        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
                     }}
                 >
-                    <div className="mb-10">
-                        <h2 className="text-lg tracking-wide mb-6 text-gray-400">
-                            <span className="tracking-wide mb-6 text-gray-400">/</span>{' '}
-                            Why choose Drydash?
+                    <div className="flex flex-col items-start justify-start md:items-center md:justify-center text-left md:text-center mb-16 md:mb-20 z-10 relative">
+                        <span className="text-lg tracking-wide mb-4 text-[#458F83] font-medium block">
+                            / Why Choose Drydash
+                        </span>
+                        <h2 className="2xl:text-5xl md:text-4xl text-3xl font-normal text-white mb-5 tracking-wide">
+                            Why Choose Drydash?
                         </h2>
+                        <p className="2xl:text-[16px] text-[15px] leading-[1.6] text-gray-400 max-w-lg md:mx-auto tracking-wide">
+                            Fast. Reliable. Hassle-free dry cleaning and laundry.<br />
+                            Fresh, clean, and ready at your doorstep.
+                        </p>
                     </div>
                 </InView>
 
+                {/* Bento Features Grid */}
                 <InView
-                    viewOptions={{ once: true, margin: '0px 0px -40px 0px' }}
+                    viewOptions={{ once: true, margin: '0px 0px -100px 0px' }}
                     variants={{
                         hidden: { opacity: 0 },
                         visible: {
                             opacity: 1,
-                            transition: { staggerChildren: 0.12 }
-                        }
+                            transition: { staggerChildren: 0.1 },
+                        },
                     }}
                 >
-                    <div className="flex flex-col gap-0">
+                    <div className="w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 z-10 relative">
                         {features.map((feature, idx) => (
                             <motion.div
                                 key={idx}
                                 variants={{
-                                    hidden: { opacity: 0, x: -16 },
-                                    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+                                    hidden: { opacity: 0, y: 40, scale: 0.98 },
+                                    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
                                 }}
-                                className="flex items-center gap-5 py-5 border-b border-white/8 last:border-b-0"
+                                className={`${feature.className} group relative rounded-[32px] overflow-hidden border border-white/10 shadow-xl`}
                             >
-                                {/* Yellow checkmark */}
-                                <div className="shrink-0">
-                                    <CheckCircle
-                                        size={24}
-                                        weight="fill"
-                                        className="text-[#E9B84A]"
-                                    />
-                                </div>
+                                {/* Background Image */}
+                                <Image
+                                    src={feature.image}
+                                    alt={feature.title}
+                                    fill
+                                    sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
+                                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] -z-10"
+                                    priority={idx === 0}
+                                />
 
-                                {/* Title */}
-                                <span className="text-[15px] font-medium text-white/90 tracking-wide leading-snug">
-                                    {feature.title}
-                                </span>
+                                {/* Ambient overlay gradient for typography readability */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent -z-10"></div>
+                                <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/10 to-transparent -z-10"></div>
+
+                                {/* Card Content */}
+                                <div className="h-full w-full flex flex-col justify-between p-8 md:p-10 z-10 relative">
+                                    {/* Top Row: Icon & Giant Number */}
+                                    <div className="flex items-center justify-between w-full">
+                                        <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md text-[#458F83] group-hover:bg-[#458F83]/15 group-hover:border-[#458F83]/30 transition-all duration-300">
+                                            {feature.icon}
+                                        </div>
+                                        <div className="text-4xl md:text-5xl font-black text-white/10 group-hover:text-white/20 tracking-tighter transition-colors duration-300">
+                                            {feature.number}
+                                        </div>
+                                    </div>
+
+                                    {/* Bottom Row: Text Content */}
+                                    <div className="mt-auto">
+                                        <h3 className="text-xl md:text-2xl font-semibold text-white tracking-wide mb-2 group-hover:text-[#E2DEC6] transition-colors duration-300">
+                                            {feature.title}
+                                        </h3>
+                                        <p className="text-[14px] leading-relaxed text-gray-300 font-light max-w-md group-hover:text-white transition-colors duration-300">
+                                            {feature.description}
+                                        </p>
+                                    </div>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
                 </InView>
-            </section>
-
-            {/* ── DESKTOP VIEW (unchanged) ── */}
-            <section className="hidden md:block bg-[linear-gradient(0deg,rgba(21,43,40,1)_0%,rgba(21,43,40,0)_100%)] relative w-full pt-20 pb-20 px-6 shadow-2xl overflow-hidden">
-                <Container>
-                    {/* Ambient blobs */}
-                    <div className="absolute top-[-50px] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#CD5C5C]/5 blur-[120px] rounded-full pointer-events-none"></div>
-                    <div className="absolute top-10 left-[20%] w-[600px] h-[400px] bg-[#143224]/30 blur-[130px] rounded-full pointer-events-none"></div>
-
-                    {/* Header */}
-                    <InView
-                        viewOptions={{ once: true, margin: '0px 0px -100px 0px' }}
-                        variants={{
-                            hidden: { opacity: 0, y: 30 },
-                            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
-                        }}
-                    >
-                        <div className="flex flex-col items-center justify-center text-center mb-28 z-10 relative">
-                            <h2 className="2xl:text-4xl text-3xl font-black text-[#E2DEC6] mb-5 tracking-tight">
-                                Why choose Drydash?
-                            </h2>
-                            <p className="2xl:text-[16px] text-[15px] leading-[24.2px] text-[#8a928e] max-w-lg mx-auto tracking-[2.64%]">
-                                Fast. Reliable. Hassle-free. Dry cleaning, and Laundry<br className="hidden md:block" />
-                                Fresh, clean, and ready in just 8 hours.
-                            </p>
-                        </div>
-                    </InView>
-
-                    {/* Features Grid */}
-                    <InView
-                        viewOptions={{ once: true, margin: '0px 0px -100px 0px' }}
-                        variants={{
-                            hidden: { opacity: 0 },
-                            visible: {
-                                opacity: 1,
-                                transition: { staggerChildren: 0.1 },
-                            },
-                        }}
-                    >
-                        <div className="w-full max-w-[1100px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-16 gap-x-8 z-10 relative">
-                            {features.map((feature, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    variants={{
-                                        hidden: { opacity: 0, y: 30 },
-                                        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
-                                    }}
-                                    className="flex flex-col items-center text-center group"
-                                >
-                                    {/* Icon */}
-                                    <div className="text-[#5B6D65] group-hover:text-[#8AA899] transition-colors duration-300 mb-8">
-                                        {feature.icon}
-                                    </div>
-
-                                    {/* Content */}
-                                    <h3 className="text-[17px] font-normal text-[#E2DEC6] tracking-wide mb-3">
-                                        {feature.title}
-                                    </h3>
-                                    <p className="text-[13px] text-[#5B6D65] font-light leading-[1.6] max-w-[210px] mb-8 min-h-[40px]">
-                                        {feature.description}
-                                    </p>
-
-                                    {/* Giant Number */}
-                                    <div className="text-[76px] font-black text-[#E2DEC6]/40 leading-none tracking-tighter mt-auto group-hover:text-[#E2DEC6]/80 transition-colors duration-300">
-                                        {feature.number}
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </InView>
-                </Container>
-            </section>
-        </>
-    )
-}
+            </Container>
+        </section>
+    );
+};
 
 export default WhychoosDD;

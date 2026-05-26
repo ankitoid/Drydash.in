@@ -3,7 +3,7 @@
 import React from 'react';
 import Container from '@/components/common/container';
 import Image from 'next/image';
-import HeroMockup from '@/../public/Assests/SVG/hero_mockup.svg';
+import HeroMockup from '@/../public/Assests/SVG/MockupHero.svg';
 
 import gsap from 'gsap'
 import SplitText from 'gsap/SplitText'
