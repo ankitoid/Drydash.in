@@ -78,15 +78,15 @@ const Footer = () => {
                 {/* Copyright */}
                 <div className="w-full flex justify-center items-center pt-10 pb-4 relative z-10 border-t border-white/5 lg:border-none lg:pt-0">
                     <p className="text-[#8a928e] text-[12px] 2xl:text-[13px]">
-                        © {new Date().getFullYear()} Drydash. All rights reserved.
+                        © {new Date().getFullYear()} drydash. All rights reserved.
                     </p>
                 </div>
             </Container>
 
             {/* Giant Background Text */}
             <div className="w-full md:h-100 h-30 flex justify-center pb-0 pointer-events-none select-none mt-2 lg:mt-6 overflow-hidden">
-                <h1 className="text-[15vw] leading-relaxed font-sans font-bold tracking-wider opacity-50 bg-[linear-gradient(180deg,#8F8F8F_0%,rgba(143,143,143,0.1)_75%,rgba(66,66,66,0)_100%)] bg-clip-text text-transparent">
-                    Drydash
+                <h1 className="text-[15vw] leading-relaxed font-halfre font-bold tracking-wider opacity-50 bg-[linear-gradient(180deg,#8F8F8F_0%,rgba(143,143,143,0.1)_75%,rgba(66,66,66,0)_100%)] bg-clip-text text-transparent">
+                    drydash
                 </h1>
             </div>
         </footer>

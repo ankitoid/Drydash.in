@@ -110,7 +110,9 @@ const Navbar = () => {
                             onMouseLeave={() => setHovered(null)}
                         >
                             {navItems.map((item, idx) => {
-                                const isActive = pathname === item.href;
+                                const isActive = pathname === item.href || 
+                                    (item.href !== "/" && pathname?.startsWith(item.href)) ||
+                                    (item.children && item.children.some(child => pathname === child.href));
                                 const hasChildren = item.children && item.children.length > 0;
 
                                 return (
@@ -163,16 +165,19 @@ const Navbar = () => {
                                                 >
                                                     <div className="bg-[#161511]/95 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl">
                                                         <ul className="py-2">
-                                                            {item.children?.map((child, childIdx) => (
-                                                                <li key={child.title}>
-                                                                    <Link
-                                                                        href={child.href}
-                                                                        className="block px-6 py-3 text-[14px] text-[#E2DEC6] hover:bg-[#03D391]/10 hover:text-[#03D391] transition-colors"
-                                                                    >
-                                                                        {child.title}
-                                                                    </Link>
-                                                                </li>
-                                                            ))}
+                                                            {item.children?.map((child, childIdx) => {
+                                                                const isChildActive = pathname === child.href;
+                                                                return (
+                                                                    <li key={child.title}>
+                                                                        <Link
+                                                                            href={child.href}
+                                                                            className={`block px-6 py-3 text-[14px] transition-colors ${isChildActive ? "bg-[#03D391]/15 text-[#03D391] font-medium" : "text-[#E2DEC6] hover:bg-[#03D391]/10 hover:text-[#03D391]"}`}
+                                                                        >
+                                                                            {child.title}
+                                                                        </Link>
+                                                                    </li>
+                                                                );
+                                                            })}
                                                         </ul>
                                                     </div>
                                                 </motion.div>
@@ -218,7 +223,9 @@ const Navbar = () => {
                     >
                         <nav className="flex flex-col gap-6">
                             {navItems.map((item, idx) => {
-                                const isActive = pathname === item.href;
+                                const isActive = pathname === item.href || 
+                                    (item.href !== "/" && pathname?.startsWith(item.href)) ||
+                                    (item.children && item.children.some(child => pathname === child.href));
                                 const hasChildren = item.children && item.children.length > 0;
                                 const isMobileSubmenuOpen = activeMobileSubmenu === item.title;
 
@@ -261,15 +268,18 @@ const Navbar = () => {
                                                     className="overflow-hidden"
                                                 >
                                                     <div className="flex flex-col gap-4 pl-4 border-l border-white/5 pb-2">
-                                                        {item.children?.map((child) => (
-                                                            <Link
-                                                                key={child.title}
-                                                                href={child.href}
-                                                                className="text-sm font-normal text-[#8a928e] hover:text-[#03D391] transition-colors"
-                                                            >
-                                                                {child.title}
-                                                            </Link>
-                                                        ))}
+                                                        {item.children?.map((child) => {
+                                                            const isChildActive = pathname === child.href;
+                                                            return (
+                                                                <Link
+                                                                    key={child.title}
+                                                                    href={child.href}
+                                                                    className={`text-sm font-normal transition-colors ${isChildActive ? "text-[#03D391] font-semibold" : "text-[#8a928e] hover:text-[#03D391]"}`}
+                                                                >
+                                                                    {child.title}
+                                                                </Link>
+                                                            );
+                                                        })}
                                                     </div>
                                                 </motion.div>
                                             )}

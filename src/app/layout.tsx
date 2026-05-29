@@ -18,6 +18,10 @@ const didot = localFont({
   src: "../../public/Assests/Fonts/Didot Medium.ttf",
   variable: "--font-didot",
 })
+const halfre = localFont({
+  src: "../../public/Assests/Fonts/halfre.ttf",
+  variable: "--font-halfre",
+})
 
 
 export const metadata: Metadata = {
@@ -33,7 +37,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning
       lang="en"
-      className={cn("antialiased", helveticaNeue.variable, didot.variable, "font-sans")}
+      className={cn("antialiased", helveticaNeue.variable, didot.variable, halfre.variable, "font-sans")}
     >
       <body className="min-h-screen flex flex-col" suppressHydrationWarning>
         <ReactLenis root options={{ autoResize: true }}>

@@ -1,8 +1,8 @@
 export const BLOGS = [
-  { slug: "why-choose-washrz-1" },
-  { slug: "why-choose-washrz-2" },
-  { slug: "why-choose-washrz-3" },
-  { slug: "why-choose-washrz-4" },
-  { slug: "why-choose-washrz-5" },
-  { slug: "why-choose-washrz-6" },
+  { slug: "why-professional-laundry-services-save-more-than-just-time" },
+  { slug: "5-signs-your-shoes-need-a-professional-shoe-spa" },
+  { slug: "how-to-make-your-clothes-last-longer" },
+  { slug: "the-importance-of-regular-shoe-cleaning" },
+  { slug: "pickup-and-delivery-laundry-services-the-future-of-laundry-care" },
+  { slug: "why-dry-cleaning-matters-for-premium-garments" },
 ];

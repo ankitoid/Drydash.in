@@ -5,51 +5,15 @@ import Link from 'next/link';
 import { motion } from 'motion/react';
 import { InView } from '@/components/ui/in-view';
 import { CalendarBlankIcon } from '@phosphor-icons/react';
+import { BLOGS_DATA } from '@/data/blogs';
 
-const blogsData = [
-    {
-        id: 1,
-        slug: "why-choose-washrz-1",
-        title: "Why Choose Washrz Over Other Cleaners?",
-        excerpt: "There are many factors that customers consider when choosing a laundry and dry cleaning company. Here are 40 differences that make Washrz stand out...",
-        date: "March 3, 2026",
-    },
-    {
-        id: 2,
-        slug: "why-choose-washrz-2",
-        title: "Why Choose Washrz Over Other Cleaners?",
-        excerpt: "There are many factors that customers consider when choosing a laundry and dry cleaning company. Here are 40 differences that make Washrz stand out...",
-        date: "March 3, 2026",
-    },
-    {
-        id: 3,
-        slug: "why-choose-washrz-3",
-        title: "Why Choose Washrz Over Other Cleaners?",
-        excerpt: "There are many factors that customers consider when choosing a laundry and dry cleaning company. Here are 40 differences that make Washrz stand out...",
-        date: "March 3, 2026",
-    },
-    {
-        id: 4,
-        slug: "why-choose-washrz-4",
-        title: "Why Choose Washrz Over Other Cleaners?",
-        excerpt: "There are many factors that customers consider when choosing a laundry and dry cleaning company. Here are 40 differences that make Washrz stand out...",
-        date: "March 3, 2026",
-    },
-    {
-        id: 5,
-        slug: "why-choose-washrz-5",
-        title: "Why Choose Washrz Over Other Cleaners?",
-        excerpt: "There are many factors that customers consider when choosing a laundry and dry cleaning company. Here are 40 differences that make Washrz stand out...",
-        date: "March 3, 2026",
-    },
-    {
-        id: 6,
-        slug: "why-choose-washrz-6",
-        title: "Why Choose Washrz Over Other Cleaners?",
-        excerpt: "There are many factors that customers consider when choosing a laundry and dry cleaning company. Here are 40 differences that make Washrz stand out...",
-        date: "March 3, 2026",
-    }
-];
+const blogsData = BLOGS_DATA.map(blog => ({
+    id: blog.id,
+    slug: blog.slug,
+    title: blog.title,
+    excerpt: blog.excerpt,
+    date: blog.date,
+}));
 
 const BlogsPage = () => {
     return (
