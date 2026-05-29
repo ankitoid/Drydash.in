@@ -14,6 +14,7 @@ export interface BlogData {
   date: string;
   readTime: string;
   intro: string;
+  image: string;
   sections: BlogSection[];
   conclusion?: string;
 }
@@ -26,6 +27,7 @@ export const BLOGS_DATA: BlogData[] = [
     excerpt: "In today’s fast-paced world, finding time for household chores can be a challenge. Professional laundry services offer benefits that go far beyond simply saving time.",
     date: "May 29, 2026",
     readTime: "5 min read",
+    image: "/Assests/blog/blog1.png",
     intro: "In today’s fast-paced world, finding time for household chores can be a challenge. Between work commitments, family responsibilities, social engagements, and personal goals, laundry often becomes one of those never-ending tasks that consumes valuable time and energy. While washing clothes at home may seem convenient, professional laundry services offer benefits that go far beyond simply saving time.",
     sections: [
       {
@@ -88,6 +90,7 @@ export const BLOGS_DATA: BlogData[] = [
     excerpt: "Shoes are more than just a fashion accessory—they’re a daily essential. Over time, even the highest-quality footwear can start showing signs of wear and tear. Here are five clear signs it’s time for a professional shoe spa.",
     date: "May 29, 2026",
     readTime: "4 min read",
+    image: "/Assests/blog/blog2.png",
     intro: "Shoes are more than just a fashion accessory—they’re a daily essential that support you through work, travel, workouts, and everything in between. Over time, even the highest-quality footwear can start showing signs of wear and tear. While regular cleaning helps, some issues require professional attention to restore your shoes to their best condition. If your favorite pair is looking tired, here are five clear signs it’s time for a professional shoe spa.",
     sections: [
       {
@@ -149,6 +152,7 @@ export const BLOGS_DATA: BlogData[] = [
     excerpt: "Quality clothing is an investment, and proper care can significantly increase its lifespan. From sorting laundry correctly to choosing professional garment care, these simple habits can help keep your clothes looking newer for longer.",
     date: "May 29, 2026",
     readTime: "5 min read",
+    image: "/Assests/blog/blog3.png",
     intro: "Building a wardrobe takes time and money, which is why taking proper care of your clothing is so important. Whether it's your everyday essentials, office wear, or favorite outfits, a few simple habits can help maintain their appearance, comfort, and durability for years to come. Here are some practical ways to extend the life of your clothes and keep them looking their best.",
     sections: [
       {
@@ -224,6 +228,7 @@ export const BLOGS_DATA: BlogData[] = [
     excerpt: "Many people focus on clothing care but overlook their footwear. Regular shoe cleaning is essential for maintaining hygiene, preserving appearance, and extending the lifespan of your favorite shoes.",
     date: "May 29, 2026",
     readTime: "4 min read",
+    image: "/Assests/blog/blog4.png",
     intro: "Shoes are one of the hardest-working items in your wardrobe. They face daily exposure to dirt, dust, moisture, bacteria, and constant wear, yet they are often overlooked when it comes to regular care. Whether you wear sneakers every day or save formal shoes for special occasions, routine cleaning and maintenance can significantly improve their appearance, comfort, and longevity. Here’s why regular shoe cleaning should be an essential part of your care routine.",
     sections: [
       {
@@ -291,6 +296,7 @@ export const BLOGS_DATA: BlogData[] = [
     excerpt: "Convenience is becoming an essential part of modern life, and laundry is no exception. Pickup and delivery laundry services allow customers to enjoy professional garment care without ever leaving their homes.",
     date: "May 29, 2026",
     readTime: "4 min read",
+    image: "/Assests/blog/blog5.png",
     intro: "Modern life moves fast. Between work, family responsibilities, social commitments, and personal goals, finding time for laundry can be difficult. That's why pickup and delivery laundry services are rapidly becoming the preferred choice for busy individuals and families. By combining professional garment care with doorstep convenience, these services eliminate one of the most time-consuming household chores while ensuring your clothes receive expert attention.",
     sections: [
       {
@@ -367,6 +373,7 @@ export const BLOGS_DATA: BlogData[] = [
     excerpt: "Not all clothes are designed for regular washing. Premium garments made from delicate fabrics require specialized care to maintain their appearance, structure, and longevity. Here's why professional dry cleaning matters.",
     date: "May 29, 2026",
     readTime: "4 min read",
+    image: "/Assests/blog/blog6.png",
     intro: "Premium clothing is an investment in both style and quality. From tailored suits and elegant dresses to silk garments and delicate fabrics, these pieces require a level of care that standard home washing often cannot provide. Using the wrong washing methods can lead to shrinking, fading, loss of shape, and permanent fabric damage. Professional dry cleaning offers a safer and more effective solution, helping preserve the beauty and lifespan of your most valuable garments.",
     sections: [
       {

@@ -13,6 +13,7 @@ const blogsData = BLOGS_DATA.map(blog => ({
     title: blog.title,
     excerpt: blog.excerpt,
     date: blog.date,
+    image: blog.image,
 }));
 
 const BlogsPage = () => {
@@ -48,9 +49,14 @@ const BlogsPage = () => {
                                 }}
                             >
                                 <div className="bg-[#121212]/90 backdrop-blur-sm border border-white/5 rounded-[32px] overflow-hidden flex flex-col h-full group">
-                                    {/* Image Placeholder */}
-                                    <div className="h-56 bg-linear-to-br from-[#00FDC0]/20 to-[#03D391]/40 relative">
-                                        <div className="absolute inset-0 bg-[url('/Assests/Images/background_gradiant.png')] bg-cover opacity-30 mix-blend-overlay"></div>
+                                    {/* Blog Image */}
+                                    <div className="h-56 overflow-hidden relative">
+                                        <img 
+                                            src={blog.image} 
+                                            alt={blog.title} 
+                                            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
+                                        />
+                                        <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-60"></div>
                                     </div>
 
                                     <div className="p-8 flex flex-col grow">

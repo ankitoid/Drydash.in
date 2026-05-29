@@ -147,7 +147,7 @@ export default function ClientBlogPage({ slug }: { slug: string }) {
 
                     <article className="space-y-16 md:space-y-20 2xl:space-y-24">
                         <header className="space-y-8">
-                            <h1 className="text-3xl md:text-3xl 2xl:text-5xl font-black leading-tight tracking-tight">
+                            <h1 className="text-3xl md:text-3xl 2xl:text-5xl font-black leading-tight tracking-tight w-[80%]">
                                 {blog.title}
                             </h1>
                             <div className="space-y-6">
