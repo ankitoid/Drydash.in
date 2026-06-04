@@ -91,7 +91,7 @@ const AboutUsPage = () => {
                         }}
                     >
                         <p className="text-base md:text-md leading-relaxed text-[#8a928e]">
-                            DryDash is a premium dryclean and garment care platform developed and operated by Gyld Solutions Pvt. Ltd., a forward-thinking company focused on building innovative, technology-driven service solutions.
+                            drydash is a premium dryclean and garment care platform developed and operated by Gyld Solutions Pvt. Ltd., a forward-thinking company focused on building innovative, technology-driven service solutions.
                         </p>
                     </InView>
 
@@ -108,7 +108,7 @@ const AboutUsPage = () => {
                                 Redefining Drycleaning with Speed, Care & Convenience
                             </h2>
                             <p className="text-sm text-[#8a928e] leading-relaxed mb-6">
-                                DryDash is built for modern lifestyles where time matters. We provide seamless, on-demand shoe spa and dry cleaning services with fast doorstep pickup and delivery.
+                                drydash is built for modern lifestyles where time matters. We provide seamless, on-demand shoe spa and dry cleaning services with fast doorstep pickup and delivery.
                             </p>
                             <p className="text-sm text-[#8a928e] leading-relaxed">
                                 Our goal is simple — eliminate the hassle of drycleaning while delivering premium quality care.
@@ -127,7 +127,7 @@ const AboutUsPage = () => {
                         <div>
                             <h3 className="text-2xl font-bold mb-6">Who We Are</h3>
                             <p className="text-sm text-[#8a928e] leading-relaxed mb-6">
-                                We are a tech-enabled service platform delivering reliable, high-quality garment care solutions. From daily wear to delicate fabrics and footwear, DryDash ensures every item is handled with precision and expertise.
+                                We are a tech-enabled service platform delivering reliable, high-quality garment care solutions. From daily wear to delicate fabrics and footwear, drydash ensures every item is handled with precision and expertise.
                             </p>
                             <p className="text-sm text-[#8a928e] leading-relaxed">
                                 We combine smart logistics, professional cleaning processes, and customer-centric design to deliver a smooth and dependable experience.
@@ -179,7 +179,7 @@ const AboutUsPage = () => {
                                 visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
                             }}
                         >
-                            <h2 className="text-2xl font-bold mb-16">What Makes DryDash Different</h2>
+                            <h2 className="text-2xl font-bold mb-16">What Makes drydash Different</h2>
                         </InView>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
@@ -254,7 +254,7 @@ const AboutUsPage = () => {
                                 Freshness, Care & Confidence — Delivered
                             </h3>
                             <p className="text-sm text-[#8a928e] mb-12 max-w-lg">
-                                At DryDash, we don't just clean clothes — we deliver freshness, care, and confidence with every order.
+                                At drydash, we don't just clean clothes — we deliver freshness, care, and confidence with every order.
                             </p>
                             <DownloadBtn />
                         </div>

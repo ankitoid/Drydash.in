@@ -95,7 +95,7 @@ const Navbar = () => {
                         {/* <Image className='2xl:w-30 w-25 2xl:h-10 h-8' src={Logo} alt="Logo" priority /> */}
                         <Link href="/">
                             <Image
-                                className="2xl:w-30 w-24 h-auto cursor-pointer"
+                                className="2xl:w-30 w-28 h-auto cursor-pointer"
                                 src={Logo}
                                 alt="Logo"
                                 priority

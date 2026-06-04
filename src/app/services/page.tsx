@@ -122,7 +122,7 @@ const ServicesPage = () => {
                                 Ready for a curated experience?
                             </h2>
                             <p className="text-[14px] md:text-base text-[#8a928e] max-w-xl mx-auto leading-relaxed">
-                                Join the circle of homeowners and professionals who trust Drydash for their
+                                Join the circle of homeowners and professionals who trust drydash for their
                                 daily essentials.
                             </p>
 

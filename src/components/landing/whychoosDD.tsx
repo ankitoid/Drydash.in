@@ -11,15 +11,15 @@ const features = [
         icon: <Clock size={36} weight="regular" />,
         title: "24-Hour Delivery",
         description: "Next-day delivery for laundry and dry cleaning.",
-        number: "01.",
-        image: "/Assests/Images/bento_express_delivery.jpg",
+        // number: "01.",
+        image: "/Assests/Images/bento_express_delivery.png",
         className: "lg:col-span-8 md:col-span-6 col-span-12 h-[380px] md:h-[420px]"
     },
     {
         icon: <Leaf size={36} weight="regular" />,
         title: "Eco-Friendly Solvents",
         description: "No harsh chemicals. No petrol smell. Safe for skin & fabrics.",
-        number: "02.",
+        // number: "02.",
         image: "/Assests/Images/bento_eco_friendly.png",
         className: "lg:col-span-4 md:col-span-6 col-span-12 h-[380px] md:h-[420px]"
     },
@@ -27,15 +27,15 @@ const features = [
         icon: <Truck size={36} weight="regular" />,
         title: "Doorstep Convenience",
         description: "Pickup and delivery anywhere in your city.",
-        number: "03.",
-        image: "/Assests/Images/bento_doorstep_service.jpg",
+        // number: "03.",
+        image: "/Assests/Images/bento_doorstep_service.png",
         className: "lg:col-span-4 md:col-span-6 col-span-12 h-[380px] md:h-[420px]"
     },
     {
         icon: <TShirt size={36} weight="regular" />,
         title: "Premium Fabric Care",
         description: "Delicate, luxury and designer wear handled by specialists.",
-        number: "04.",
+        // number: "04.",
         image: "/Assests/Images/bento_fabric_care.png",
         className: "lg:col-span-8 md:col-span-6 col-span-12 h-[380px] md:h-[420px]"
     }
@@ -59,10 +59,10 @@ const WhychoosDD = () => {
                 >
                     <div className="flex flex-col items-start justify-start md:items-center md:justify-center text-left md:text-center mb-16 md:mb-20 z-10 relative">
                         <span className="text-lg tracking-wide mb-4 text-[#458F83] font-medium block">
-                            / Why Choose Drydash
+                            / Why Choose drydash
                         </span>
                         <h2 className="2xl:text-5xl md:text-4xl text-3xl font-normal text-white mb-5 tracking-wide">
-                            Why Choose Drydash?
+                            Why Choose drydash?
                         </h2>
                         <p className="2xl:text-[16px] text-[15px] leading-[1.6] text-gray-400 max-w-lg md:mx-auto tracking-wide">
                             Fast. Reliable. Hassle-free dry cleaning and laundry.<br />
@@ -113,9 +113,9 @@ const WhychoosDD = () => {
                                         <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md text-[#458F83] group-hover:bg-[#458F83]/15 group-hover:border-[#458F83]/30 transition-all duration-300">
                                             {feature.icon}
                                         </div>
-                                        <div className="text-4xl md:text-5xl font-black text-white/10 group-hover:text-white/20 tracking-tighter transition-colors duration-300">
+                                        {/* <div className="text-4xl md:text-5xl font-black text-white/10 group-hover:text-white/20 tracking-tighter transition-colors duration-300">
                                             {feature.number}
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                     {/* Bottom Row: Text Content */}

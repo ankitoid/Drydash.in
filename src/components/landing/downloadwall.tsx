@@ -17,7 +17,7 @@ const Downloadwall = () => {
                 {/* Title */}
                 <div className="w-full mb-6">
                     <h2 className="text-[26px] font-black text-[#152B28] leading-[1.15] tracking-tight font-didot">
-                        Clean Clothes. Zero Hassle.<br />DryDash
+                        Clean Clothes. Zero Hassle.<br />drydash
                     </h2>
                 </div>
 
@@ -69,10 +69,10 @@ const Downloadwall = () => {
                 {/* Left Side Content */}
                 <div className="flex flex-col z-20 w-full lg:w-[55%] mb-10 lg:mb-0">
                     <h2 className="md:text-4xl text-2xl 2xl:text-5xl font-black text-[#001714] leading-[1.1] mb-6 tracking-tight ">
-                        Clean Clothes. Zero Hassle.<br />DryDash
+                        Clean Clothes. Zero Hassle.<br />drydash
                     </h2>
                     <p className="text-[#152B28]/85 text-[15px] 2xl:text-[16px] leading-[1.6] mb-10 max-w-[500px]">
-                        DryDash provides professional dry cleaning that removes stains, dirt, and
+                        drydash provides professional dry cleaning that removes stains, dirt, and
                         odors while protecting your fabric&apos;s quality. With careful handling and
                         convenient pickup and delivery, we make garment care simple and hassle-free.
                     </p>

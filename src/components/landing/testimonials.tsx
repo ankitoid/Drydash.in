@@ -26,7 +26,7 @@ const testimonialsRow1: Testimonial[] = [
         id: 2,
         name: "AYUSH SINGH",
         role: "",
-        message: "Excellent shoe spa service by Drydash.My shoes were cleaned really well and delivered within 24 hours.",
+        message: "Excellent shoe spa service by drydash.My shoes were cleaned really well and delivered within 24 hours.",
         rating: 4.8,
     },
     {
@@ -61,7 +61,7 @@ const testimonialsRow1: Testimonial[] = [
         id: 7,
         name: "Rocky",
         role: "",
-        message: "It's hard to find a genuinely good cleaning service in the area, but DryDash has earned my trust. I would definitely recommend it to my friends.",
+        message: "It's hard to find a genuinely good cleaning service in the area, but drydash has earned my trust. I would definitely recommend it to my friends.",
         rating: 4.9,
     }
 ];
@@ -79,7 +79,7 @@ export const testimonialsRow2: Testimonial[] = [
         id: 2,
         name: "AYUSH SINGH",
         role: "",
-        message: "Excellent shoe spa service by Drydash.My shoes were cleaned really well and delivered within 24 hours.",
+        message: "Excellent shoe spa service by drydash.My shoes were cleaned really well and delivered within 24 hours.",
         rating: 4.8,
     },
     {
@@ -114,7 +114,7 @@ export const testimonialsRow2: Testimonial[] = [
         id: 7,
         name: "Rocky",
         role: "",
-        message: "It's hard to find a genuinely good cleaning service in the area, but DryDash has earned my trust. I would definitely recommend it to my friends.",
+        message: "It's hard to find a genuinely good cleaning service in the area, but drydash has earned my trust. I would definitely recommend it to my friends.",
         rating: 4.9,
     },
 

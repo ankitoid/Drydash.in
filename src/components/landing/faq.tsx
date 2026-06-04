@@ -14,35 +14,35 @@ import {
 
 const faqItems = [
     {
-        q: "1. How does DryDash work?",
+        q: "1. How does drydash work?",
         a: "Our process is simple: Schedule a pickup through the app, we collect your items, clean them with premium care, and deliver them back to your doorstep within 24 hours."
     },
     {
-        q: "2. What pricing plans are available for DryDash?",
+        q: "2. What pricing plans are available for drydash?",
         a: "We offer transparent, fixed pricing for all our services. Check our app for the latest rates in your city."
     },
     {
-        q: "3. What are the benefits of using DryDash?",
+        q: "3. What are the benefits of using drydash?",
         a: "Benefits include professional-grade cleaning, eco-friendly solvents, convenient doorstep service, and our 24-hour express delivery guarantee."
     },
     {
-        q: "4. Can DryDash be integrated with other platforms?",
-        a: "Currently, Drydash operates as a standalone service through our official mobile app, ensuring a seamless and secure experience for all our users."
+        q: "4. Can drydash be integrated with other platforms?",
+        a: "Currently, drydash operates as a standalone service through our official mobile app, ensuring a seamless and secure experience for all our users."
     },
     {
-        q: "5. How does DryDash work?",
+        q: "5. How does drydash work?",
         a: "Simply download our app, set your preferences, and choose a convenient pickup time. Our specialists handle the rest, from careful cleaning to final delivery."
     },
     {
-        q: "6. How do I troubleshoot common issues with DryDash?",
+        q: "6. How do I troubleshoot common issues with drydash?",
         a: "For any issues, our 24/7 support team is available via the in-app chat. We're here to help with tracking, scheduling."
     },
     {
-        q: "7. What are the best practices for maintaining DryDash?",
+        q: "7. What are the best practices for maintaining drydash?",
         a: "To get the best results, please follow the care labels on your garments. If you have special requests, you can add notes directly to your order in the app."
     },
     {
-        q: "8. How can I optimize my workflow using DryDash?",
+        q: "8. How can I optimize my workflow using drydash?",
         a: "Use our recurring pickup feature to automate your weekly laundry needs. It's the best way to save time and ensure your wardrobe is always fresh."
     }
 ];
