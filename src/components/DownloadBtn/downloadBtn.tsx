@@ -13,7 +13,7 @@ import {
     MorphingDialogDescription,
     MorphingDialogContainer,
 } from '@/components/motion-primitives/morphing-dialog';
-import playStoreQR from '@/../public/Assests/SVG/Download_QR.svg'
+import playStoreQR from '@/../public/Assests/SVG/Download_QR.png'
 
 interface DownloadBtnProps {
     variant?: 'default' | 'minimal_black';
@@ -107,7 +107,7 @@ const DownloadBtn = ({ variant = 'default', varient }: DownloadBtnProps) => {
                                     <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-white/20 rounded-br-sm pointer-events-none"></div>
 
                                     <div className="w-[180px] h-[180px] bg-white flex items-center justify-center rounded-sm">
-                                        <Image src={playStoreQR} alt="Play Store QR" className="w-full h-full object-contain" />
+                                        <Image src={playStoreQR} alt="Play Store QR" className="w-full h-full object-contain" loading="lazy" placeholder="blur"  />
                                     </div>
                                 </div>
                             </div>
