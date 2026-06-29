@@ -41,7 +41,7 @@ const Delivery = () => {
                                 </h2>
 
                                 <p className="2xl:text-lg text-[16px] leading-relaxed text-gray-300 mb-12 max-w-xl font-light">
-                                    Why waste your weekend on laundry? drydash brings premium fabric care, expert dry cleaning, and luxurious shoe spa services directly to your doorstep. Schedule a pickup in seconds, and our professional executives will handle the rest—bringing clean, crisp, and fresh clothes right back to you.
+                                    Why waste your weekend on Shoe spa? drydash brings premium fabric care, expert dry cleaning, and luxurious shoe spa services directly to your doorstep. Schedule a pickup in seconds, and our professional executives will handle the rest—bringing clean, crisp, and fresh clothes right back to you.
                                 </p>
                             </InView>
 
@@ -54,7 +54,7 @@ const Delivery = () => {
                             >
                                 <div className="flex flex-col sm:flex-row items-center gap-4">
                                     <a
-                                        href="https://api.whatsapp.com/send?phone=919717953316&text=Hi%20Drydash,%20I%20would%20like%20to%20book%20a%20doorstep%20laundry%20pickup."
+                                        href="https://api.whatsapp.com/send?phone=919717953316&text=Hi"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="w-full sm:w-auto px-8 h-14 bg-gradient-to-r from-[#458F83] to-[#3a7c72] hover:from-[#3a7c72] hover:to-[#458F83] text-black font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-[#458F83]/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"

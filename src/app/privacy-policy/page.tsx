@@ -109,7 +109,7 @@ const PrivacyPolicyPage = () => {
                         {/* Intro */}
                         <section className="space-y-6">
                             <p className="text-base md:text-lg text-[#8a928e] leading-relaxed italic">
-                                At DryDash, we value your privacy. This policy explains how we collect, use, and protect your information when you use our laundry, shoe spa, and dry cleaning services.
+                                At DryDash, we value your privacy. This policy explains how we collect, use, and protect your information when you use our apparel, shoe spa, and dry cleaning services.
                             </p>
                         </section>
 

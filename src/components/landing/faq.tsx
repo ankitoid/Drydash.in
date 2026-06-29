@@ -43,7 +43,7 @@ const faqItems = [
     },
     {
         q: "8. How can I optimize my workflow using drydash?",
-        a: "Use our recurring pickup feature to automate your weekly laundry needs. It's the best way to save time and ensure your wardrobe is always fresh."
+        a: "Use our recurring pickup feature to automate your weekly apparel needs. It's the best way to save time and ensure your wardrobe is always fresh."
     }
 ];
 

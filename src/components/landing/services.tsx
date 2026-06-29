@@ -10,8 +10,8 @@ import Link from 'next/link';
 
 const servicesList = [
     // {
-    //     title: "Laundry",
-    //     image: "/Assests/Images/laundry_card.jpg",
+    //     title: "apparel",
+    //     image: "/Assests/Images/apparel_card.jpg",
     //     active: true
     // },
     {

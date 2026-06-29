@@ -26,7 +26,7 @@ import { testimonialsRow2, TestimonialCard } from '@/components/landing/testimon
 // Data
 const servicesList = [
     // {
-    //     title: "Laundry",
+    //     title: "apparel",
     //     desc: "Expert garment care using eco-conscious solvents and artisanal finishing techniques.",
     //     icon: Leaf
     // },
@@ -276,7 +276,7 @@ const DryCleaningPage = () => {
                                 <div className="relative rounded-[2.5rem] overflow-hidden group shadow-2xl">
                                     <Image
                                         src="/Assests/Images/curator_section.png"
-                                        alt="Modern Laundry"
+                                        alt="Modern apparel"
                                         width={1200}
                                         height={1400}
                                         className="w-full h-auto object-cover transform transition-transform duration-1000 group-hover:scale-105"

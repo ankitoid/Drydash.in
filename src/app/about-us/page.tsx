@@ -95,7 +95,7 @@ const AboutUsPage = () => {
                         </p>
                     </InView>
 
-                    {/* Redefining Laundry */}
+                    {/* Redefining apparel */}
                     <InView
                         viewOptions={{ once: true }}
                         variants={{

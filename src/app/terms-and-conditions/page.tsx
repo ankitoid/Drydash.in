@@ -54,10 +54,10 @@ const TermsAndConditionsPage = () => {
                             <h2 className="text-2xl font-bold mb-8 text-white">Delivery Policy</h2>
                             <ul className="space-y-5">
                                 {[
-                                    "Laundry deliveries will be made in 72 hours.",
+                                    "apparel deliveries will be made in 72 hours.",
                                     "Dry Cleaning garments will be delivered in 120 hours.",
                                     "Urgent delivery of garments will be charged at 50% extra.",
-                                    "Free pickup & delivery on laundry orders of 6 KG or more.",
+                                    "Free pickup & delivery on apparel orders of 6 KG or more.",
                                     "We strive for timely delivery; if delayed, we’ll keep you updated.",
                                     "Customers are requested to inspect garments upon delivery.",
                                     "We are not responsible for fabric shrinkage, color bleeding, or embellishment damage.",

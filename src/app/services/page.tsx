@@ -17,7 +17,7 @@ import DownloadBtn from '@/components/DownloadBtn/downloadBtn';
 const services = [
     // {
     //     icon: <WashingMachineIcon size={24} weight="light" />,
-    //     title: "Laundry",
+    //     title: "apparel",
     //     description: "Expert garment care using eco-conscious solvents and artisanal finishing techniques."
     // },
     {

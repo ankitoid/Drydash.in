@@ -10,7 +10,7 @@ const features = [
     {
         icon: <Clock size={36} weight="regular" />,
         title: "24-Hour Delivery",
-        description: "Next-day delivery for laundry and dry cleaning.",
+        description: "Next-day delivery for shoe spa and apparel dry cleaning.",
         // number: "01.",
         image: "/Assests/Images/bento_express_delivery.png",
         className: "lg:col-span-8 md:col-span-6 col-span-12 h-[380px] md:h-[420px]"
@@ -65,7 +65,7 @@ const WhychoosDD = () => {
                             Why Choose drydash?
                         </h2>
                         <p className="2xl:text-[16px] text-[15px] leading-[1.6] text-gray-400 max-w-lg md:mx-auto tracking-wide">
-                            Fast. Reliable. Hassle-free dry cleaning and laundry.<br />
+                            Fast. Reliable. Hassle-free dry cleaning and shoe spa.<br />
                             Fresh, clean, and ready at your doorstep.
                         </p>
                     </div>

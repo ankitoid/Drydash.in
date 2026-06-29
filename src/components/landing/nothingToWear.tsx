@@ -59,7 +59,7 @@ const NothingToWear = () => {
                         >
                             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                                 <a
-                                    href="https://api.whatsapp.com/send?phone=919717953316&text=Hi%20Drydash,%20I%20have%20nothing%20to%20wear!%20I%20need%20overnight%20laundry%20restoration."
+                                    href="https://api.whatsapp.com/send?phone=919717953316&text=Hi%20Drydash,%20I%20have%20nothing%20to%20wear!%20I%20need%20overnight%20apparel%20restoration."
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-full sm:w-auto px-6 h-12 bg-gradient-to-r from-[#03D391] to-[#03D391] text-black font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-[#458F83]/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
