@@ -18,51 +18,58 @@ const testimonialsRow1: Testimonial[] = [
     {
         id: 1,
         name: "Kunalalla",
-        role: "",
+        role: "Google Reviewer",
         message: "I had a great experience with Shoe Spa. The quality of cleaning and restoration was impressive — my shoes looked almost brand new after the service. The team was professional, attentive, and handled everything with great care. Turnaround time was reasonable, and the pricing felt fair for the level of service provided. Highly recommended for anyone who wants to maintain or restore their footwear to top condition. I’ll definitely be using their service again!",
         rating: 5.0,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/Kunalalla.png"
     },
     {
         id: 2,
         name: "AYUSH SINGH",
-        role: "",
+        role: "Google Reviewer",
         message: "Excellent shoe spa service by drydash.My shoes were cleaned really well and delivered within 24 hours.",
         rating: 4.8,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/AYUSH%20SINGH.png"
     },
     {
         id: 3,
         name: "Omkar jaiswal",
-        role: "",
+        role: "Google Reviewer",
         message: "The delivery service was fast and well-organized. My order arrived on time and in perfect condition, exactly within the promised 24-hour delivery window. Very convenient and reliable service. Will connect with you guys super soon!",
         rating: 5.0,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/Omkar%20jaiswal.png"
     },
     {
         id: 4,
         name: "Shivam Pandey",
-        role: "",
+        role: "Google Reviewer",
         message: "Earlier, I tried many services, but none of them delivered before 3 days, and the service quality was very poor. Then I tried Dry Dash. For express service, they mentioned 8 hours, but they delivered my shoes in just 6 hours with great quality. I was truly impressed. Thank you, Dry Dash! I will come back soon to try more services.",
         rating: 5.0,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/Shivam%20Pandey.png"
     },
     {
         id: 5,
         name: "HARI OM TRIPATHI",
-        role: "",
+        role: "Google Reviewer",
         message: "They offer excellent service across the NCR region — definitely worth trying.",
         rating: 4.9,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/HARI%20OM%20TRIPATHI.png"
     },
     {
         id: 6,
         name: "Ankit Singh Thakur",
-        role: "",
+        role: "Google Reviewer",
         message: "What a great shoe spa service - shoes came out clean as new. I was very impressed with the quality cleaning and finishing.",
         rating: 4.9,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/Ankit%20Singh%20Thakur.png"
     },
     {
         id: 7,
         name: "Rocky",
-        role: "",
+        role: "Google Reviewer",
         message: "It's hard to find a genuinely good cleaning service in the area, but drydash has earned my trust. I would definitely recommend it to my friends.",
         rating: 4.9,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/Rocky.png"
     }
 ];
 
@@ -71,51 +78,58 @@ export const testimonialsRow2: Testimonial[] = [
     {
         id: 1,
         name: "Kunalalla",
-        role: "",
+        role: "Google Reviewer",
         message: "I had a great experience with Shoe Spa. The quality of cleaning and restoration was impressive — my shoes looked almost brand new after the service. The team was professional, attentive, and handled everything with great care. Turnaround time was reasonable, and the pricing felt fair for the level of service provided. Highly recommended for anyone who wants to maintain or restore their footwear to top condition. I’ll definitely be using their service again!",
         rating: 5.0,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/Kunalalla.png"
     },
     {
         id: 2,
         name: "AYUSH SINGH",
-        role: "",
+        role: "Google Reviewer",
         message: "Excellent shoe spa service by drydash.My shoes were cleaned really well and delivered within 24 hours.",
         rating: 4.8,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/AYUSH%20SINGH.png"
     },
     {
         id: 3,
         name: "Omkar jaiswal",
-        role: "",
+        role: "Google Reviewer",
         message: "The delivery service was fast and well-organized. My order arrived on time and in perfect condition, exactly within the promised 24-hour delivery window. Very convenient and reliable service. Will connect with you guys super soon!",
         rating: 5.0,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/Omkar%20jaiswal.png"
     },
     {
         id: 4,
         name: "Shivam Pandey",
-        role: "",
+        role: "Google Reviewer",
         message: "Earlier, I tried many services, but none of them delivered before 3 days, and the service quality was very poor. Then I tried Dry Dash. For express service, they mentioned 8 hours, but they delivered my shoes in just 6 hours with great quality. I was truly impressed. Thank you, Dry Dash! I will come back soon to try more services.",
         rating: 5.0,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/Shivam%20Pandey.png"
     },
     {
         id: 5,
         name: "HARI OM TRIPATHI",
-        role: "",
+        role: "Google Reviewer",
         message: "They offer excellent service across the NCR region — definitely worth trying.",
         rating: 4.9,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/HARI%20OM%20TRIPATHI.png"
     },
     {
         id: 6,
         name: "Ankit Singh Thakur",
-        role: "",
+        role: "Google Reviewer",
         message: "What a great shoe spa service - shoes came out clean as new. I was very impressed with the quality cleaning and finishing.",
         rating: 4.9,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/Ankit%20Singh%20Thakur.png"
     },
     {
         id: 7,
         name: "Rocky",
-        role: "",
+        role: "Google Reviewer",
         message: "It's hard to find a genuinely good cleaning service in the area, but drydash has earned my trust. I would definitely recommend it to my friends.",
         rating: 4.9,
+        profilePic: "/Assests/Images/drydash_testimonials_user_imgs/Rocky.png"
     },
 
 ];
@@ -144,18 +158,21 @@ export const TestimonialCard = ({ data }: { data: Testimonial }) => (
         </p>
 
         {/* User Profile */}
-        <div className="flex items-center gap-4 mt-auto">
-            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center overflow-hidden shrink-0">
-                {data.profilePic ? (
-                    <img src={data.profilePic} alt={data.name} className="w-full h-full object-cover" />
-                ) : (
-                    <User size={20} weight="fill" className="text-white/50" />
-                )}
+        <div className="flex items-center justify-between mt-auto">
+            <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center overflow-hidden shrink-0">
+                    {data.profilePic ? (
+                        <img src={data.profilePic} alt={data.name} className="w-full h-full object-cover" />
+                    ) : (
+                        <User size={20} weight="fill" className="text-white/50" />
+                    )}
+                </div>
+                <div className="flex flex-col">
+                    <h4 className="text-white/90 font-medium text-[14px]">{data.name}</h4>
+                    <p className="text-gray-500 text-[12px]">{data.role}</p>
+                </div>
             </div>
-            <div className="flex flex-col">
-                <h4 className="text-white/90 font-medium text-[14px]">{data.name}</h4>
-                <p className="text-gray-500 text-[12px]">{data.role}</p>
-            </div>
+            <img src="/Assests/Logo/google%20logo.svg" alt="Google Review" className="w-5 h-5 shrink-0 object-contain" />
         </div>
     </div>
 );
