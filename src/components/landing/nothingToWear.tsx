@@ -28,7 +28,7 @@ const NothingToWear = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-12 w-full">
 
                     {/* Left Column: Glassmorphic Content Card */}
-                    <div className="lg:col-span-7 bg-black/20 backdrop-blur-lg border border-white/10 rounded-[32px] p-8 md:p-12 shadow-2xl">
+                    <div className="lg:col-span-7 bg-black border-white/10 rounded-[24px] p-8 md:p-12 shadow-2xl">
                         <InView
                             viewOptions={{ once: true, margin: '0px 0px -100px 0px' }}
                             variants={{
@@ -36,17 +36,14 @@ const NothingToWear = () => {
                                 visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
                             }}
                         >
-                            <span className="text-sm md:text-base tracking-wide mb-4 text-[#03D391] font-medium flex items-center gap-2">
-                                <Sparkle size={16} weight="fill" className="animate-pulse" /> / Wardrobe Rescue
-                            </span>
 
                             <h2 className="2xl:text-5xl md:text-4xl text-3xl font-normal text-white leading-tight mb-4 tracking-wide">
                                 Have nothing <br className="hidden sm:block" />
-                                to wear?
+                                to wear tomorrow?
                             </h2>
 
                             <p className="text-[14px] md:text-[15px] leading-relaxed text-gray-300 mb-8 font-light">
-                                Don’t panic. Our overnight express service picks up, dry-cleans, and returns your clothes by morning—fresh and ready to wear.
+                                Experience our super-fast premium service and get it cleaned and delivered the same-day.
                             </p>
                         </InView>
 
@@ -64,7 +61,7 @@ const NothingToWear = () => {
                                     rel="noopener noreferrer"
                                     className="w-full sm:w-auto px-6 h-12 bg-gradient-to-r from-[#03D391] to-[#03D391] text-black font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-[#458F83]/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
                                 >
-                                    Restore By Morning <CaretRight size={18} weight="bold" />
+                                    Restore in 24 hours <CaretRight size={18} weight="bold" />
                                 </a>
                                 <div className="text-left">
                                     <span className="text-xs uppercase tracking-widest text-[#03D391] font-bold block">Overnight Service</span>

@@ -16,7 +16,7 @@ export default function Home() {
       <Delivery />
       <Services />
       <WhychoosDD />
-      <Howtouse />
+      {/* <Howtouse /> */}
       <Faq />
       <Testimonials />
       <Downloadwall />

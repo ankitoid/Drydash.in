@@ -4,6 +4,7 @@ import React from 'react';
 import Container from '@/components/common/container';
 import Image from 'next/image';
 import HeroMockup from '@/../public/Assests/SVG/MockupHero.svg';
+import { TextLoop } from '../motion-primitives/text-loop';
 
 import gsap from 'gsap'
 import SplitText from 'gsap/SplitText'
@@ -24,6 +25,12 @@ const stats = [
         label: "Satisfied Rate",
     },
 ]
+
+const heroMessages = [
+    "Same-day garment & shoe care",
+    "Picked up & delivered within 24 hours",
+    "Zero handling fees",
+];
 
 
 const Hero = () => {
@@ -104,21 +111,22 @@ const Hero = () => {
             <Container>
                 <div className='2xl:mt-15 mt-0 overflow-hidden'>
                     <div className='flex items-center justify-center'>
-                        <div className='2xl:w-2/3 w-180 text-center mb-6'>
-                            <h1 className='heroTitle 2xl:text-7xl/normal md:text-5xl/normal text-4xl/normal tracking-[1.6%] md:font-bold font-normal will-change-transform'>                                Restored By Morning
-                                {/* <span className="heroLoop inline-grid items-center justify-items-start text-left text-[#03D391]">
-                                    {loopWords.map((word, index) => (
-                                        <span key={`hidden-${index}`} className="invisible col-start-1 row-start-1">{word}</span>
-                                    ))}
-                                    <TextLoop className="col-start-1 row-start-1 w-full text-left">
-                                        {loopWords.map((title, index) => (
-                                            <span key={index}>{title}</span>
-                                        ))}
-                                    </TextLoop>
-                                </span> */}
+                        <div className="2xl:w-2/3 w-180 text-center mb-6">
+                            <h1 className="heroTitle 2xl:text-7xl/normal md:text-5xl/tight text-4xl/normal tracking-[1.6%] md:font-bold font-normal will-change-transform mb-4">
+                                Apparel & More <br /> Restored By Morning
                             </h1>
-                            <p className='2xl:text-xl/normal md:text-xl/normal text-xl/normal tracking-[1.6%] will-change-transform text-[#c0c0c0]'>overnight garment and shoe care</p>
-
+                            <div className="2xl:text-xl flex w-full items-center justify-center md:text-xl text-xl tracking-[1.6%] will-change-transform text-[#c0c0c0]">
+                                <TextLoop className="flex w-full items-center justify-center text-center">
+                                    {heroMessages.map((message, index) => (
+                                        <p
+                                            key={index}
+                                            className="w-full text-center"
+                                        >
+                                            {message}
+                                        </p>
+                                    ))}
+                                </TextLoop>
+                            </div>
                         </div>
                     </div>
                     <div ref={btnsRef} className='flex flex-col sm:flex-row items-center justify-center gap-4 2xl:mt-4 mt-2 mb-12 sm:mb-0'>
