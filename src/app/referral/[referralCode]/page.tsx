@@ -1,23 +1,21 @@
-"use client";
-
-import { useEffect } from "react";
-import { useParams } from "next/navigation";
+import ReferralRedirectClient from "./ReferralRedirectClient";
 
 export function generateStaticParams() {
-  return [];
+  // Generate at least one static page so Next.js can export the dynamic route.
+  // The actual referral code is handled client-side from the URL.
+  return [{ referralCode: "default" }];
 }
 
-export default function ReferralRedirect() {
-  const { referralCode } = useParams<{ referralCode: string }>();
+type Props = {
+  params: Promise<{
+    referralCode: string;
+  }>;
+};
 
-  useEffect(() => {
-    if (!referralCode) return;
+export default async function ReferralRedirect({
+  params,
+}: Props) {
+  const { referralCode } = await params;
 
-    window.location.href =
-      `https://staging.shiptos.com/api/v1/referral/share/${encodeURIComponent(
-        referralCode
-      )}`;
-  }, [referralCode]);
-
-  return null;
+  return <ReferralRedirectClient referralCode={referralCode} />;
 }
