@@ -58,11 +58,11 @@ const DownloadBtn = ({ variant = 'default', varient }: DownloadBtnProps) => {
                     ) : (
                         <MorphingDialogTrigger
                             style={{ borderRadius: '12px' }}
-                            className="p-[2px] bg-[linear-gradient(20deg,#142926,#458F83)] w-full"
+                            className="p-[2px] bg-primary w-full"
                         >
                             <div
                                 style={{ borderRadius: '12px' }}
-                                className="bg-[linear-gradient(45deg,#152B28,#21453F)] text-white 2xl:text-lg text-[15px] 2xl:w-50 w-full px-8 2xl:h-14 h-12 flex items-center justify-center gap-3 transition-transform active:scale-[0.98]"
+                                className="bg-primary text-white 2xl:text-lg text-[15px] 2xl:w-50 w-full px-8 2xl:h-14 h-12 flex items-center justify-center gap-3 transition-transform active:scale-[0.98]"
                             >
                                 <Image src={PlaystoreLogo} alt="Play Store" className="w-5 h-auto hidden" />
                                 Download App
@@ -107,7 +107,7 @@ const DownloadBtn = ({ variant = 'default', varient }: DownloadBtnProps) => {
                                     <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-white/20 rounded-br-sm pointer-events-none"></div>
 
                                     <div className="w-[180px] h-[180px] bg-white flex items-center justify-center rounded-sm">
-                                        <Image src={playStoreQR} alt="Play Store QR" className="w-full h-full object-contain" loading="lazy"  />
+                                        <Image src={playStoreQR} alt="Play Store QR" className="w-full h-full object-contain" loading="lazy" />
                                     </div>
                                 </div>
                             </div>
@@ -135,11 +135,11 @@ const DownloadBtn = ({ variant = 'default', varient }: DownloadBtnProps) => {
                     ) : (
                         <div
                             style={{ borderRadius: '12px' }}
-                            className="p-[2px] bg-[linear-gradient(20deg,#142926,#458F83)] w-full"
+                            className="p-[2px] bg-primary w-full"
                         >
                             <div
                                 style={{ borderRadius: '12px' }}
-                                className="bg-[linear-gradient(45deg,#152B28,#21453F)] text-white text-[15px] w-full px-8 h-12 flex items-center justify-center gap-3 transition-transform active:scale-[0.98]"
+                                className="bg-primary text-white text-[15px] w-full px-8 h-12 flex items-center justify-center gap-3 transition-transform active:scale-[0.98]"
                             >
                                 <Image src={isIOS ? AppStoreLogo : PlaystoreLogo} alt={isIOS ? "App Store" : "Play Store"} className="w-5 h-auto text-white fill-white stroke-white" />
                                 Download App
